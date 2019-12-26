@@ -1,6 +1,6 @@
 ---
 # Display name
-name: Nelson Bighetti
+name: Igor Geyn
 
 # Username (this should match the folder name)
 authors:
@@ -10,32 +10,24 @@ authors:
 superuser: true
 
 # Role/position
-role: Professor of Artificial Intelligence
+role: []
 
 # Organizations/Affiliations
-organizations:
-- name: Stanford University
+organizations: []
+- name: []]
   url: ""
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: Experienced mixed-methods researcher with substantive expertise in health policy, government contracting,and media. Mostly use Pythona and R to make sense of complex statistics. Currently Senior Data Analyst at Bloomberg Government (BGOV), a division of Bloomberg Industry Group.
 
 interests:
-- Artificial Intelligence
-- Computational Linguistics
-- Information Retrieval
+[]
 
 education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
+  - course: BA in Economoics, Political Science
+    institution: University of California, San Diego (UCSD)
     year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2009
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
