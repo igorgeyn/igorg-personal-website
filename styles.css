@@ -1055,6 +1055,111 @@ span.pub-title {
     border-color: var(--color-accent);
 }
 
+/* === Home Page Compact === */
+.hero-compact {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.hero-content-compact {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+}
+
+.hero-text-compact h1 {
+    margin-bottom: 0;
+}
+
+.hero-role {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--color-ink-light);
+    margin: var(--spacing-xs) 0;
+}
+
+.hero-skills {
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+    margin: 0;
+}
+
+.intro-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+}
+
+.intro-text:last-child {
+    margin-bottom: 0;
+}
+
+.current-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.current-item {
+    padding: var(--spacing-sm);
+    background: var(--color-paper-warm);
+    border-radius: 4px;
+}
+
+.current-role {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.current-org {
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    margin-left: var(--spacing-xs);
+}
+
+.current-item p {
+    font-size: 0.85rem;
+    color: var(--color-ink-light);
+    margin: var(--spacing-xs) 0 0 0;
+}
+
+.role-tags {
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    font-style: italic;
+    margin-top: var(--spacing-xs);
+}
+
+.contact-compact {
+    margin-bottom: var(--spacing-md);
+}
+
+.contact-row {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.contact-row a {
+    font-size: 0.9rem;
+}
+
+.quick-nav {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    padding: var(--spacing-sm) 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.quick-nav a {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
 /* === Placeholder Pages === */
 .placeholder-content {
     text-align: center;
@@ -1165,6 +1270,23 @@ span.pub-title {
 
     .resume-entry-meta {
         margin-top: 0.15rem;
+    }
+
+    .hero-content-compact {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .hero-image {
+        margin: 0 auto;
+    }
+
+    .contact-row {
+        justify-content: center;
+    }
+
+    .quick-nav {
+        justify-content: center;
     }
 }
 
