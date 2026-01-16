@@ -948,6 +948,113 @@ span.pub-title {
     margin-top: var(--spacing-lg);
 }
 
+/* === Resume Page Compact === */
+.header-contact {
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+    margin-top: var(--spacing-xs);
+}
+
+.header-contact a {
+    color: var(--color-ink-muted);
+}
+
+.header-contact a:hover {
+    color: var(--color-accent);
+}
+
+.resume-summary-compact {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-ink-light);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.resume-entry {
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.resume-entry:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.resume-entry-slim {
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+}
+
+.resume-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.resume-entry-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.resume-entry-meta {
+    font-size: 0.8rem;
+    color: var(--color-ink-muted);
+}
+
+.resume-entry-desc {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-top: var(--spacing-xs);
+    margin-bottom: 0;
+}
+
+.resume-entry-note {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--color-ink-muted);
+    margin-top: 0.15rem;
+    margin-bottom: 0;
+}
+
+.skills-inline p {
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.5;
+}
+
+.skills-inline p:last-child {
+    margin-bottom: 0;
+}
+
+.download-links-compact {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    margin-top: var(--spacing-md);
+}
+
+.download-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--color-paper-warm);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+}
+
+.download-link:hover {
+    background: var(--color-accent);
+    color: white;
+    border-color: var(--color-accent);
+}
+
 /* === Placeholder Pages === */
 .placeholder-content {
     text-align: center;
@@ -1048,6 +1155,15 @@ span.pub-title {
     .list-status {
         float: none;
         display: block;
+        margin-top: 0.15rem;
+    }
+
+    .resume-entry-header {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .resume-entry-meta {
         margin-top: 0.15rem;
     }
 }
