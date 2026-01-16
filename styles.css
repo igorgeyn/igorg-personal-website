@@ -43,6 +43,8 @@ body {
     background-color: var(--color-paper);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 /* === Typography === */
@@ -517,6 +519,53 @@ section:last-of-type {
 
 .press-list a {
     font-size: 0.9rem;
+}
+
+/* === Freelance Page === */
+.freelance-services {
+    margin-top: var(--spacing-md);
+}
+
+.service-item {
+    margin-bottom: var(--spacing-md);
+    padding-left: var(--spacing-md);
+    border-left: 2px solid var(--color-border);
+}
+
+.service-item:last-child {
+    margin-bottom: 0;
+}
+
+.service-item h3 {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.service-item p {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+.testimonial {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--color-paper-warm);
+    border-left: 3px solid var(--color-accent);
+}
+
+.testimonial p {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: var(--spacing-sm);
+}
+
+.testimonial cite {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
 }
 
 .download-links {
