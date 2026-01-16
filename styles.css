@@ -465,6 +465,60 @@ section:last-of-type {
     margin-bottom: 0;
 }
 
+/* === Research Page === */
+.skills-used {
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    font-style: italic;
+    margin-bottom: var(--spacing-sm);
+}
+
+.publication-details {
+    margin-top: var(--spacing-sm);
+}
+
+.publication-details summary {
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    padding: var(--spacing-xs) 0;
+}
+
+.publication-details summary:hover {
+    color: var(--color-accent-hover);
+}
+
+.publication-details[open] summary {
+    margin-bottom: var(--spacing-sm);
+}
+
+.publication-details p {
+    font-size: 0.9rem;
+    color: var(--color-ink-light);
+    line-height: 1.6;
+    padding-left: var(--spacing-sm);
+    border-left: 2px solid var(--color-border);
+}
+
+.press-list {
+    list-style: none;
+    padding-left: var(--spacing-sm);
+    border-left: 2px solid var(--color-border);
+}
+
+.press-list li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.press-list li:last-child {
+    margin-bottom: 0;
+}
+
+.press-list a {
+    font-size: 0.9rem;
+}
+
 .download-links {
     display: flex;
     gap: var(--spacing-md);
