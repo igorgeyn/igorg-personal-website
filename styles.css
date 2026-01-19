@@ -38,7 +38,7 @@ html {
 body {
     font-family: var(--font-body);
     font-size: 1rem;
-    line-height: 1.7;
+    line-height: 1.6;
     color: var(--color-ink);
     background-color: var(--color-paper);
     -webkit-font-smoothing: antialiased;
@@ -64,7 +64,7 @@ h1 {
 h2 {
     font-size: 1.5rem;
     font-weight: 500;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 1rem;
     padding-bottom: var(--spacing-xs);
     border-bottom: 1px solid var(--color-border);
 }
@@ -76,7 +76,7 @@ h3 {
 }
 
 p {
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 1.15rem;
 }
 
 p:last-child {
@@ -244,7 +244,7 @@ a:hover {
 
 /* === Sections === */
 section {
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: 2.5rem;
 }
 
 section:last-of-type {
@@ -252,7 +252,7 @@ section:last-of-type {
 }
 
 .intro {
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: 2.5rem;
 }
 
 .lead {
@@ -643,27 +643,27 @@ section:last-of-type {
 }
 
 .section-compact {
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: 2rem;
 }
 
 .section-compact h2 {
     font-size: 1.25rem;
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 0.75rem;
     padding-bottom: 0.25rem;
 }
 
 .section-compact h3 {
     font-size: 1rem;
     font-weight: 600;
-    margin-top: var(--spacing-md);
-    margin-bottom: var(--spacing-xs);
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
     color: var(--color-ink-light);
 }
 
 /* Publication items */
 .pub-item {
-    margin-bottom: var(--spacing-md);
-    padding-bottom: var(--spacing-md);
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -679,9 +679,8 @@ section:last-of-type {
 
 .pub-header {
     display: flex;
-    justify-content: space-between;
     align-items: baseline;
-    gap: var(--spacing-sm);
+    gap: 0.5rem;
     flex-wrap: wrap;
 }
 
@@ -701,10 +700,29 @@ span.pub-title {
     color: var(--color-ink);
 }
 
+.pub-ungated {
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.1rem 0.4rem;
+    background: var(--color-paper-warm);
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    color: var(--color-ink-light);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.pub-ungated:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: white;
+}
+
 .pub-venue {
     font-size: 0.8rem;
     color: var(--color-ink-muted);
     white-space: nowrap;
+    margin-left: auto;
 }
 
 .pub-authors {
@@ -784,11 +802,11 @@ span.pub-title {
 /* Compact lists */
 .compact-list {
     list-style: none;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 1rem;
 }
 
 .compact-list li {
-    padding: 0.35rem 0;
+    padding: 0.3rem 0;
     border-bottom: 1px solid var(--color-border);
     font-size: 0.9rem;
     line-height: 1.5;
@@ -874,8 +892,8 @@ span.pub-title {
 
 /* Client cards */
 .client-card {
-    margin-bottom: var(--spacing-md);
-    padding-bottom: var(--spacing-md);
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -973,8 +991,8 @@ span.pub-title {
 }
 
 .resume-entry {
-    margin-bottom: var(--spacing-md);
-    padding-bottom: var(--spacing-md);
+    margin-bottom: 1.15rem;
+    padding-bottom: 1.15rem;
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -985,8 +1003,8 @@ span.pub-title {
 }
 
 .resume-entry-slim {
-    margin-bottom: var(--spacing-sm);
-    padding-bottom: var(--spacing-sm);
+    margin-bottom: 0.85rem;
+    padding-bottom: 0.85rem;
 }
 
 .resume-entry-header {
@@ -1031,6 +1049,42 @@ span.pub-title {
 
 .skills-inline p:last-child {
     margin-bottom: 0;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 1.5rem;
+}
+
+.skill-category {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.skill-label {
+    font-weight: 600;
+    color: var(--color-ink);
+    white-space: nowrap;
+    min-width: 5.5rem;
+}
+
+.skill-items {
+    color: var(--color-ink-light);
+}
+
+@media (max-width: 600px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.download-links-top {
+    margin-top: 0.75rem;
+    margin-bottom: 1.5rem;
 }
 
 .download-links-compact {
@@ -1458,4 +1512,185 @@ span.pub-title {
 .post-footer a {
     font-size: 0.9rem;
     font-weight: 500;
+}
+
+/* === Home Page Tighter Spacing === */
+.intro {
+    line-height: 1.6;
+}
+
+.intro p {
+    margin-bottom: 1.15rem;
+}
+
+.intro .lead {
+    margin-bottom: 1.5rem;
+}
+
+.intro ul {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding-left: 1.25rem;
+}
+
+.intro li {
+    margin-bottom: 0.4rem;
+}
+
+.current,
+.job-market,
+.background,
+.contact {
+    margin-bottom: 2.5rem;
+}
+
+.current p,
+.job-market p,
+.background p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.current h2,
+.job-market h2,
+.background h2,
+.contact h2 {
+    margin-bottom: 1rem;
+}
+
+.contact-inline {
+    margin-bottom: 1.5rem;
+}
+
+.contact-inline h2 {
+    margin-bottom: 0.5rem;
+}
+
+.contact-inline p {
+    margin-bottom: 0;
+}
+
+/* Education grid */
+.education-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.education-item {
+    padding: 0.75rem;
+    background: var(--color-paper-warm);
+    border-radius: 4px;
+}
+
+.education-degree {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+}
+
+.education-school {
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    margin-bottom: 0.3rem;
+}
+
+.education-note {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--color-ink-light);
+}
+
+@media (max-width: 600px) {
+    .education-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+/* Awards grid */
+.awards-grid {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.award-item {
+    flex: 1;
+    min-width: 140px;
+    padding: 0.5rem 0.75rem;
+    background: var(--color-paper-warm);
+    border-radius: 4px;
+}
+
+.award-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    line-height: 1.3;
+}
+
+.award-org {
+    font-size: 0.75rem;
+    color: var(--color-ink-muted);
+    margin-top: 0.15rem;
+}
+
+.award-detail {
+    font-size: 0.8rem;
+    color: var(--color-ink-light);
+    margin-top: 0.25rem;
+    line-height: 1.4;
+    text-align: left;
+}
+
+@media (max-width: 600px) {
+    .awards-grid {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}
+
+/* Projects grid (freelance page) */
+.projects-grid {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.project-item {
+    flex: 1;
+    min-width: 180px;
+    padding: 0.75rem;
+    background: var(--color-paper-warm);
+    border-radius: 4px;
+}
+
+.project-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    line-height: 1.3;
+}
+
+.project-status {
+    font-size: 0.75rem;
+    color: var(--color-ink-muted);
+    margin-top: 0.15rem;
+}
+
+.project-detail {
+    font-size: 0.8rem;
+    color: var(--color-ink-light);
+    margin-top: 0.35rem;
+    line-height: 1.4;
+    text-align: left;
+}
+
+@media (max-width: 600px) {
+    .projects-grid {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
 }
