@@ -240,6 +240,8 @@ a:hover {
     width: 160px;
     height: auto;
     display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 /* === Sections === */
@@ -1092,6 +1094,7 @@ span.pub-title {
     gap: var(--spacing-md);
     flex-wrap: wrap;
     margin-top: var(--spacing-md);
+    justify-content: center;
 }
 
 .download-link {
@@ -1639,11 +1642,20 @@ span.pub-title {
 .intro ul {
     margin-top: 0.5rem;
     margin-bottom: 1rem;
-    padding-left: 1.25rem;
+    padding-left: 1.5rem;
+    list-style: none;
 }
 
 .intro li {
     margin-bottom: 0.4rem;
+    position: relative;
+}
+
+.intro li::before {
+    content: '—';
+    position: absolute;
+    left: -1.5rem;
+    color: var(--color-ink-muted);
 }
 
 .current,
