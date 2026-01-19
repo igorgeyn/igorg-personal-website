@@ -67,6 +67,9 @@ POST_TEMPLATE = """<!DOCTYPE html>
 
     <main class="main">
         <article class="blog-post">
+            <nav class="post-breadcrumb">
+                <a href="index.html">← Blog</a>
+            </nav>
             <header class="post-header">
                 <h1>{title}</h1>
                 <time class="post-date" datetime="{date}">{date_formatted}</time>
@@ -176,7 +179,7 @@ def parse_frontmatter(content):
 def markdown_to_html(md_content):
     """Convert markdown to HTML."""
     if HAS_MARKDOWN:
-        return markdown.markdown(md_content, extensions=['fenced_code', 'tables', 'nl2br'])
+        return markdown.markdown(md_content, extensions=['fenced_code', 'tables'])
     else:
         # Basic fallback conversion
         html = md_content

@@ -48,4 +48,28 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Code tabs for language switching
+    document.querySelectorAll('.code-tabs').forEach(tabContainer => {
+        const buttons = tabContainer.querySelectorAll('.tab-btn');
+        const contents = tabContainer.querySelectorAll('.tab-content');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+
+                // Update buttons
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Update content
+                contents.forEach(c => {
+                    c.classList.remove('active');
+                    if (c.dataset.lang === lang) {
+                        c.classList.add('active');
+                    }
+                });
+            });
+        });
+    });
 });

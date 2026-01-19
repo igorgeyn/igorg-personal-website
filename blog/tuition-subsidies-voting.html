@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Does Subsidized College Make People Vote? A Causal Analysis with 16 Million Records — Igor Geyn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo">Igor Geyn</a>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../resume.html">Resume/CV</a></li>
+                <li><a href="../research.html">Research</a></li>
+                <li><a href="../freelance.html">Freelance</a></li>
+                <li><a href="index.html" class="active">Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main">
+        <article class="blog-post">
+            <nav class="post-breadcrumb">
+                <a href="index.html">← Blog</a>
+            </nav>
+            <header class="post-header">
+                <h1>Does Subsidized College Make People Vote? A Causal Analysis with 16 Million Records</h1>
+                <time class="post-date" datetime="2026-01-19">January 19, 2026</time>
+            </header>
+            <div class="post-content">
+<p>In 2020, roughly 1 in 66 California voters cast a ballot because they received a tuition subsidy. That's 259,000 additional votes—enough to shift statewide margins by half a percentage point.</p>
+<p>This finding comes from a paper I co-authored with <a href="https://www.danielfiroozi.com/">Daniel Firoozi</a>, published in the <em>American Economic Journal: Economic Policy</em>. The research required linking 16.4 million financial aid applications to voter registration records and deploying a regression discontinuity design to isolate causal effects. This post walks through how we did it.</p>
+<h2>The Question</h2>
+<p>Economists from Adam Smith to Milton Friedman justified public education spending partly on the grounds that it produces informed, politically active citizens. But do tuition subsidies actually <em>cause</em> people to vote? The correlation between education and political participation is well-documented, but people who attend college differ from those who don't in unobservable ways. Selection bias contaminates naive comparisons.</p>
+<p>We wanted to know: if you give someone a scholarship they wouldn't otherwise have received, does it change their likelihood of voting?</p>
+<h2>The Setting: California's Cal Grant</h2>
+<p>California's Cal Grant is the largest tuition-free 4-year college program in the United States. Students who meet income and academic requirements receive four years of free tuition at any in-state public university.</p>
+<p>Eligibility hinges on a sharp income cutoff. Families above the threshold are ineligible; families below receive the grant. <strong>This creates a natural experiment: students just below the cutoff are nearly identical to students just above, except for their Cal Grant receipt.</strong> This is the foundation of a regression discontinuity (RD) design.</p>
+<h2>Building the Dataset</h2>
+<p>We needed two things: treatment status (who received a Cal Grant) and outcomes (who voted). Neither exists in a single dataset.</p>
+<p><strong>Treatment data</strong> came from the California Student Aid Commission (CSAC): 16.4 million FAFSA records from 2010-2021 with family income, assets, Cal Grant receipt, housing intent, and GPA.</p>
+<p><strong>Outcome data</strong> came from L2 Inc.'s California voter file: 21 million registered voters with party registration and participation in every election through 2021.</p>
+<h3>The Linking Problem</h3>
+<p>Merging these datasets required matching on names and dates of birth. But FERPA prohibits sharing student records with researchers. Our solution: we provided the voter file to CSAC, who performed the match internally and returned de-identified data.</p>
+<div class="code-tabs">
+<div class="tab-buttons">
+<button class="tab-btn active" data-lang="python">Python</button>
+<button class="tab-btn" data-lang="r">R</button>
+</div>
+<div class="tab-content active" data-lang="python">
+<pre><code class="language-python"># Conceptual workflow for privacy-preserving record linkage
+# (actual matching done by CSAC on their secure servers)
+
+def prepare_voter_file_for_transfer(voter_df):
+    """Prepare voter file for secure transfer to data holder."""
+    match_fields = ['first_name', 'last_name', 'dob']
+    outcome_fields = ['party', 'voted_2020', 'voted_2018', 'voter_id']
+    return voter_df[match_fields + outcome_fields]
+
+def receive_matched_data(matched_df):
+    """Process de-identified matched data returned by CSAC."""
+    assert 'first_name' not in matched_df.columns
+    assert 'last_name' not in matched_df.columns
+    return matched_df</code></pre>
+</div>
+<div class="tab-content" data-lang="r">
+<pre><code class="language-r"># Conceptual workflow for privacy-preserving record linkage
+# (actual matching done by CSAC on their secure servers)
+
+prepare_voter_file_for_transfer <- function(voter_df) {
+    # Prepare voter file for secure transfer to data holder
+    match_fields <- c("first_name", "last_name", "dob")
+    outcome_fields <- c("party", "voted_2020", "voted_2018", "voter_id")
+    voter_df[, c(match_fields, outcome_fields)]
+}
+
+receive_matched_data <- function(matched_df) {
+    # Process de-identified matched data returned by CSAC
+    stopifnot(!"first_name" %in% names(matched_df))
+    stopifnot(!"last_name" %in% names(matched_df))
+    matched_df
+}</code></pre>
+</div>
+</div>
+
+<p>The match rate was 50-60%. Non-matches include students who moved out of state, never registered, or changed their legal names after marriage.</p>
+<h3>Sample Restrictions</h3>
+<p>Not every FAFSA filer is useful for RD. We restricted to students who were California residents, didn't already hold a bachelor's degree, fell below the asset threshold, and had family incomes within $10,000 of the cutoff:</p>
+<div class="code-tabs">
+<div class="tab-buttons">
+<button class="tab-btn active" data-lang="python">Python</button>
+<button class="tab-btn" data-lang="r">R</button>
+</div>
+<div class="tab-content active" data-lang="python">
+<pre><code class="language-python">def construct_rd_sample(df, bandwidth=10000):
+    """Construct regression discontinuity analysis sample."""
+    # Center income at eligibility threshold
+    df['income_centered'] = df['family_income'] - df['income_threshold']
+
+    # Apply eligibility restrictions
+    sample = df[
+        (df['ca_resident'] == True) &
+        (df['has_bachelors'] == False) &
+        (df['assets'] <= df['asset_threshold']) &
+        (abs(df['income_centered']) <= bandwidth)
+    ].copy()
+
+    # Exclude round-number incomes (manipulation concern)
+    sample = sample[sample['family_income'] % 1000 != 0]
+
+    # Treatment indicator: below threshold = eligible
+    sample['eligible'] = (sample['income_centered'] <= 0).astype(int)
+    return sample
+
+# Main sample: 258,329 students (2017-2019 cohorts)
+# Expanded sample: 738,046 students (2010-2019 cohorts)</code></pre>
+</div>
+<div class="tab-content" data-lang="r">
+<pre><code class="language-r">construct_rd_sample <- function(df, bandwidth = 10000) {
+    # Construct regression discontinuity analysis sample
+    df |>
+        mutate(income_centered = family_income - income_threshold) |>
+        filter(
+            ca_resident == TRUE,
+            has_bachelors == FALSE,
+            assets <= asset_threshold,
+            abs(income_centered) <= bandwidth,
+            family_income %% 1000 != 0  # exclude round numbers
+        ) |>
+        mutate(eligible = as.integer(income_centered <= 0))
+}
+
+# Main sample: 258,329 students (2017-2019 cohorts)
+# Expanded sample: 738,046 students (2010-2019 cohorts)</code></pre>
+</div>
+</div>
+
+<h2>The Identification Strategy</h2>
+<h3>Regression Discontinuity: The Intuition</h3>
+<p>The fundamental problem of causal inference is that we never observe the same person in both treated and untreated states. Randomized experiments solve this by creating comparable groups through random assignment. But what if we can't randomize?</p>
+<p>Regression discontinuity (RD) offers one answer. When treatment is assigned based on whether a continuous variable crosses a threshold, people just above and below that threshold are nearly identical—except for treatment status. If you can't precisely control the running variable, falling just above vs. just below the cutoff is essentially random.</p>
+<p>Consider two students whose families earn $72,000 and $74,000. These incomes reflect accumulated differences in careers, education, and luck—but the $2,000 gap is noise. If eligibility depends on whether income falls below $73,000, then landing at $72K vs. $74K is plausibly random. One gets the program; the other doesn't. Comparing outcomes gives us a causal effect.</p>
+<p>This logic requires one critical assumption: <strong>people cannot precisely manipulate the running variable to sort around the threshold</strong>. If high-motivation families strategically report income just below the cutoff, the comparison breaks down. We test this directly below.</p>
+<p>In our setting:</p>
+<ul>
+<li><strong>Running variable</strong>: Family income, centered at the eligibility threshold</li>
+<li><strong>Treatment</strong>: Receiving a Cal Grant</li>
+<li><strong>Threshold</strong>: The income cutoff, which varies by year and family size (ranging from ~$60,000 to ~$110,000 over our sample period)</li>
+</ul>
+<p>Because the threshold changes across cohorts, we center each student's income relative to <em>their</em> applicable cutoff. A student $2,000 below the 2012 threshold is treated the same as one $2,000 below the 2018 threshold—both have centered income of -$2,000. This pooling increases statistical power while preserving the sharp discontinuity at zero.</p>
+<h3>First Stage</h3>
+<p>Before estimating effects on voting, we verify that the income threshold actually affects grant receipt:</p>
+<div class="code-tabs">
+<div class="tab-buttons">
+<button class="tab-btn active" data-lang="python">Python</button>
+<button class="tab-btn" data-lang="r">R</button>
+</div>
+<div class="tab-content active" data-lang="python">
+<pre><code class="language-python">from rdrobust import rdrobust
+
+def estimate_first_stage(df):
+    """Estimate first-stage discontinuity in treatment."""
+    result = rdrobust(
+        y=df['received_calgrant'],
+        x=df['income_centered'],
+        c=0,  # cutoff at centered income = 0
+        kernel='uniform',
+        h=10000  # $10,000 bandwidth
+    )
+    return result
+
+# First stage coefficient: ~0.25
+# Students below threshold are 25pp more likely to receive grant</code></pre>
+</div>
+<div class="tab-content" data-lang="r">
+<pre><code class="language-r">library(rdrobust)
+
+estimate_first_stage <- function(df) {
+    # Estimate first-stage discontinuity in treatment
+    rdrobust(
+        y = df$received_calgrant,
+        x = df$income_centered,
+        c = 0,
+        kernel = "uniform",
+        h = 10000
+    )
+}
+
+# First stage coefficient: ~0.25
+# Students below threshold are 25pp more likely to receive grant</code></pre>
+</div>
+</div>
+
+<p><img alt="First stage discontinuity showing Cal Grant receipt drops sharply at the income threshold" src="images/rd_firststage.png" /></p>
+<p>A 25 pp first stage is strong—well above conventional thresholds for weak instruments.</p>
+<h3>Threats to Identification</h3>
+<p>RD designs can fail if agents manipulate the running variable, there's selection at the threshold, or differential attrition.</p>
+<p><strong>Manipulation</strong>: We focused on 2017-2019 cohorts, when California used "prior-prior year" income assessment. Families couldn't anticipate the threshold when filing taxes two years earlier. We also excluded round-number incomes.</p>
+<div class="code-tabs">
+<div class="tab-buttons">
+<button class="tab-btn active" data-lang="python">Python</button>
+<button class="tab-btn" data-lang="r">R</button>
+</div>
+<div class="tab-content active" data-lang="python">
+<pre><code class="language-python">from rddensity import rddensity
+
+def mccrary_density_test(df):
+    """Test for manipulation via density discontinuity."""
+    result = rddensity(X=df['income_centered'])
+    # Null: no discontinuity in density
+    # p > 0.1 suggests no manipulation
+    return result.pval  # Our data: p = 0.50</code></pre>
+</div>
+<div class="tab-content" data-lang="r">
+<pre><code class="language-r">library(rddensity)
+
+mccrary_density_test <- function(df) {
+    # Test for manipulation via density discontinuity
+    result <- rddensity(X = df$income_centered)
+    # Null: no discontinuity in density
+    # p > 0.1 suggests no manipulation
+    result$test$p_jk  # Our data: p = 0.50
+}</code></pre>
+</div>
+</div>
+
+<p><img alt="McCrary density test showing no bunching at the threshold" src="images/McCrary_main.png" /></p>
+<p>No bunching at the threshold—the density of observations is continuous across the cutoff.</p>
+<p><strong>Attrition</strong>: Students above the threshold might leave California at higher rates. We confirmed no discontinuity in pre-treatment voter turnout and null effects on out-of-state registration using a separate dataset.</p>
+<h3>Balance Tests</h3>
+<p>For RD to be valid, pre-treatment covariates should be continuous across the threshold:</p>
+<div class="code-tabs">
+<div class="tab-buttons">
+<button class="tab-btn active" data-lang="python">Python</button>
+<button class="tab-btn" data-lang="r">R</button>
+</div>
+<div class="tab-content active" data-lang="python">
+<pre><code class="language-python">def run_balance_tests(df, covariates):
+    """Test covariate balance across RD threshold."""
+    results = []
+    for covar in covariates:
+        rd = rdrobust(y=df[covar], x=df['income_centered'], c=0)
+        results.append({
+            'covariate': covar,
+            'coefficient': rd.coef,
+            'pvalue': rd.pval
+        })
+    return pd.DataFrame(results)
+
+# 18 covariates tested, 3 rejections at 90% level
+# Consistent with random chance (expected: 1.8)</code></pre>
+</div>
+<div class="tab-content" data-lang="r">
+<pre><code class="language-r">run_balance_tests <- function(df, covariates) {
+    # Test covariate balance across RD threshold
+    map_dfr(covariates, function(covar) {
+        rd <- rdrobust(y = df[[covar]], x = df$income_centered, c = 0)
+        tibble(
+            covariate = covar,
+            coefficient = rd$coef[1],
+            pvalue = rd$pv[1]
+        )
+    })
+}
+
+# 18 covariates tested, 3 rejections at 90% level
+# Consistent with random chance (expected: 1.8)</code></pre>
+</div>
+</div>
+
+<h2>Results</h2>
+<h3>Main Effects</h3>
+<p>The reduced-form and fuzzy RD specifications:</p>
+<div class="code-tabs">
+<div class="tab-buttons">
+<button class="tab-btn active" data-lang="python">Python</button>
+<button class="tab-btn" data-lang="r">R</button>
+</div>
+<div class="tab-content active" data-lang="python">
+<pre><code class="language-python">def estimate_reduced_form(df, outcome, bandwidth=10000):
+    """Estimate intent-to-treat effect of eligibility."""
+    return rdrobust(
+        y=df[outcome], x=df['income_centered'],
+        c=0, kernel='uniform', h=bandwidth
+    )
+
+def estimate_fuzzy_rd(df, outcome, bandwidth=10000):
+    """Estimate LATE of Cal Grant receipt via 2SLS."""
+    return rdrobust(
+        y=df[outcome], x=df['income_centered'],
+        c=0, fuzzy=df['received_calgrant'],
+        kernel='uniform', h=bandwidth
+    )</code></pre>
+</div>
+<div class="tab-content" data-lang="r">
+<pre><code class="language-r">estimate_reduced_form <- function(df, outcome, bandwidth = 10000) {
+    # Estimate intent-to-treat effect of eligibility
+    rdrobust(
+        y = df[[outcome]], x = df$income_centered,
+        c = 0, kernel = "uniform", h = bandwidth
+    )
+}
+
+estimate_fuzzy_rd <- function(df, outcome, bandwidth = 10000) {
+    # Estimate LATE of Cal Grant receipt via 2SLS
+    rdrobust(
+        y = df[[outcome]], x = df$income_centered,
+        c = 0, fuzzy = df$received_calgrant,
+        kernel = "uniform", h = bandwidth
+    )
+}</code></pre>
+</div>
+</div>
+
+<p><img alt="Main outcome plots showing discontinuities in voter registration, 2020 turnout, and general election turnout" src="images/rd_outcomes1.png" /></p>
+<p>Receiving a Cal Grant raises a student's probability of voting in 2020 by approximately <strong>10 percentage points</strong> (off a baseline of 56%):</p>
+<table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>Effect</th>
+<th>Baseline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Registered to vote (2022)</td>
+<td>+6.5 pp</td>
+<td>69%</td>
+</tr>
+<tr>
+<td>Voted in 2020 general</td>
+<td>+9.9 pp</td>
+<td>57%</td>
+</tr>
+<tr>
+<td>Post-treatment turnout rate</td>
+<td>+8.4 pp</td>
+<td>49%</td>
+</tr>
+<tr>
+<td>Ever voted in federal/state general</td>
+<td>+8.5 pp</td>
+<td>58%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How big is 10 percentage points?</strong> The get-out-the-vote (GOTV) literature provides useful benchmarks. Gerber and Green's canonical door-to-door canvassing experiments find effects of 6-10 pp per contact—but these decay rapidly and vanish by the next election. Phone calls yield 1-3 pp; direct mail, fractions of a point.</p>
+<p>A 10 pp effect that persists across multiple election cycles is exceptional. More comparable are interventions that change life circumstances: preregistration laws raise youth turnout by 2-8 pp (Holbein and Hillygus); residential stability increases turnout by 4-6 pp (Meredith). Our estimate sits at the high end, suggesting financial aid operates through durable channels—educational attainment, civic skills, social networks—rather than the transient activation that characterizes most GOTV treatments.</p>
+<h3>Robustness</h3>
+<div class="code-tabs">
+<div class="tab-buttons">
+<button class="tab-btn active" data-lang="python">Python</button>
+<button class="tab-btn" data-lang="r">R</button>
+</div>
+<div class="tab-content active" data-lang="python">
+<pre><code class="language-python">def robustness_checks(df, outcome):
+    """Run standard RD robustness checks."""
+    results = {}
+
+    # Vary bandwidth
+    for bw in [5000, 7500, 10000, 15000, 20000]:
+        results[f'bw_{bw}'] = estimate_fuzzy_rd(df, outcome, bandwidth=bw)
+
+    # Add covariates
+    results['with_controls'] = rdrobust(
+        y=df[outcome], x=df['income_centered'], c=0,
+        fuzzy=df['received_calgrant'],
+        covs=df[['female', 'gpa', 'assets', 'family_size']]
+    )
+
+    # Quadratic polynomial
+    results['quadratic'] = rdrobust(
+        y=df[outcome], x=df['income_centered'], c=0,
+        fuzzy=df['received_calgrant'], p=2
+    )
+    return results</code></pre>
+</div>
+<div class="tab-content" data-lang="r">
+<pre><code class="language-r">robustness_checks <- function(df, outcome) {
+    # Run standard RD robustness checks
+    results <- list()
+
+    # Vary bandwidth
+    for (bw in c(5000, 7500, 10000, 15000, 20000)) {
+        results[[paste0("bw_", bw)]] <- estimate_fuzzy_rd(df, outcome, bw)
+    }
+
+    # Add covariates
+    results$with_controls <- rdrobust(
+        y = df[[outcome]], x = df$income_centered, c = 0,
+        fuzzy = df$received_calgrant,
+        covs = df[, c("female", "gpa", "assets", "family_size")]
+    )
+
+    # Quadratic polynomial
+    results$quadratic <- rdrobust(
+        y = df[[outcome]], x = df$income_centered, c = 0,
+        fuzzy = df$received_calgrant, p = 2
+    )
+    results
+}</code></pre>
+</div>
+</div>
+
+<p>Effects are robust across bandwidth choices, with/without controls, and with bias-aware confidence intervals.</p>
+<h3>Partisan Composition</h3>
+<p>Nearly all the turnout increase occurs among Democrats and independents. The Republican estimate is negative (though insignificant). This isn't surprising—college-educated youth lean Democratic—but it has implications for the political economy of education finance.</p>
+<h3>External Validity: The Pell Grant</h3>
+<p>Do these effects generalize? We tested using the federal Pell Grant, which creates a similar income discontinuity nationwide. Per dollar of aid, both programs generate comparable effects with the same partisan skew.</p>
+<h2>Mechanisms</h2>
+<p>Why does free tuition make people vote? We tested four hypotheses:</p>
+<p><strong>1. Peer Socialization (Supported)</strong>: Cal Grants increase on-campus living by 17 pp. Effects appear within 2 years and disappear for the 2020-2021 COVID cohort (remote instruction).</p>
+<p><img alt="Housing choice discontinuities" src="images/rd_housing1.png" /></p>
+<p><strong>2. Voter Reciprocity (Mixed)</strong>: Students might vote to reward politicians who funded their education. Plausible, but effects are largest in federal elections when state offices weren't on the ballot.</p>
+<p><strong>3. Civic Trust (Mixed)</strong>: Government benefits early in life might increase institutional trust. Consistent with rapid onset and left-leaning registration, but we don't find predicted heterogeneity by race/SES.</p>
+<p><strong>4. Income Effects (Not Supported)</strong>: If voting is a normal good, reducing college costs should increase turnout. But our estimates (0.4-0.8 pp per $1,000) exceed the income-turnout gradient (0.2 pp), and we don't see rightward partisan shifts.</p>
+<p>Peer socialization appears most important.</p>
+<h2>Macro-Level Implications</h2>
+<div class="code-tabs">
+<div class="tab-buttons">
+<button class="tab-btn active" data-lang="python">Python</button>
+<button class="tab-btn" data-lang="r">R</button>
+</div>
+<div class="tab-content active" data-lang="python">
+<pre><code class="language-python">def calculate_aggregate_impact(
+    n_grants=2_600_000,
+    treatment_effect=0.10,
+    pct_dem_indie=0.80,
+    pct_vote_biden=0.80
+):
+    """Calculate aggregate electoral impact."""
+    additional_voters = n_grants * treatment_effect
+    additional_dem = additional_voters * pct_dem_indie * pct_vote_biden
+    additional_rep = additional_voters * (1 - pct_dem_indie) * 0.80
+    return {
+        'additional_voters': additional_voters,  # 259,000
+        'margin_impact': additional_dem - additional_rep,  # 168,000
+        'pct_of_electorate': additional_voters / 17_500_000
+    }</code></pre>
+</div>
+<div class="tab-content" data-lang="r">
+<pre><code class="language-r">calculate_aggregate_impact <- function(
+    n_grants = 2600000,
+    treatment_effect = 0.10,
+    pct_dem_indie = 0.80,
+    pct_vote_biden = 0.80
+) {
+    # Calculate aggregate electoral impact
+    additional_voters <- n_grants * treatment_effect
+    additional_dem <- additional_voters * pct_dem_indie * pct_vote_biden
+    additional_rep <- additional_voters * (1 - pct_dem_indie) * 0.80
+    list(
+        additional_voters = additional_voters,  # 259,000
+        margin_impact = additional_dem - additional_rep,  # 168,000
+        pct_of_electorate = additional_voters / 17500000
+    )
+}</code></pre>
+</div>
+</div>
+
+<p>Under conservative assumptions:</p>
+<ul>
+<li>2.6 million Cal Grants induced <strong>259,000 additional votes</strong> in 2020</li>
+<li>This raised California's turnout rate by ~<strong>1 percentage point</strong></li>
+<li>It increased Biden's margin by ~<strong>0.5 percentage points</strong></li>
+<li>1 in 66 California voters cast a ballot because of the Cal Grant</li>
+</ul>
+<p><img alt="Geographic distribution of Cal Grant recipients showing concentration around UC campuses" src="images/map_recipients_by_county.png" /></p>
+<p>Effects concentrate in counties with public research universities—precisely the educated suburbs trending Democratic.</p>
+<h2>Methodological Takeaways</h2>
+<p><strong>Data acquisition</strong>: Large-scale causal inference often requires linking administrative datasets while navigating privacy regulations. Having the data holder perform the match—as we did with CSAC—is one template.</p>
+<p><strong>Fuzzy RD in practice</strong>: With 16.4 million observations, we estimate effects precisely even with a 25 pp first stage. The limitation is that RD identifies a LATE for compliers near the threshold. We validated external validity via similar Pell Grant effects.</p>
+<p><strong>Voter data challenges</strong>: Migration, name changes, and registration churn introduce unique threats. Focus on recent cohorts and cross-validate with other sources.</p>
+<h2>Policy Implications</h2>
+<p>Tuition subsidies generate civic externalities that benefit Democratic candidates—regardless of effects on earnings or degree completion. Left-of-center politicians may support subsidies partly to increase vote share; right-of-center politicians face a tradeoff between social benefits and electoral costs.</p>
+<p>More broadly, the economists who justified public schooling on civic grounds were right—even for higher education.</p>
+<h2>Applying RD to Your Own Projects</h2>
+<p>Once you start looking for regression discontinuities, you'll find them everywhere. Medicaid eligibility turns on income. School funding formulas create discontinuities at enrollment cutoffs. Pollution regulations kick in when firms exceed size thresholds. Credit approvals depend on score cutoffs. The world is full of arbitrary lines, and RD lets you exploit them.</p>
+<p>The crucial question isn't whether a cutoff exists—it's whether people can manipulate their position relative to it. Age-based cutoffs are ideal because you can't choose your birthday. Income cutoffs work well when reported by employers or the IRS, less well when self-reported. Test score cutoffs are trickier—students might retake exams or teachers might massage grades. The more control agents have over the running variable, the more skeptical you should be.</p>
+<p>Before trusting any RD estimate, validate the design. The McCrary density test is your first defense: plot the histogram of your running variable and look for bunching at the threshold. If families are gaming the cutoff, you'll see a spike just below. You also need balance tests—regress pre-treatment covariates on the running variable. If students just below the threshold have systematically higher GPAs than those just above, something is wrong.</p>
+<p>Bandwidth selection involves a bias-variance tradeoff. A narrow bandwidth keeps you close to the cutoff where comparison is most credible, but estimates will be noisy. A wide bandwidth gives more power but you're comparing people who might differ in unobserved ways. The <code>rdrobust</code> package implements optimal bandwidth selection; use it as your baseline, then show robustness to narrower and wider choices.</p>
+<p>Most applications involve fuzzy rather than sharp discontinuities. In sharp RD, crossing the threshold perfectly determines treatment—you can drink at 21, not at 20. In fuzzy RD, crossing the threshold changes the <em>probability</em> of treatment. Our setting is fuzzy: falling below the income cutoff increases Cal Grant receipt, but not all eligible students take it up. Fuzzy RD uses the threshold as an instrument, estimating via 2SLS. The interpretation shifts to a local average treatment effect (LATE) for compliers.</p>
+<p>A few pitfalls: RD identifies effects <em>at the threshold</em>—don't extrapolate without testing for heterogeneity. Resist high-order polynomials; they chase noise and don't replicate. If your program has multiple eligibility criteria (income AND assets AND GPA), you're in multivariate RD territory—see Papay, Willett, and Murnane (2011). And RD assumes a continuous running variable; with discrete values, cluster standard errors carefully.</p>
+<p>For deeper reading: Angrist and Pischke's <em>Mostly Harmless Econometrics</em> (Chapter 6) is the canonical treatment. Cunningham's <em>Causal Inference: The Mixtape</em> is free online. The <code>rdrobust</code> package (R and Python) handles estimation and visualization; <code>rddensity</code> tests for manipulation. Cattaneo, Idrobo, and Titiunik's <em>Cambridge Elements</em> guides are the definitive modern references.</p>
+<hr />
+<p><em>Published as "Tuition-Free College and Political Participation: Evidence from California's Cal Grant Program" in the American Economic Journal: Economic Policy. Co-authored with Daniel Firoozi.</em></p>
+            </div>
+            <footer class="post-footer">
+                <a href="index.html">← Back to Blog</a>
+            </footer>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <p>Independent analysis. Does not reflect views of UCLA or any other organization.</p>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>
