@@ -9,8 +9,8 @@
     --color-accent-hover: #1a365d;
     --color-border: #e2e1dc;
     
-    --font-display: 'Newsreader', Georgia, serif;
-    --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: 'IBM Plex Serif', Georgia, serif;
+    --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
