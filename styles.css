@@ -1556,12 +1556,22 @@ span.pub-title {
 }
 
 .post-content img {
-    max-width: 100%;
+    max-width: var(--max-width-wide);
+    width: calc(100% + 180px);
+    margin-left: -90px;
     height: auto;
     display: block;
-    margin: var(--spacing-md) auto;
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
     border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 960px) {
+    .post-content img {
+        width: 100%;
+        margin-left: 0;
+    }
 }
 
 .post-content table {
