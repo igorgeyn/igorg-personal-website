@@ -254,10 +254,6 @@ The ignition decline is real. Which interventions deserve creditâ€”and how muchâ
 | ENERGY circuit (SCE) | 94 events; may be data entry artifact rather than single physical circuit |
 | County assignments | Approximated from circuit name prefixes |
 
-### Code and Data
-
-Analysis code and processed datasets available at [github.com/igorgeyn/energy-utility-exploration](https://github.com/igorgeyn/energy-utility-exploration).
-
 ---
 
 *Igor Geyn | CPUC PSPS Event Reports, CAL FIRE, CPUC Fire Incident Data | January 2026*
