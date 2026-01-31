@@ -248,7 +248,7 @@ The ignition decline is real. Which interventions deserve credit—and how much�
 
 | Issue | Impact |
 |-------|--------|
-| 2022 data gap | Only 14 events recorded; likely data reporting issue rather than actual reduction |
+| 2022–23 low counts | PG&E had zero PSPS de-energizations in 2022 and only four events in 2023; SCE had 14 and 71 respectively. These are genuine operational lows (milder weather, grid hardening), not reporting gaps. Year-over-year overlap analysis excludes 2022 because too few events exist to measure circuit persistence. |
 | Pre-2017 HFTD data | HFTD ignition counts not available before 2015; trend analysis limited |
 | January 2025 LA fires | Eaton Fire data preliminary; final attribution pending investigation |
 | ENERGY circuit (SCE) | 94 events; may be data entry artifact rather than single physical circuit |
