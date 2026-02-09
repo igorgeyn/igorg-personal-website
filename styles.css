@@ -1489,7 +1489,7 @@ span.pub-title {
 
 .post-content {
     margin-bottom: var(--spacing-lg);
-    line-height: 1.85;
+    line-height: 1.5;
 }
 
 .post-content h2 {
