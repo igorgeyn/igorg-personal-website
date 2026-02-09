@@ -6,7 +6,7 @@ description: "A data-driven analysis of 7,150 PSPS circuit-events reveals the du
 
 # California's Power Shutoff Problem
 
-*Igor Geyn | January 2026*
+*Igor Geyn | February 2026*
 
 
 

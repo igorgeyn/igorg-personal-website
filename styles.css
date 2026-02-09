@@ -1489,6 +1489,7 @@ span.pub-title {
 
 .post-content {
     margin-bottom: var(--spacing-lg);
+    line-height: 1.85;
 }
 
 .post-content h2 {
@@ -1577,13 +1578,16 @@ span.pub-title {
 .post-content table {
     width: 100%;
     border-collapse: collapse;
-    margin: var(--spacing-md) 0;
+    margin: var(--spacing-lg) 0;
     font-size: 0.9rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    overflow: hidden;
 }
 
 .post-content th,
 .post-content td {
-    padding: var(--spacing-xs) var(--spacing-sm);
+    padding: 0.75rem 1rem;
     text-align: left;
     border-bottom: 1px solid var(--color-border);
 }
@@ -1591,11 +1595,17 @@ span.pub-title {
 .post-content th {
     font-weight: 600;
     background: var(--color-paper-warm);
-    border-bottom: 2px solid var(--color-border);
+    border-bottom: 2px solid var(--color-accent);
+    color: var(--color-ink);
+    letter-spacing: 0.02em;
 }
 
-.post-content tr:hover {
+.post-content tbody tr:hover {
     background: var(--color-paper-warm);
+}
+
+.post-content tbody tr:last-child td {
+    border-bottom: none;
 }
 
 .post-content hr {
