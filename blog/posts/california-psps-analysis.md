@@ -1,16 +1,16 @@
 ---
-title: "California's Power Shutoff Problem"
+title: "Understanding California's Power Shutoffs"
 date: "2026-02-09"
-description: "A data-driven analysis of 7,150 PSPS circuit-events reveals the duration problem, concentration patterns, and what Ryan Tracey's feedback taught me about frequency vs. severity."
+description: "A data-driven look at who bears the burden, how long outages last, and whether the fire prevention strategy is working"
 ---
 
-# California's Power Shutoff Problem
+# Understanding California's Power Shutoffs
 
 *Igor Geyn | February 2026*
 
 
 
-**A Data-Driven Analysis of PSPS Events, Utility Fires, and What We Still Don't Know**
+**A data-driven look at who bears the burden, how long outages last, and whether the fire prevention strategy is working**
 
 ---
 
