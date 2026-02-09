@@ -24,7 +24,7 @@ Why do utilities shut off power at all? Because when utility equipment does caus
 
 Utility-caused fires represent a small fraction of California's total wildfire ignitions—roughly 5% in most years. But they account for a vastly disproportionate share of the most destructive fires. Of the 20 most destructive wildfires in California history (measured by structures destroyed), six were confirmed caused by utility equipment, with a seventh (the Eaton Fire) under investigation. The single most destructive fire in California history, the 2018 Camp Fire, was caused by a utility.
 
-![California's 20 Most Destructive Wildfires](../images/top20_destructive_fires.png)
+![California's 20 Most Destructive Wildfires](images/top20_destructive_fires.png)
 *Figure 1: California's 20 most destructive wildfires. Confirmed utility-caused fires (red), under-investigation fires (amber), and other causes (gray). This classification includes only fires where CAL FIRE or CPUC investigations attributed ignition to utility-owned transmission or distribution equipment—not fires classified generally as "electrical" (which can include customer-owned equipment) or fires still under investigation.*
 
 Including the Eaton Fire (still under investigation), these seven fires destroyed more than 35,000 structures and killed 115 people—53% of all structures destroyed and 50% of all fatalities across the Top 20 list. Excluding the Eaton Fire, the six confirmed utility-caused fires account for 25,826 structures (39%) and 96 fatalities (42%). The Camp Fire alone destroyed 18,804 structures and killed 85 people; it remains the deadliest and most destructive wildfire in California history.
@@ -98,7 +98,7 @@ PSPS events last far longer than most people assume—and far longer than most b
 
 The median PSPS event in our dataset runs **34 hours**. That's not "about a day"—it's a day and a half. One in five events exceeds 48 hours. One in ten exceeds 72 hours. The longest events in the dataset stretch past eight days.
 
-![Distribution of PSPS event durations](../images/duration_histogram.png)
+![Distribution of PSPS event durations](images/duration_histogram.png)
 *Figure 2: Distribution of PSPS event durations. The median (34 hours) exceeds typical battery capacity. Reference lines show 24-hour and 48-hour thresholds.*
 
 ### Recent Patterns (2024-2025)
@@ -165,7 +165,7 @@ PSPS exposure is not distributed evenly across California's grid. A small fracti
 
 When we rank all 2,294 affected circuits by their total customer-hour exposure, the concentration is striking. The top 10% of circuits (229 circuits) account for 47% of all customer-hours lost. The top 20% (459 circuits) account for 73%. The bottom half of circuits—1,147 circuits—account for just 5% of total exposure.
 
-![Exposure concentration analysis](../images/exposure_concentration_cleaned.png)
+![Exposure concentration analysis](images/exposure_concentration_cleaned.png)
 *Figure 3: PSPS exposure is highly concentrated. (A) Lorenz curve showing Gini coefficient of 0.70. (B) Top 25 circuits by customer-hours.*
 
 The **Gini coefficient of 0.70** indicates that PSPS burden is concentrated enough to be targetable. The top 459 circuits account for roughly three-quarters of all customer-hours—a manageable number for prioritized action within existing regulatory processes. California utilities already file Wildfire Mitigation Plans and pre-/post-season PSPS reports with the CPUC; requiring a short "high-burden circuits" annex in those filings—listing the top circuits by customer-hour exposure and the actions planned to reduce that exposure through prevention or faster restoration—would create accountability without adding a new reporting framework. For example, the CPUC could require each utility to identify its top 100 customer-hour circuits in annual WMP updates and report year-over-year changes in exposure for those circuits. That said, which circuits rank highest shifts somewhat year to year depending on weather and fire conditions, so any prioritization list should be updated annually rather than treated as fixed.
@@ -174,7 +174,7 @@ The **Gini coefficient of 0.70** indicates that PSPS burden is concentrated enou
 
 Customer-hours effectively measures aggregate societal impact, capturing which circuits impose the greatest total burden. However, analyzing circuits by frequency and mean duration reveals a surprising pattern: these two dimensions are largely independent, and in some cases, inversely related.
 
-![Circuit burden patterns showing frequency and severity as independent dimensions](../images/fig_frequency_vs_severity_final.png)
+![Circuit burden patterns showing frequency and severity as independent dimensions](images/fig_frequency_vs_severity_final.png)
 *Figure 3b: Circuit burden patterns showing frequency and severity as independent dimensions. Each point represents a circuit, with size indicating total customer-hours. Circuits experiencing more frequent PSPS events tend to have shorter mean durations. This suggests either that utilities become more efficient at restoring repeatedly affected circuits, or that chronic circuits are located in more accessible areas. Point colors indicate utility: PG&E (blue), SCE (orange), SDG&E (teal).*
 
 Three distinct burden patterns emerge from this analysis:
@@ -203,7 +203,7 @@ Some circuits experience PSPS repeatedly; others have been shut off only once. W
 
 **Chronic circuits represent just 17% of affected circuits but account for 48% of all exposure.** The most-affected circuit in the dataset has experienced 94 separate PSPS events over the study period.
 
-![Circuit classification by PSPS frequency](../images/chronic_circuits_chart.png)
+![Circuit classification by PSPS frequency](images/chronic_circuits_chart.png)
 *Figure 4: Circuit classification by PSPS frequency. Chronic circuits (5+ events) are 17% of circuits but 48% of customer-hours.*
 
 Year-over-year analysis shows substantial consistency in which circuits rank highest. Circuits appearing in the top 50 one year have a 15-20% chance of appearing in the top 50 the following year (calculated by ranking circuits by annual customer-hours within each year, excluding 2022 due to the data gap, and measuring overlap in the top-50 list across adjacent year-pairs). The core set of high-exposure circuits is relatively stable, supporting the case for targeted infrastructure investment.
@@ -212,7 +212,7 @@ Year-over-year analysis shows substantial consistency in which circuits rank hig
 
 Analysis of individual event durations reveals a counterintuitive pattern: circuits experiencing their first PSPS event tend to have **longer** durations than circuits with chronic exposure.
 
-![Duration distributions by circuit type](../images/fig_duration_by_category_final.png)
+![Duration distributions by circuit type](images/fig_duration_by_category_final.png)
 *Figure 4b: Duration distributions by circuit type. Violin plots (left) show the full distribution of event durations for one-time, occasional (2-4 events), and chronic (5+ events) circuits. White horizontal lines indicate medians. The summary table (right) quantifies the pattern: one-time circuits have a median duration of 42.5 hours compared to 30.0 hours for chronic circuits—a 12.5 hour difference.*
 
 This pattern holds across multiple metrics:
@@ -242,7 +242,7 @@ Medical baseline customers—those depending on electricity for life-sustaining 
 
 California utilities track medical baseline customers separately in PSPS reporting. When we analyze the distribution of medical baseline customer-hours by event duration, a troubling pattern emerges: **91% of medical baseline exposure occurs during events exceeding 24 hours.**
 
-![Medical baseline customer exposure](../images/medical_baseline_exposure.png)
+![Medical baseline customer exposure](images/medical_baseline_exposure.png)
 *Figure 5: Share of medical baseline customer-hours beyond each duration threshold. 91% of exposure occurs in events exceeding 24 hours.*
 
 | Duration Threshold | % of Medical Baseline Customer-Hours |
@@ -270,7 +270,7 @@ Everything documented above—the duration problem, the concentration of exposur
 
 Something appears to be working. PG&E's reportable ignitions in High Fire Threat Districts have declined in recent years. The trend is encouraging. But between 2018 and 2024, utilities deployed PSPS alongside half a dozen other interventions—EPSS automatic shutoffs, accelerated vegetation management, undergrounding, covered conductor, expanded weather monitoring—all on overlapping timelines, against a backdrop of year-to-year weather variation.
 
-![PG&E HFTD Ignition Trend](../images/pge_hftd_ignition_trend.png)
+![PG&E HFTD Ignition Trend](images/pge_hftd_ignition_trend.png)
 *Figure 6: PG&E ignitions in High Fire Threat Districts, 2015-2024. Multiple interventions were deployed during this period; attribution to any single intervention is not possible from this data.*
 
 The ignition decline is real. Which interventions deserve credit—and how much—is not something aggregate trend data can answer. That question requires a different kind of analysis, one that can disentangle overlapping interventions and control for weather. It is the subject of a forthcoming companion piece.
