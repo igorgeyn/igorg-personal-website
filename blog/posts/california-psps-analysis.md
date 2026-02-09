@@ -216,6 +216,7 @@ Analysis of individual event durations reveals a counterintuitive pattern: circu
 *Figure 4b: Duration distributions by circuit type. Violin plots (left) show the full distribution of event durations for one-time, occasional (2-4 events), and chronic (5+ events) circuits. White horizontal lines indicate medians. The summary table (right) quantifies the pattern: one-time circuits have a median duration of 42.5 hours compared to 30.0 hours for chronic circuits—a 12.5 hour difference.*
 
 This pattern holds across multiple metrics:
+
 - **Median duration**: One-time (42.5h) > Occasional (36.9h) > Chronic (30.0h)
 - **P90 duration**: One-time (94.7h) > Occasional (81.7h) > Chronic (64.3h)
 - **Share exceeding 48h**: One-time (26%) > Occasional (26%) > Chronic (18%)
