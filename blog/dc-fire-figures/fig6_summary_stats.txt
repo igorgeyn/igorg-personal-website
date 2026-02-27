@@ -1,0 +1,65 @@
+===========================================================================
+FIGURE 6: TRANSMISSION VS GENERATION FIRE EXPOSURE
+Comprehensive Summary Statistics
+===========================================================================
+
+1. KEY COMPARISON: WHERE IS THE FIRE RISK?
+------------------------------------------------------------
+                                          Total         In HFTD     % HFTD
+  California land area           100%            ~15%            15.0%
+  New generation (2015-24)             34,583 MW         2,026 MW       5.9%
+  Transmission lines                   56,078 km        13,004 km      23.2%
+
+  KEY FINDING: Transmission is 4.0x more exposed than generation
+               Fire risk concentrates in the WIRES, not the plants
+
+2. TRANSMISSION BY VOLTAGE CLASS
+------------------------------------------------------------
+   115 kV:   12,042 km total,    3,364 km HFTD ( 27.9%),    784 km Tier 3
+   230 kV:   24,072 km total,    6,629 km HFTD ( 27.5%),  2,481 km Tier 3
+   345 kV:    1,893 km total,      168 km HFTD (  8.9%),      0 km Tier 3
+   500 kV:   10,769 km total,    2,356 km HFTD ( 21.9%),  1,035 km Tier 3
+
+3. TRANSMISSION BY UTILITY
+------------------------------------------------------------
+  Utility                                         Total km    HFTD km   HFTD %
+  --------------------------------------------- ---------- ---------- --------
+  PACIFIC GAS & ELECTRIC COMPANY                    16,708      5,074     30.4
+  NOT AVAILABLE                                     20,903      4,424     21.2
+  AZUSA LIGHT & POWER                                5,298      1,828     34.5
+  SAN DIEGO GAS & ELECTRIC                           1,475        953     64.6
+  PACIFICORP                                           687        210     30.5
+  BONNEVILLE POWER ADMINISTRATION                    1,357        192     14.1
+  LADWP                                              1,364        143     10.5
+  REU                                                   69         40     57.1
+
+4. GENERATION BY FUEL TYPE
+------------------------------------------------------------
+  Solar                    17,109 MW,      284 MW in HFTD (  1.7%)
+  Battery Storage          11,748 MW,      737 MW in HFTD (  6.3%)
+  Natural Gas               3,772 MW,      439 MW in HFTD ( 11.6%)
+  Wind                      1,476 MW,      517 MW in HFTD ( 35.0%)
+  Other                       478 MW,       50 MW in HFTD ( 10.5%)
+
+5. CONTEXT: MANNING-METCALF 500 kV CORRIDOR
+------------------------------------------------------------
+  Corridor length:        ~55 km
+  HFTD exposure:          50-60% (from route modeling analysis)
+  CA 500 kV average:      21.9% HFTD
+  Comparison:             Manning-Metcalf is 2.5x more exposed than average 500 kV
+
+  The Manning-Metcalf corridor is not an outlier in having HFTD exposure —
+  but it IS unusually high exposure for a NEW 500 kV line serving data centers.
+
+6. IMPLICATIONS
+------------------------------------------------------------
+  • Generation developers successfully AVOIDED fire zones (6% vs 15% of CA)
+  • But they cannot avoid fire zones for TRANSMISSION (23% exposure)
+  • PG&E transmission has 30% HFTD exposure (5,000+ km in fire zones)
+  • SDG&E has 65% exposure — nearly all of their network crosses HFTD
+  • The data center buildout will add load, requiring new transmission
+    that must traverse these same fire-prone corridors
+
+===========================================================================
+END OF SUMMARY STATISTICS
+===========================================================================

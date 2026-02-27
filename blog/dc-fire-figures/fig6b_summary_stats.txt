@@ -1,0 +1,86 @@
+===========================================================================
+FIGURE 6B: TRANSMISSION HFTD EXPOSURE BY VOLTAGE CLASS
+Summary Statistics
+===========================================================================
+
+1. STATEWIDE HFTD EXPOSURE BY VOLTAGE CLASS
+------------------------------------------------------------
+Voltage Class               Total km    HFTD km   HFTD %  Tier3 %
+------------------------------------------------------------
+Sub-trans (<115 kV)              158         39     24.3      0.0
+115-161 kV                    17,451      3,482     20.0      4.5
+230 kV class                  24,450      6,768     27.7     10.4
+345 kV                         1,893        168      8.9      0.0
+500 kV                        10,769      2,356     21.9      9.6
+HVDC (>500 kV)                 1,357        192     14.1      3.4
+------------------------------------------------------------
+TOTAL                         56,078     13,004     23.2
+
+2. PG&E HFTD EXPOSURE BY VOLTAGE CLASS
+------------------------------------------------------------
+Voltage Class               Total km    HFTD km   HFTD %  Tier3 %
+------------------------------------------------------------
+115-161 kV                     6,826      1,968     28.8      7.7
+230 kV class                   7,650      2,548     33.3      8.7
+500 kV                         2,258        558     24.7      5.1
+------------------------------------------------------------
+PG&E TOTAL                    16,735      5,074     30.3
+
+3. VOLTAGE-HFTD RELATIONSHIP ANALYSIS
+------------------------------------------------------------
+HFTD % by increasing voltage (statewide):
+  Sub-trans (<115 kV)        24.3%
+  115-161 kV                 20.0%
+  230 kV class               27.7%
+  345 kV                      8.9%
+  500 kV                     21.9%
+
+Relationship: NON-MONOTONIC (no clear voltage-HFTD pattern)
+
+The hypothesis that higher-voltage lines have more HFTD exposure
+is NOT supported. 230 kV class has the highest exposure (28%),
+while 345 kV has the lowest (9%). This likely reflects routing:
+  - 345 kV lines run through the Central Valley (low fire risk)
+  - 230 kV lines serve mountain communities (higher fire risk)
+
+4. MANNING-METCALF 500 kV CORRIDOR COMPARISON
+------------------------------------------------------------
+Statewide 500 kV:
+  Total: 10,769 km
+  In HFTD: 2,356 km (21.9%)
+  In Tier 3: 1,035 km (9.6%)
+
+PG&E 500 kV:
+  Total: 2,258 km
+  In HFTD: 558 km (24.7%)
+  In Tier 3: 115 km (5.1%)
+
+Manning-Metcalf 500 kV corridor (from route modeling):
+  Corridor length: ~55 km
+  HFTD exposure: 50-60%
+  Tier 3 exposure: ~28%
+
+Manning-Metcalf vs. statewide 500 kV average:
+  55% vs 21.9% = 2.5x higher
+
+Manning-Metcalf vs. PG&E 500 kV average:
+  55% vs 24.7% = 2.2x higher
+
+Where Manning-Metcalf ranks:
+  --> Manning-Metcalf has HIGHER fire exposure than typical PG&E 500 kV lines
+  --> This is an UNUSUALLY fire-exposed 500 kV corridor
+
+5. KEY TAKEAWAYS FOR WRITE-UP
+------------------------------------------------------------
+• No clear voltage-HFTD relationship exists in the data
+• 230 kV class has highest statewide exposure (28%)
+• 345 kV has lowest exposure (9%) — Central Valley routing
+• PG&E's network is more fire-exposed than statewide average
+  (30% vs 23% overall)
+• PG&E 500 kV average: 24.7% in HFTD
+• Manning-Metcalf at 50-60% is 2.2x the PG&E 500 kV average
+• This makes Manning-Metcalf an outlier even among 500 kV lines
+
+===========================================================================
+END OF SUMMARY STATISTICS
+===========================================================================
