@@ -12,471 +12,849 @@
 <h1>How Much Fire Risk Is California Building?</h1>
 <p class="subtitle">A case study of the Manning–Metcalf 500 kV corridor and the data center transmission buildout</p>
 <p class="byline">Igor Geyn · February 2026 · Draft for review</p>
-
 <p>California is building a lot of new transmission infrastructure to power data centers. The largest single project — a 500 kV line from Manning Substation near Hollister to Metcalf Substation in south San Jose — will cross the Diablo Range foothills, one of the most fire-prone corridors in the state.</p>
-
 <p>California needs this grid capacity, and the South Bay is a logical place for it. But the route this line takes will determine its fire risk profile for the next half-century — and that dimension of risk is largely absent from the regulatory conversation. Using public geospatial data, PSPS event records, and CAISO planning documents, this analysis quantifies the fire exposure and asks what it costs, while there's still time to inform route selection and cost allocation.</p>
-
 <h2>The scale of what's coming</h2>
-
 <p>The California Energy Commission's 2025 IEPR forecast projects data center peak load growing from roughly 100 MW today to nearly 5,000 MW by the late 2030s — a 50-fold increase over about twelve years. This is the electricity demand equivalent of adding a city the size of San Francisco to the grid.</p>
-
 <figure class="wide">
-<img src="dc-fire-figures/fig1_dc_load_forecast.png" alt="CEC 2025 IEPR forecast of data center peak load">
+<img src="dc-fire-figures/fig1_dc_load_forecast.png" alt="Figure 1: CEC 2025 IEPR forecast of data center peak load">
 <figcaption><strong>Figure 1.</strong> CEC 2025 IEPR forecast of data center peak load in the CAISO balancing area, 2025–2040. The shaded band shows the range between low and high scenarios. Data center load requests total 21.8 GW across all California utilities, but CEC applies confidence discounts and utilization factors to arrive at the ~5 GW peak forecast. Data: CEC 2025 IEPR (Docket 25-IEPR-03).</figcaption>
 </figure>
-
-<p>PG&E alone received 34 applications for 4,400 MW of transmission-level service in 2023–2024, a 3,000% increase over the prior nine years (16 applications totaling 145 MW from 2014–2022). Two-thirds of these applications target three substations in the South Bay: Metcalf, Newark, and Ravenswood.</p>
-
+<p>PG&amp;E alone received 34 applications for 4,400 MW of transmission-level service in 2023–2024, a 3,000% increase over the prior nine years (16 applications totaling 145 MW from 2014–2022). Two-thirds of these applications target three substations in the South Bay: Metcalf, Newark, and Ravenswood.</p>
 <p>To serve this load, CAISO's 2024–2025 Transmission Plan approved four major projects in the South Bay, including the Manning–Metcalf 500 kV line (formally the "Greater Bay Area 500 kV Transmission Reinforcement"), estimated at $500–700 million with a June 2034 in-service date.</p>
-
 <h2>Where California builds — and where the fire risk is</h2>
-
 <p>The Manning–Metcalf corridor doesn't exist in a vacuum. To understand why its fire exposure matters, it helps to see the statewide pattern first. California's energy infrastructure shows a striking divergence when it comes to fire risk: power plants have successfully avoided fire zones, but the transmission lines connecting them to load centers haven't.</p>
-
 <p>Over the past decade, 34.6 GW of new generation capacity came online in California. Only 5.9% was sited in CPUC-designated High Fire Threat Districts — well below the roughly 15% of California's land area that HFTD covers. Solar, the dominant new resource, is overwhelmingly sited in the fire-free Central Valley and deserts (1.7% in HFTD). Wind is the exception — mountain pass siting pushes it to 35% — but represents a small share of total additions.</p>
-
 <figure class="wide">
-<img src="dc-fire-figures/fig6_generation_fire_zones.png" alt="New generation capacity in fire threat districts">
-<figcaption><strong>Figure 2.</strong> New generation capacity in California by fuel type, 2015–2024. The red line shows the share sited in HFTD each year. Solar dominates new capacity and overwhelmingly avoids fire zones (1.7% in HFTD). Wind is the exception — mountain pass siting pushes it to 35% — but represents a small share of total additions. Data: EIA Form 860 (2024), CPUC HFTD v3.</figcaption>
+<img src="dc-fire-figures/fig6_generation_fire_zones.png" alt="Figure 2: New generation capacity in fire threat districts">
+<figcaption><strong>Figure 2.</strong> New generation capacity in California by fuel type, 2015–2024. The red line shows the share sited in HFTD each year. Solar dominates new capacity and overwhelmingly avoids fire zones (1.7% in HFTD). Wind is the exception — mountain pass siting pushes it to 35% — but represents a small share of total additions. "Other" (1.4% of total) includes geothermal, diesel, biomass/wood, biogas, waste heat, and small hydro. Data: EIA Form 860 (2024), CPUC HFTD v3.</figcaption>
 </figure>
-
-<p>Transmission tells a different story. Generators can be sited wherever the economics are best — deserts, farmland, flat terrain. Transmission lines don't have that luxury; they must connect generation to load, and the path between often crosses mountain passes, foothills, and wildland-urban interface. Using Homeland Infrastructure Foundation-Level Data (HIFLD) transmission line geometries overlaid on the same HFTD boundaries, 23% of California's transmission network passes through fire threat districts — four times the generation share. SDG&E's compact, mountainous territory is the extreme case at 65%, while PG&E — the utility building the Manning–Metcalf line — averages 30%.</p>
-
+<p>Transmission tells a different story. Generators can be sited wherever the economics are best — deserts, farmland, flat terrain. Transmission lines don't have that luxury; they must connect generation to load, and the path between often crosses mountain passes, foothills, and wildland-urban interface. Using Homeland Infrastructure Foundation-Level Data (HIFLD) transmission line geometries overlaid on the same HFTD boundaries, 23% of California's transmission network passes through fire threat districts — four times the generation share. SDG&amp;E's compact, mountainous territory is the extreme case at 65%, while PG&amp;E — the utility building the Manning–Metcalf line — averages 30%.</p>
 <figure class="wide">
-<img src="dc-fire-figures/fig6_transmission_fire_exposure.png" alt="Transmission network fire exposure">
-<figcaption><strong>Figure 3.</strong> Top: Fire zone exposure comparison. Generation siting avoids HFTD (6%), while transmission lines are four times more exposed (23%). Bottom: HFTD exposure varies dramatically by utility — SDG&E's compact, mountainous territory has 65% exposure, while PG&E's large network averages 30%. Data: HIFLD Transmission Lines (2025 vintage), CPUC HFTD v3.</figcaption>
+<img src="dc-fire-figures/fig6_transmission_fire_exposure.png" alt="Figure 3: Transmission network fire exposure">
+<figcaption><strong>Figure 3.</strong> Top: Fire zone exposure comparison. Generation siting avoids HFTD (6%), while transmission lines are four times more exposed (23%). Bottom: HFTD exposure varies dramatically by utility — SDG&amp;E's compact, mountainous territory has 65% exposure, while PG&amp;E's large network averages 30%. Data: HIFLD Transmission Lines (2025 vintage), CPUC HFTD v3.</figcaption>
 </figure>
-
 <p>That 23% statewide average masks enormous variation by geography. California's 500 kV transmission backbone runs primarily through the Central Valley — the flat, agricultural heart of the state, where fire risk is minimal. The Manning–Metcalf corridor is the notable exception: it cuts laterally across the Coast Range foothills, perpendicular to the typical north-south routing pattern.</p>
-
 <figure class="wide">
-<img src="dc-fire-figures/fig_ca_overview.png" alt="California transmission overview">
+<img src="dc-fire-figures/fig_ca_overview.png" alt="Figure 4: California transmission overview">
 <figcaption><strong>Figure 4.</strong> California's transmission network and CPUC High Fire Threat Districts. The 500 kV backbone (dark red) runs through the relatively fire-free Central Valley, while the Manning–Metcalf corridor (boxed) cuts across the Coast Range foothills between Hollister and San Jose. Data: HIFLD (2025 vintage), CPUC HFTD v3.</figcaption>
 </figure>
-
-<p>PG&E — the utility building the Manning–Metcalf line — has 30% of its transmission network in fire threat districts, already above the statewide average. Among its 500 kV lines specifically, the fire exposure is lower (~25%) because most run through the Central Valley. The Manning–Metcalf corridor, at 50–60% HFTD, will be a dramatic outlier — and a single project that adds roughly 21 HFTD-miles to PG&E's 500 kV network, a 6% increase in the total fire-exposed length of that voltage class from one line.</p>
-
+<p>PG&amp;E — the utility building the Manning–Metcalf line — has 30% of its transmission network in fire threat districts, already above the statewide average. Among its 500 kV lines specifically, the fire exposure is lower (~25%) because most run through the Central Valley. The Manning–Metcalf corridor, at 50–60% HFTD, will be a dramatic outlier — and a single project that adds roughly 21 HFTD-miles to PG&amp;E's 500 kV network, a 6% increase in the total fire-exposed length of that voltage class from one line.</p>
 <h2>The Manning–Metcalf corridor</h2>
-
 <p>The Manning–Metcalf line connects two substations separated by the Diablo Range foothills — a stretch of rugged, fire-prone terrain between Hollister and San Jose. This isn't theoretical fire territory. The SCU Lightning Complex (August 2020), one of the largest fires in California history at nearly 400,000 acres, burned directly through these foothills. The fire weather patterns that drove it — Diablo winds funneling through the passes, dry lightning, grasslands that cure early in summer — are endemic to this landscape.</p>
-
-<p>Using existing transmission line geometries as proxies for where PG&E might build (we define "corridor" here as the band of plausible routes between the two substations, approximately 5–10 km wide along the Diablo Range), we find that realistic routes have 50–60% fire zone exposure — roughly 18–21 miles of fire-threat territory on a ~36-mile route.</p>
-
+<p>Using existing transmission line geometries as proxies for where PG&amp;E might build (with "corridor" defined here as the band of plausible routes between the two substations, approximately 5–10 km wide along the Diablo Range), realistic routes show 50–60% fire zone exposure — roughly 18–21 miles of fire-threat territory on a ~36-mile route.</p>
 <figure class="wide">
-<img src="dc-fire-figures/fig1_corridor_route_map.png" alt="Manning-Metcalf corridor map">
+<img src="dc-fire-figures/fig1_corridor_route_map.png" alt="Figure 5: Manning-Metcalf corridor map">
 <figcaption><strong>Figure 5.</strong> The Manning–Metcalf corridor overlaid on CPUC HFTD boundaries. The red line shows the existing Moss Landing–Metcalf 500 kV route used as a proxy (60% in fire territory). The dashed line shows the straight-line approximation (85%). Manning Substation sits inside Tier 2; the northern substations are in urbanized areas with minimal fire exposure. Data: HIFLD (2025), CPUC HFTD v3.</figcaption>
 </figure>
-
 <p>The best proxy — the existing Moss Landing–Metcalf 500 kV line, which follows a similar path at the same voltage class — has 60% of its 36 miles in designated HFTD territory (~21 miles, split 40% Tier 2 and 20% Tier 3). A straight line between the two substations would be 85% in HFTD (~29 of 34 miles), but real transmission lines follow valleys and existing corridors, avoiding the worst terrain.</p>
-
-<p>The realistic range is <strong>50–60% HFTD exposure (18–21 miles)</strong> — more than double the 25% average for PG&E's existing 500 kV network. This corridor is an outlier even within its voltage class.</p>
-
+<p>The realistic range is <strong>50–60% HFTD exposure (18–21 miles)</strong> — more than double the 25% average for PG&amp;E's existing 500 kV network. This corridor is an outlier even within its voltage class.</p>
 <h3>Where fire risk concentrates along the route</h3>
-
 <p>Fire exposure isn't uniform. The segment-by-segment profile reveals that the risk concentrates in the middle third of the corridor — the Diablo Range foothills between Pajaro Gap and Coyote Valley — while the endpoints near Moss Landing and Metcalf are largely outside fire zones.</p>
-
 <figure class="wide">
-<img src="dc-fire-figures/fig2_segment_fire_profile.png" alt="Segment-by-segment fire risk profile">
+<img src="dc-fire-figures/fig2_segment_fire_profile.png" alt="Figure 6: Segment-by-segment fire risk profile">
 <figcaption><strong>Figure 6.</strong> Elevation profile of the Moss Landing–Metcalf 500 kV proxy route, colored by HFTD tier. Dark red is Tier 3 (extreme fire threat), orange is Tier 2 (elevated), gray is outside HFTD. The terrain silhouette shows how fire risk concentrates where the route climbs through the Diablo Range foothills (km 20–35, peaking near 480 m). Data: HIFLD (2025), CPUC HFTD v3, USGS 3DEP.</figcaption>
 </figure>
-
 <h3>The south-to-north fire gradient</h3>
-
 <p>Zooming out from the corridor to the substations it connects reveals a clear geographic pattern. Manning, the southern terminus, sits inside Tier 2 with 78% fire exposure within 5 km. Metcalf, the northern terminus, has 28%. The data center substations — Newark, Ravenswood — are in urbanized areas with near-zero fire exposure.</p>
-
-<figure>
-<img src="dc-fire-figures/fig3_substation_fire_gradient.png" alt="Substation fire exposure gradient">
+<figure class="wide">
+<img src="dc-fire-figures/fig3_substation_fire_gradient.png" alt="Figure 7: Substation fire exposure gradient">
 <figcaption><strong>Figure 7.</strong> HFTD exposure around the five substations in the data center buildout, ordered south to north. Fire risk drops sharply from the transmission source (Manning) to the urban load centers (Newark). The data centers themselves are in safe locations — but their upstream power supply crosses fire territory. Data: CPUC HFTD v3.</figcaption>
 </figure>
-
 <p>This creates an asymmetry worth understanding: data centers are sited in safe, urbanized locations with reliable connectivity and workforce access, but the bulk power that feeds them must traverse the fire-prone hills between the Central Valley and the coast.</p>
-
 <h2>Route modeling: How much fire risk is avoidable?</h2>
-
-<p>The analysis above uses existing transmission lines as proxies. But could a new line be routed to avoid fire zones? To answer this, we used least-cost path analysis — a standard GIS technique for siting linear infrastructure — to model seven routing scenarios between Manning and Metcalf substations. Each scenario applies different weightings to slope, fire zone avoidance, proximity to existing utility corridors, and terrain difficulty.</p>
-
-<p>The method is straightforward: we build a cost surface (a raster grid where each cell has a "cost" to traverse), then find the cheapest path from point A to point B. By changing the cost weights, we can simulate routes that prioritize different objectives — shortest distance, fire avoidance, co-location with existing infrastructure, or a blend. To ensure routes serve existing load centers, we constrain them through waypoints at Gilroy and Morgan Hill — without these, least-cost paths could swing far into the Central Valley, producing lower fire exposure but impractical routes that bypass the communities the line is meant to serve.</p>
-
+<p>The analysis above uses existing transmission lines as proxies. But could a new line be routed to avoid fire zones? To answer that, this study uses least-cost path analysis — a standard GIS technique for siting linear infrastructure — to model seven routing scenarios between Manning and Metcalf substations. Each scenario applies different weightings to slope, fire zone avoidance, proximity to existing utility corridors, and terrain difficulty.</p>
+<p>The method is straightforward: a cost surface is built (a raster grid where each cell has a "cost" to traverse), then the cheapest path from point A to point B is identified. By changing the cost weights, the model simulates routes that prioritize different objectives — shortest distance, fire avoidance, co-location with existing infrastructure, or a blend. To ensure routes serve existing load centers, the modeled paths are constrained through waypoints at Gilroy and Morgan Hill; without these, least-cost paths can swing far into the Central Valley, producing lower fire exposure but impractical routes that bypass the communities the line is meant to serve.</p>
 <figure class="wide">
-<img src="dc-fire-figures/fig_route_corridor_cone.png" alt="All modeled routes with fire exposure envelope">
+<img src="dc-fire-figures/fig_route_corridor_cone.png" alt="Figure 8: All modeled routes with fire exposure envelope">
 <figcaption><strong>Figure 8.</strong> Seven modeled routing scenarios for the Manning–Metcalf 500 kV line, overlaid on HFTD fire zones. The shaded envelope encompasses all routes. Fire-avoidant routes (cooler colors) swing east through the Central Valley; existing-corridor routes (warmer colors) follow established utility paths through the Diablo Range foothills. Data: USGS 3DEP elevation, HIFLD transmission lines, CPUC HFTD v3.</figcaption>
 </figure>
-
 <p>The scenarios span a wide range of fire exposure:</p>
-
-<table class="cost-table">
+<table>
 <thead>
-<tr><th>Scenario</th><th>HFTD</th><th>Description</th></tr>
+<tr>
+<th>Scenario</th>
+<th>HFTD Exposure</th>
+<th>Description</th>
+</tr>
 </thead>
 <tbody>
-<tr><td class="route-name">Avoid fire zones</td><td><span class="hftd-badge hftd-low">3%</span></td><td>Aggressively routes around all HFTD</td></tr>
-<tr><td class="route-name">Balanced</td><td><span class="hftd-badge hftd-low">4%</span></td><td>Mild fire avoidance with terrain following</td></tr>
-<tr class="highlight"><td class="route-name">Utility-realistic</td><td><span class="hftd-badge hftd-med">11%</span></td><td>Moderate co-location with existing corridors</td></tr>
-<tr><td class="route-name">Shortest path</td><td><span class="hftd-badge hftd-med">14%</span></td><td>Minimizes distance only</td></tr>
-<tr><td class="route-name">Co-locate with existing</td><td><span class="hftd-badge hftd-med">15%</span></td><td>Strongly follows existing transmission ROW</td></tr>
-<tr><td class="route-name">Follow terrain</td><td><span class="hftd-badge hftd-med">16%</span></td><td>Minimizes slope/construction difficulty</td></tr>
-<tr><td class="route-name">Follow existing ROW</td><td><span class="hftd-badge hftd-high">46%</span></td><td>Closely tracks the Moss Landing–Metcalf proxy</td></tr>
-<tr class="reference"><td class="route-name">Existing proxy</td><td><span class="hftd-badge hftd-extreme">60%</span></td><td>Actual Moss Landing–Metcalf 500 kV line</td></tr>
-<tr class="reference"><td class="route-name">Straight line</td><td><span class="hftd-badge hftd-extreme">85%</span></td><td>Direct line between substations</td></tr>
+<tr>
+<td>Avoid fire zones</td>
+<td>3%</td>
+<td>Aggressively routes around all HFTD</td>
+</tr>
+<tr>
+<td>Balanced</td>
+<td>4%</td>
+<td>Mild fire avoidance with terrain following</td>
+</tr>
+<tr>
+<td>Utility-realistic</td>
+<td>11%</td>
+<td>Moderate co-location with existing corridors</td>
+</tr>
+<tr>
+<td>Shortest path</td>
+<td>14%</td>
+<td>Minimizes distance only</td>
+</tr>
+<tr>
+<td>Co-locate with existing</td>
+<td>15%</td>
+<td>Strongly follows existing transmission ROW</td>
+</tr>
+<tr>
+<td>Follow terrain</td>
+<td>16%</td>
+<td>Minimizes slope/construction difficulty</td>
+</tr>
+<tr>
+<td>Follow existing ROW</td>
+<td>46%</td>
+<td>Closely tracks the Moss Landing–Metcalf proxy</td>
+</tr>
+<tr>
+<td><em>Existing proxy (reference)</em></td>
+<td><em>60%</em></td>
+<td><em>Actual Moss Landing–Metcalf 500 kV line</em></td>
+</tr>
+<tr>
+<td><em>Straight line (reference)</em></td>
+<td><em>85%</em></td>
+<td><em>Direct line between substations</em></td>
+</tr>
 </tbody>
 </table>
-
 <figure class="wide">
-<img src="dc-fire-figures/fig_route_scenarios_faceted.png" alt="Faceted route scenarios">
+<img src="dc-fire-figures/fig_route_scenarios_faceted.png" alt="Figure 9: Faceted route scenarios">
 <figcaption><strong>Figure 9.</strong> Each routing scenario shown individually. Routes are sorted by HFTD exposure from lowest (top-left) to highest (bottom-right). The contrast between fire-avoidant routes (which swing through the Central Valley) and corridor-following routes (which traverse the Diablo Range) is the key finding: fire zone avoidance is geographically possible but requires significant detours from established utility corridors. Data: USGS 3DEP, HIFLD (2025), CPUC HFTD v3.</figcaption>
 </figure>
-
 <p>The key finding is that <strong>fire-avoidant routing is geographically feasible</strong> — routes exist that keep HFTD exposure below 5%. But these routes require significant detours east through the Central Valley, away from existing utility corridors. Routes that follow established transmission paths — which is how utilities typically site new lines, to minimize permitting risk and ROW acquisition — have 15–46% exposure, and routes that closely follow the existing Moss Landing–Metcalf alignment reach 46%.</p>
-
 <p>This creates a tradeoff: lower fire exposure requires longer routes through new territory, while established corridors offer easier permitting but higher fire risk. The question is what that tradeoff costs.</p>
-
 <h2>What does fire zone routing actually cost?</h2>
-
 <p>The line has to get built. The question is whether routing through fire zones costs more — and if so, who pays. It's useful to separate two kinds of costs: what goes on the project bill (capital costs that enter rate base), and the ongoing risk exposure that accumulates over the line's 50-year life.</p>
-
 <h3>The project bill</h3>
-
-<p>Capital costs — construction, fire hardening, and right-of-way — are what the utility actually spends to build the line. Using CAISO's own cost benchmarks ($5–9M/mile for 500 kV overhead, mid: $6.5M), cross-checked against MISO and Brattle Group estimates, the construction bill varies modestly across routes:</p>
-
-<table class="cost-table">
+<p>Capital costs — construction, fire hardening, and right-of-way — are what the utility actually spends to build the line. Using CAISO's own cost benchmarks ($5–9M/mile for 500 kV overhead, mid: $6.5M), cross-checked against MISO and Brattle Group estimates, the capital bill varies meaningfully across routes once right-of-way is included:</p>
+<table>
 <thead>
-<tr><th>Route</th><th>HFTD</th><th>Construction</th><th>Fire Hardening*</th><th>ROW</th><th>Capital Total</th></tr>
+<tr>
+<th>Route</th>
+<th style="text-align: right;">HFTD</th>
+<th style="text-align: right;">Construction</th>
+<th style="text-align: right;">Fire Hardening*</th>
+<th style="text-align: right;">ROW</th>
+<th style="text-align: right;">Capital Total</th>
+</tr>
 </thead>
 <tbody>
-<tr><td class="route-name">Avoid fire zones</td><td><span class="hftd-badge hftd-low">3%</span></td><td class="num">$242M</td><td class="num">$1M</td><td class="num">$11M</td><td class="num total">$254M</td></tr>
-<tr class="highlight"><td class="route-name">Utility-realistic</td><td><span class="hftd-badge hftd-med">11%</span></td><td class="num">$218M</td><td class="num">$4M</td><td class="num">$9M</td><td class="num total">$231M</td></tr>
-<tr><td class="route-name">Follow existing ROW</td><td><span class="hftd-badge hftd-high">46%</span></td><td class="num">$286M</td><td class="num">$25M</td><td class="num">$13M</td><td class="num total">$324M</td></tr>
-<tr class="reference"><td class="route-name">Existing proxy</td><td><span class="hftd-badge hftd-extreme">60%</span></td><td class="num">$232M</td><td class="num">$28M</td><td class="num">$11M</td><td class="num total">$271M</td></tr>
-<tr class="reference"><td class="route-name">Straight line</td><td><span class="hftd-badge hftd-extreme">85%</span></td><td class="num">$221M</td><td class="num">$38M</td><td class="num">$11M</td><td class="num total">$270M</td></tr>
+<tr>
+<td><strong>Avoid fire zones</strong></td>
+<td style="text-align: right;">3%</td>
+<td style="text-align: right;">$242M</td>
+<td style="text-align: right;">$1M</td>
+<td style="text-align: right;">$43M</td>
+<td style="text-align: right;"><strong>$286M</strong></td>
+</tr>
+<tr>
+<td><strong>Balanced</strong></td>
+<td style="text-align: right;">4%</td>
+<td style="text-align: right;">$240M</td>
+<td style="text-align: right;">$2M</td>
+<td style="text-align: right;">$32M</td>
+<td style="text-align: right;"><strong>$274M</strong></td>
+</tr>
+<tr>
+<td><strong>Utility-realistic</strong></td>
+<td style="text-align: right;">11%</td>
+<td style="text-align: right;">$218M</td>
+<td style="text-align: right;">$4M</td>
+<td style="text-align: right;">$27M</td>
+<td style="text-align: right;"><strong>$249M</strong></td>
+</tr>
+<tr>
+<td><strong>Shortest path</strong></td>
+<td style="text-align: right;">14%</td>
+<td style="text-align: right;">$202M</td>
+<td style="text-align: right;">$4M</td>
+<td style="text-align: right;">$34M</td>
+<td style="text-align: right;"><strong>$240M</strong></td>
+</tr>
+<tr>
+<td><strong>Co-locate w/ existing</strong></td>
+<td style="text-align: right;">15%</td>
+<td style="text-align: right;">$244M</td>
+<td style="text-align: right;">$5M</td>
+<td style="text-align: right;">$20M</td>
+<td style="text-align: right;"><strong>$269M</strong></td>
+</tr>
+<tr>
+<td><strong>Follow terrain</strong></td>
+<td style="text-align: right;">16%</td>
+<td style="text-align: right;">$233M</td>
+<td style="text-align: right;">$6M</td>
+<td style="text-align: right;">$38M</td>
+<td style="text-align: right;"><strong>$277M</strong></td>
+</tr>
+<tr>
+<td><strong>Follow existing ROW</strong></td>
+<td style="text-align: right;">46%</td>
+<td style="text-align: right;">$286M</td>
+<td style="text-align: right;">$25M</td>
+<td style="text-align: right;">$39M</td>
+<td style="text-align: right;"><strong>$350M</strong></td>
+</tr>
+<tr>
+<td><em>Existing proxy</em></td>
+<td style="text-align: right;"><em>60%</em></td>
+<td style="text-align: right;"><em>$232M</em></td>
+<td style="text-align: right;"><em>$28M</em></td>
+<td style="text-align: right;"><em>$14M</em></td>
+<td style="text-align: right;"><em>$274M</em></td>
+</tr>
+<tr>
+<td><em>Straight line</em></td>
+<td style="text-align: right;"><em>85%</em></td>
+<td style="text-align: right;"><em>$221M</em></td>
+<td style="text-align: right;"><em>$38M</em></td>
+<td style="text-align: right;"><em>$62M</em></td>
+<td style="text-align: right;"><em>$321M</em></td>
+</tr>
 </tbody>
 </table>
-
-<p class="table-note">*Illustrative, order-of-magnitude estimates. Reference rows are existing/hypothetical baselines, not modeled routes. ROW = right-of-way acquisition. See note on data availability below.</p>
-
-<p>Fire-avoidant routes are longer (they detour through the Central Valley), which drives up base construction cost. But routes through fire zones incur significantly higher hardening and ROW costs. The cheapest capital route is actually the shortest path, not the safest one — though the difference is modest compared to the ongoing risk exposure discussed below.</p>
-
-<h3>What we don't know about fire hardening costs — and why that matters</h3>
-
-<p>The fire hardening column in the table above should be read with caution. <strong>No public data exists for the per-mile cost of fire-hardening 500 kV transmission lines.</strong> This isn't a gap in our research — it's a gap in the public record. We searched CPUC rate case filings, utility Wildfire Mitigation Plans, FERC Form 1 data, DOE and national lab studies, CAISO transmission plans, EPRI publications, and academic literature. None provide a per-mile cost for transmission-level fire hardening at any voltage class, let alone 500 kV.</p>
-
+<p><em>*Illustrative, order-of-magnitude estimates. Reference rows (italic) are existing/hypothetical baselines, not modeled routes. ROW = right-of-way acquisition; each route blends existing- and new-ROW costs based on how much of the alignment stays within 1 km of an existing transmission corridor. See note on data availability below.</em></p>
+<p>Fire-avoidant routes are longer and require more new right-of-way, which drives up ROW cost. But routes through fire zones incur significantly higher hardening costs, and routes that most closely track existing high-fire corridors end up expensive on both dimensions. The cheapest capital route is actually the shortest path, not the safest one — though the spread remains modest relative to the ongoing risk exposure discussed below.</p>
+<h3>What remains unknown about fire hardening costs — and why that matters</h3>
+<p>The fire hardening column in the table above should be read with caution. <strong>No public data exists for the per-mile cost of fire-hardening 500 kV transmission lines.</strong> This is not a gap in this analysis; it is a gap in the public record. CPUC rate case filings, utility Wildfire Mitigation Plans, FERC Form 1 data, DOE and national lab studies, CAISO transmission plans, EPRI publications, and academic literature were reviewed. None provide a per-mile cost for transmission-level fire hardening at any voltage class, let alone 500 kV.</p>
 <p>What does exist:</p>
-
 <ul>
-<li><strong>Distribution hardening</strong> is well-documented: PG&E reports ~$3.1M/mile for undergrounding and ~$1.2–1.5M/mile for covered conductor on distribution circuits (4–60 kV). SCE's Wildfire Covered Conductor Program reports similar figures. But covered conductor is not commercially available above ~230 kV, so these costs don't translate to the 500 kV context.</li>
-
-<li><strong>PG&E's total transmission hardening budget</strong> (Target GH-11 in the 2025 WMP) is $30.6 million for all transmission hardening across its entire service territory in 2025. No per-mile breakdown or voltage-class disaggregation is provided. Our cost model estimates that Manning-Metcalf alone might need $25–38M in hardening — nearly the entire annual budget for one project.</li>
-
-<li><strong>The only empirical anchor</strong> is SDG&E's Sunrise Powerlink: a 500 kV line built through fire-prone terrain in the Cleveland National Forest, completed in 2012. It cost approximately $1.88 billion for 117 miles — roughly <strong>$16M/mile</strong> (about $20M/mile in 2024 dollars). Compare that to CAISO's Manning-Metcalf estimate of $5–7M/mile. The Sunrise Powerlink included underground segments and more extreme terrain, so it isn't a direct apples-to-apples comparison — but the gap is striking, and it suggests that fire-zone construction can carry a substantial premium that may not be reflected in early-stage cost estimates.</li>
-
-<li><strong>Based on a cost-per-mile comparison, CAISO's $500–700M estimate for Manning-Metcalf does not appear to separately account for fire hardening.</strong> The NREL Annual Technology Baseline reports a national median of ~$6.7M/mile for 500 kV (with no fire premium). CAISO's $5–7M/mile is consistent with that baseline — an inference, not a confirmed fact, but one that suggests the estimate may not yet incorporate fire-specific design requirements at this stage of planning.</li>
+<li>
+<p><strong>Distribution hardening</strong> is well-documented: PG&amp;E reports ~$3.1M/mile for undergrounding and ~$1.2–1.5M/mile for covered conductor on distribution circuits (4–60 kV). SCE's Wildfire Covered Conductor Program reports similar figures. But covered conductor is not commercially available above ~230 kV, so these costs don't translate to the 500 kV context.</p>
+</li>
+<li>
+<p><strong>PG&amp;E's total transmission hardening budget</strong> (Target GH-11 in the 2025 WMP) is $30.6 million for all transmission hardening across its entire service territory in 2025. No per-mile breakdown or voltage-class disaggregation is provided. Our cost model estimates that Manning-Metcalf alone might need $25–38M in hardening — nearly the entire annual budget for one project.</p>
+</li>
+<li>
+<p><strong>The only empirical anchor</strong> is SDG&amp;E's Sunrise Powerlink: a 500 kV line built through fire-prone terrain in the Cleveland National Forest, completed in 2012. It cost approximately $1.88 billion for 117 miles — roughly <strong>$16M/mile</strong> (about $20M/mile in 2024 dollars). Compare that to CAISO's Manning-Metcalf estimate of $5–7M/mile. The Sunrise Powerlink included underground segments and more extreme terrain, so it isn't a direct apples-to-apples comparison — but the gap is striking, and it suggests that fire-zone construction can carry a substantial premium that may not be reflected in early-stage cost estimates.</p>
+</li>
+<li>
+<p><strong>Our inference from cost-per-mile comparisons is that CAISO's $500–700M estimate for Manning-Metcalf may not separately account for fire hardening.</strong> The NREL Annual Technology Baseline reports a national median of ~$6.7M/mile for 500 kV (with no fire premium). CAISO's $5–7M/mile is consistent with that baseline — not proof, but a reason to suspect the estimate may not yet incorporate fire-specific design requirements at this stage of planning.</p>
+</li>
 </ul>
-
-<p>The hardening estimates in our cost model ($1–2M/mile for Tier 2, $2–4M/mile for Tier 3) are extrapolated from distribution-level data and engineering judgment. They are plausible lower bounds for overhead hardening measures (steel poles, enhanced vegetation management, fire-resistant design), but the Sunrise Powerlink precedent suggests the actual premium could be significantly higher — particularly if any segments require undergrounding or extraordinary environmental mitigation.</p>
-
-<div class="pullquote">
+<p>The hardening estimates in the cost model ($1–2M/mile for Tier 2, $2–4M/mile for Tier 3) are extrapolated from distribution-level data and engineering judgment. They are plausible lower bounds for overhead hardening measures (steel poles, enhanced vegetation management, fire-resistant design), but the Sunrise Powerlink precedent suggests the actual premium could be significantly higher — particularly if any segments require undergrounding or extraordinary environmental mitigation.</p>
 <p><strong>The absence of this data is itself a policy finding.</strong> Fire hardening costs for 500 kV transmission are invisible in every layer of the regulatory record — utility WMPs, CAISO transmission plans, CPUC cost allocation proceedings, and FERC filings. Ratepayers and policymakers cannot evaluate whether fire zone avoidance would be cost-effective because the fire-related cost component has never been disaggregated from total project costs.</p>
-</div>
-
 <h3>The ongoing risk</h3>
-
 <p>The bigger story is what happens over the line's 50-year operational life. Two cost categories scale directly with HFTD exposure: <strong>PSPS outage costs</strong> (the economic value of lost data center load during shutoffs) and <strong>wildfire liability</strong> (the expected cost of utility-caused fires under California's inverse condemnation doctrine). These are not line items in the project budget — they're economic risk exposure borne by different parties.</p>
-
 <figure class="wide">
-<img src="dc-fire-figures/fig_route_cost_comparison.png" alt="Cost comparison by tier">
-<figcaption><strong>Figure 10.</strong> Top: capital costs by routing scenario, with fire hardening premium visible as the darker segment on high-HFTD routes. Error bars show the low–high range. Bottom: annualized fire-related risk exposure (PSPS outage cost in blue, wildfire liability in red). Hatched bars are reference scenarios, not modeled routes. Mid estimates; see <a href="#appendix-cost-model">full assumptions</a>.</figcaption>
+<img src="dc-fire-figures/fig_route_cost_comparison.png" alt="Figure 10: Cost comparison by tier">
+<figcaption><strong>Figure 10.</strong> Top: capital costs by routing scenario, with fire hardening premium visible as the darker segment on high-HFTD routes. Error bars show the low-high range. Bottom: annualized fire-related risk exposure (PSPS outage cost in blue, wildfire liability in red). Hatched bars are reference scenarios, not modeled routes. Mid estimates; see <a href="#appendix-cost-model">full assumptions</a>. Data: author's cost model; see methodology.</figcaption>
 </figure>
-
-<p>CAISO's own estimate for the Manning–Metcalf line is $500–700M, well above our modeled range of $215–324M — likely because it includes environmental review, substation upgrades, and contingency that our construction-only model omits. The annualized risk exposure ranges from <strong>$2M/year</strong> for fire-avoidant routes to <strong>$48M/year</strong> for the straight-line scenario. The existing proxy route (60% HFTD) carries roughly <strong>$34M/year</strong> in combined PSPS and wildfire exposure — and critically, these costs fall on different parties: PSPS outage costs are borne by data center operators (through lost revenue and SLA penalties), while wildfire liability falls on the utility, its ratepayers, and the AB 1054 Wildfire Fund.</p>
-
+<p>CAISO's own estimate for the Manning–Metcalf line is $500–700M, well above the modeled capital-only range of roughly $240–350M for the seven routed scenarios — likely because it includes environmental review, substation upgrades, and contingency that the construction-only model omits, and because CAISO's ~100-mile project scope is longer than the ~36-mile core-corridor proxy. The annualized risk exposure ranges from <strong>$2M/year</strong> for fire-avoidant routes to <strong>$48M/year</strong> for the straight-line scenario. The existing proxy route (60% HFTD) carries roughly <strong>$34M/year</strong> in combined PSPS and wildfire exposure — and critically, these costs fall on different parties. PSPS outage costs are borne by data center operators (through lost revenue and SLA penalties). Wildfire liability is borne by the utility, its ratepayers, and the AB 1054 Wildfire Fund (California's post-2019 liability-sharing mechanism for utility-caused wildfires).</p>
 <h3>What drives the numbers</h3>
-
-<p>The risk exposure is large because it scales with the value of lost data center load, which is extremely high. The single most important assumption is the value of lost load (VoLL) for data centers: at $20,000/MWh (mid estimate, from LBNL's ICE Calculator), a 24-hour PSPS event on a 500 MW corridor costs $240M in economic damage. If you believe PSPS will never apply to 500 kV — which PG&E has never done — the ongoing risk is mostly just wildfire liability, and the numbers shrink substantially. If you believe it might — as the corridor's PSPS history on lower-voltage circuits suggests — the numbers get big fast.</p>
-
+<p>The risk exposure is large because it scales with the value of lost data center load, which is extremely high. The single most important assumption is the value of lost load (VoLL) for data centers: at $20,000/MWh (mid estimate, from LBNL's ICE Calculator), a 24-hour PSPS event on a 500 MW corridor costs $240M in economic damage. If you believe PSPS will never apply to 500 kV — which PG&amp;E has never done — the ongoing risk is mostly just wildfire liability, and the numbers shrink substantially. If you believe it might — as the corridor's PSPS history on lower-voltage circuits suggests — the numbers get big fast.</p>
 <p>These estimates carry substantial uncertainty (the low-to-high range spans roughly 2–3x), but the directional finding is robust: <strong>routes through fire zones create materially more economic risk exposure than routes that avoid them</strong>, and this risk is currently invisible in the regulatory conversation about who pays for the line. Full assumptions, sources, and uncertainty ranges are documented in the <a href="#appendix-cost-model">cost model methodology</a>.</p>
-
 <h2>The corridor already triggers shutoffs</h2>
-
-<p>The corridor's fire risk isn't just a map exercise — it triggers real operational responses. Since PG&E began Public Safety Power Shutoffs (PSPS) in 2019, the utility has de-energized circuits in this geography <strong>58 times</strong> across <strong>33 distinct circuits</strong>, accumulating <strong>1.7 million customer-hours</strong> of lost service with a median event duration of <strong>41 hours</strong>.</p>
-
-<p>Six circuits radiating from Metcalf Substation — the 500 kV/230 kV hub at the heart of the data center buildout — have experienced 10 PSPS events, including a 41-hour shutoff of the Metcalf–Monta Vista 230 kV line. PG&E has de-energized 230 kV circuits in only four events systemwide; Metcalf–Monta Vista was affected in two of those four. For data centers planning to draw hundreds of megawatts through Metcalf, these aren't abstract statistics — they're the operational track record of the substation that will be their primary grid connection.</p>
-
-<p>These events occurred on distribution and sub-transmission circuits, not on 500 kV bulk transmission, which PG&E has not historically subjected to PSPS. But they demonstrate that the fire weather in this geography is severe enough to trigger de-energization on the infrastructure already there.</p>
-
-<p>Which circuits bear the brunt of these shutoffs? The top 25 corridor circuits by PSPS frequency reveal a concentration pattern: distribution feeders like Los Gatos-1107 (6 events, 290 cumulative hours) and Morgan Hill-2111 (5 events) are chronic targets. But the transmission-level events — though rarer — are the precedent that matters for the 500 kV buildout.</p>
-
+<p>The corridor's fire risk isn't just a map exercise — it triggers real operational responses. Since PG&amp;E began Public Safety Power Shutoffs (PSPS) in 2019, the utility has de-energized circuits in this geography 58 times to prevent wildfire ignitions during high-risk weather.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">58</th>
+<th style="text-align: right;">33</th>
+<th style="text-align: right;">1.7M</th>
+<th style="text-align: right;">41 hrs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">PSPS events in corridor</td>
+<td style="text-align: right;">circuits affected</td>
+<td style="text-align: right;">customer-hours</td>
+<td style="text-align: right;">median event duration</td>
+</tr>
+</tbody>
+</table>
+<p>Six circuits radiating from Metcalf Substation — the 500 kV/230 kV hub at the heart of the data center buildout — have experienced 10 PSPS events, including a 41-hour shutoff of the Metcalf–Monta Vista 230 kV line. In PG&amp;E's cleaned PSPS dataset, 230 kV circuit shutoffs appear on only four distinct systemwide event dates; Metcalf–Monta Vista was affected on two of those four dates. For data centers planning to draw hundreds of megawatts through Metcalf, these aren't abstract statistics — they're the operational track record of the substation that will be their primary grid connection.</p>
+<p>These events occurred on distribution and sub-transmission circuits, not on 500 kV bulk transmission, which PG&amp;E has not historically subjected to PSPS. But they demonstrate that the fire weather in this geography is severe enough to trigger de-energization on the infrastructure already there.</p>
+<p>Which circuits bear the brunt of these shutoffs? The top 25 corridor circuits by PSPS frequency reveal a concentration pattern: distribution feeders like Los Gatos-1107 (6 events, 290 cumulative hours) and Morgan Hill-2111 (5 events) are chronic targets. The transmission-level events — though rarer — are the closest lower-voltage analog for the 500 kV buildout.</p>
 <figure class="wide">
-<img src="dc-fire-figures/fig_psps_chronic_circuits.png" alt="Top PSPS circuits">
+<img src="dc-fire-figures/fig_psps_chronic_circuits.png" alt="Figure 11: Top PSPS circuits">
 <figcaption><strong>Figure 11.</strong> Top 25 PSPS circuits in the data center corridor, ranked by event count (2013–2025). Color indicates GIS match quality: green = exact match to HIFLD transmission geometry, blue = partial match (one endpoint), orange = inferred from upstream transmission, gray = no match (distribution substation not in HIFLD). [T] marks transmission-level circuits. Hours shown are cumulative shutoff duration. Data: CPUC PSPS event records (2013–2025), HIFLD (2025).</figcaption>
 </figure>
-
 <p>These shutoffs aren't randomly distributed — they follow the fire risk geography. Matching PSPS circuit names to transmission line geometries reveals that the de-energized circuits physically cross the same Diablo Range foothills that the Manning–Metcalf line will traverse.</p>
-
 <figure class="wide">
-<img src="dc-fire-figures/fig_psps_circuit_overlay.png" alt="PSPS circuit overlay">
-<figcaption><strong>Figure 12.</strong> Transmission lines with documented PSPS history in the Manning–Metcalf corridor, overlaid on HFTD fire threat zones. The Metcalf–Monta Vista 230 kV line (blue) experienced a 41-hour shutoff in October 2019 — a direct precedent for what a new 500 kV line through the same geography might face. Data: CPUC PSPS event records, HIFLD (2025), CPUC HFTD v3.</figcaption>
+<img src="dc-fire-figures/fig_psps_circuit_overlay.png" alt="Figure 12: PSPS circuit overlay">
+<figcaption><strong>Figure 12.</strong> Transmission lines with documented PSPS history in the Manning–Metcalf corridor, overlaid on HFTD fire threat zones. The Metcalf–Monta Vista 230 kV line (blue) experienced a 41-hour shutoff in October 2019 — an informative lower-voltage analog for what a new 500 kV line through the same geography might face. Data: CPUC PSPS event records, HIFLD (2025), CPUC HFTD v3.</figcaption>
 </figure>
-
-<p>Two temporal patterns stand out. The first is the October 2019 cluster, when most of the corridor was shut off simultaneously during a major wind event — a coordinated de-energization that affected hundreds of thousands of customers. The second is the ongoing recurrence: events in 2024 and 2025 show this isn't a problem that's going away.</p>
-
-<p>An important caveat: PG&E has not historically applied PSPS to 500 kV transmission lines. Whether and how the new Manning–Metcalf 500 kV line would be subject to PSPS protocols is an open question. But the lower-voltage circuits in the same geography provide a direct analog — they cross the same terrain, face the same fire weather, and experience the same operational shutoffs.</p>
-
+<p>The event chronology shows both a large October 2019 cluster and continued recurrence in 2024 and 2025, indicating that corridor PSPS exposure is ongoing rather than purely historical.</p>
+<p>An important caveat: PG&amp;E has not historically applied PSPS to 500 kV transmission lines. Whether and how the new Manning–Metcalf 500 kV line would be subject to PSPS protocols is an open question. But the lower-voltage circuits in the same geography provide an imperfect but relevant analog — they cross the same terrain, face the same fire weather, and experience the same operational shutoffs.</p>
 <h2>A gap in the regulatory conversation</h2>
-
 <p>What prompted this analysis was not the fire exposure itself — anyone who's looked at a map of California's fire zones and transmission corridors would expect overlap. What's surprising is the complete absence of fire risk from the regulatory documents governing the data center transmission buildout.</p>
-
-<p>PG&E's Electric Rule 30 application — the proposed tariff for transmission-level data center interconnection — contains zero mentions of fire, wildfire, HFTD, PSPS, or hardening across all 50 pages. The CPUC's six cost allocation questions (testimony filed February 18, 2026) do not ask about fire-related costs. CAISO's transmission plan acknowledges the corridor but doesn't disaggregate fire hardening from total project costs.</p>
-
-<p>There's a structural reason for this. California's transmission permitting has four distinct stages: CAISO determines need (where we are now), the Rule 30 proceeding determines who pays, the CPCN/CEQA process (Certificate of Public Convenience and Necessity / California Environmental Quality Act) evaluates routes and environmental impacts (including fire), and the WMP governs ongoing operations. Fire analysis enters at stage three — but cost allocation is being locked in at stage two, before the route is selected and before fire hardening costs are known. By the time the CPCN/CEQA process reveals the actual fire exposure and hardening requirements, the framework for who pays will already be set.</p>
-
-<p>Meanwhile, PG&E's own Wildfire Mitigation Plan shows the company budgeted $30.6 million for <em>all</em> transmission hardening in 2025 — a fraction of what the Manning–Metcalf corridor alone might require.</p>
-
-<div class="pullquote">
+<p>PG&amp;E's Electric Rule 30 application — the proposed tariff for transmission-level data center interconnection — contains zero mentions of fire, wildfire, HFTD, PSPS, or hardening across all 50 pages. The CPUC's six cost allocation questions (testimony filed February 18, 2026) don't ask about fire-related costs. CAISO's transmission plan acknowledges the corridor but doesn't disaggregate fire hardening from total project costs.</p>
+<p>There's a structural reason for this. California's transmission permitting has four distinct stages: CAISO determines need (the current stage), the Rule 30 proceeding determines who pays, the CPCN/CEQA process (Certificate of Public Convenience and Necessity / California Environmental Quality Act) evaluates routes and environmental impacts (including fire), and the WMP governs ongoing operations. Fire analysis enters at stage three — but cost allocation is being locked in at stage two, before the route is selected and before fire hardening costs are known. By the time the CPCN/CEQA process reveals the actual fire exposure and hardening requirements, the framework for who pays will already be set.</p>
+<p>Meanwhile, PG&amp;E's own Wildfire Mitigation Plan shows the company budgeted $30.6 million for <em>all</em> transmission hardening in 2025 — a fraction of what the Manning–Metcalf corridor alone might require.</p>
 <p>The cost of building transmission through fire zones is being allocated without explicit analysis of the fire-related component. This isn't an oversight by any single agency — it's a consequence of a sequential regulatory process where each stage addresses a different question. But the practical result is that ratepayers, data center developers, and regulators are making binding cost allocation decisions without visibility into a material cost driver.</p>
-</div>
-
 <p>The timeline matters. CAISO's 31-project transmission plan has a 10–15 year horizon, and the Manning–Metcalf CEQA/CPCN application hasn't been filed yet. Route decisions made in the next few years will determine fire exposure for half a century. The agencies involved — CAISO, CPUC, CEC, and the utilities — are managing an unprecedented infrastructure scale-up, and fire risk is a quantifiable dimension of route selection that could inform the decisions still ahead.</p>
-
 <h2>What this means for different stakeholders</h2>
-
-<p><strong>For transmission planners and utilities:</strong> Route selection for the Manning–Metcalf line hasn't been finalized — the CEQA/CPCN application hasn't been filed yet. The fire risk profile of potential routes varies enormously (3–60% HFTD exposure), and the lifecycle cost implications are material. Our route modeling suggests fire-avoidant paths exist that could reduce lifecycle costs by hundreds of millions of dollars — though they require longer routes through new territory.</p>
-
+<p><strong>For transmission planners and utilities:</strong> Route selection for the Manning–Metcalf line hasn't been finalized — the CEQA/CPCN application hasn't been filed yet. The fire risk profile of potential routes varies enormously (3–60% HFTD exposure), and the lifecycle cost implications are material. The route modeling suggests fire-avoidant paths exist that could reduce lifecycle costs materially — and, relative to the highest-fire corridor-following scenarios, by hundreds of millions of dollars — though they require longer routes through new territory.</p>
 <p><strong>For regulators:</strong> The Rule 30 cost allocation proceeding (testimony filed February 18, 2026) is determining who pays for transmission network upgrades driven by data center load. Fire hardening, PSPS mitigation, and wildfire liability are material cost components that aren't currently visible in that framework. The current framing treats all corridor miles as equivalent; their fire risk profiles differ by an order of magnitude.</p>
-
 <p><strong>For data center developers:</strong> The fire exposure is upstream of the data center sites — the substations where facilities connect are in urbanized areas with minimal fire risk. But the transmission that feeds those substations crosses fire territory, creating reliability risk (PSPS) and potential cost exposure (hardening, liability). Developers have an interest in route selection even if their facilities are in safe locations.</p>
-
 <p><strong>For clean energy and backup power providers:</strong> The 41-hour median PSPS duration (with a tail extending well past 48 hours) creates a specific, quantifiable market opportunity. Given that battery systems typically cover 4–8 hours and diesel generators face air quality restrictions, the long-duration backup gap is commercially significant.</p>
-
 <h2>Limitations and next steps</h2>
-
 <p>This analysis is a case study of one corridor, not a comprehensive assessment of all data center transmission. Several important caveats apply.</p>
-
 <p>PSPS circuit names were matched to HIFLD transmission geometries using substation endpoint names; 73% of corridor circuits (44 of 60) matched to at least one transmission feature. Distribution substations without HIFLD matches were excluded from geographic analysis but included in aggregate statistics.</p>
-
 <p>The route modeling uses least-cost path analysis on a rasterized cost surface — a standard GIS technique, but one that cannot capture all the factors that influence real-world route selection (landowner negotiations, environmental sensitivities, cultural resources, local opposition, etc.). The modeled routes should be understood as illustrative scenarios, not engineering proposals.</p>
-
-<p>The cost model carries substantial uncertainty, particularly for fire hardening (no public per-mile data exists at 500 kV, as discussed in the cost section) and PSPS probability (derived from lower-voltage corridor history). Wildfire liability depends on a fat-tailed damage distribution where catastrophic events dominate the expected value — the NPV framing understates tail risk. The data center load at risk (200–1,000 MW) is estimated from CEC forecasts, not from CAISO load flow studies. PSPS events and wildfire ignitions are correlated (both driven by wind and heat), so treating them as independent risks underestimates the probability of simultaneous exposure; this is a conservative simplification. A one-at-a-time sensitivity analysis and three structural scenarios ("no PSPS on 500 kV," "wildfire liability capped," "no fire hardening") are provided in the <a href="#appendix-cost-model">full cost model methodology</a>, which documents all assumptions with source, confidence level, and low/mid/high ranges.</p>
-
-<p>The route proxy methodology uses existing transmission line geometries (from HIFLD) as approximations for where PG&E might build. We use the Moss Landing–Metcalf 500 kV line as the primary proxy because it's the same voltage class, follows a similar geographic path through the Diablo Range, and its geometry is well-documented in HIFLD. The actual Manning–Metcalf route has not been publicly disclosed and may differ. CAISO's project description states ~100 miles, notably longer than the ~36-mile proxy routes; the difference likely reflects substation interconnection work, sub-transmission segments, or longer routing through less constrained terrain outside the core corridor. Our 36-mile proxy represents the core segment where fire exposure concentrates — the per-mile fire cost premiums applied to this segment still capture the fire-specific risk, even if the total project is longer.</p>
-
+<p>The cost model carries substantial uncertainty, particularly for fire hardening (no public per-mile data exists at 500 kV, as discussed in the cost section) and PSPS probability (derived from lower-voltage corridor history). Wildfire liability depends on a fat-tailed damage distribution where catastrophic events dominate the expected value, so the NPV framing understates tail risk. The data center load at risk (200–1,000 MW) is estimated from CEC forecasts, not from CAISO load flow studies. PSPS events and wildfire ignitions are correlated (both driven by wind and heat), so treating them as independent risks is a conservative simplification. A one-at-a-time sensitivity analysis and three structural scenarios are provided in the <a href="#appendix-cost-model">full cost model methodology</a>, which documents all assumptions with source, confidence level, and low/mid/high ranges.</p>
+<p>The route proxy methodology uses existing transmission line geometries (from HIFLD) as approximations for where PG&amp;E might build. We use the Moss Landing–Metcalf 500 kV line as the primary proxy because it's the same voltage class, follows a similar geographic path through the Diablo Range, and its geometry is well-documented in HIFLD. The actual Manning–Metcalf route has not been publicly disclosed and may differ. CAISO's project description states ~100 miles, notably longer than the ~36-mile proxy routes; the difference likely reflects substation interconnection work, sub-transmission segments, or longer routing through less constrained terrain outside the core corridor. Our 36-mile proxy represents the core segment where fire exposure concentrates, so the per-mile fire cost premiums applied here still capture the fire-specific risk even if the total project is longer.</p>
 <p>HIFLD transmission data was updated to the 2025 vintage (data last edited August 2025, accessed February 2026). Results were validated against this updated extract; statewide and utility-level exposure rates were consistent with earlier analysis using 2016–2021 vintage data.</p>
-
-<p>We analyzed only the South Bay corridor. Three of CAISO's four approved transmission projects serve this area, but SCE and SDG&E also have significant data center interconnection pipelines. Extending this fire overlay methodology to other corridors would provide a more complete picture.</p>
-
+<p>We analyzed only the South Bay corridor. Three of CAISO's four approved transmission projects serve this area, but SCE and SDG&amp;E also have significant data center interconnection pipelines. Extending this fire overlay methodology to other corridors would provide a more complete picture.</p>
 <p>The CEC expects to release busbar-level data center load disaggregation in Q1 2026. That dataset will allow a comprehensive overlay of every substation receiving data center load against fire threat boundaries — extending this corridor-level analysis to a system-wide assessment.</p>
-
 <hr>
+<h2>Appendix</h2>
 
 <details>
 <summary>Appendix A: Voltage class analysis</summary>
 <div class="detail-content">
-<p>We examined whether fire exposure varies systematically by transmission voltage class. The relationship is non-monotonic: 230 kV lines have the highest statewide exposure (28%), likely because they serve as the "last mile" connecting urban load centers to the 500 kV backbone and must cross more varied terrain. The 500 kV class averages 22% — but the Manning–Metcalf corridor at 50–60% is 2.2 times the PG&E 500 kV average, confirming it is an outlier even within its voltage class.</p>
-
+<p>This appendix examines whether fire exposure varies systematically by transmission voltage class. The relationship is non-monotonic: 230 kV lines have the highest statewide exposure (28%), likely because they serve as the "last mile" connecting urban load centers to the 500 kV backbone and must cross more varied terrain. The 500 kV class averages 22% — but the Manning–Metcalf corridor at 50–60% is 2.2 times the PG&amp;E 500 kV average, confirming it is an outlier even within its voltage class.</p>
 <figure class="wide">
-<img src="dc-fire-figures/fig_voltage_hftd_2025.png" alt="Voltage class analysis">
+<img src="dc-fire-figures/fig_voltage_hftd_2025.png" alt="Figure A1: Voltage class analysis">
 <figcaption><strong>Figure A1.</strong> Transmission fire exposure by voltage class (2025 HIFLD, CPUC HFTD v3). Left: total line-km decomposed by fire tier. Right: HFTD exposure rate by voltage class. The Manning–Metcalf corridor (red diamond) at 50–60% is more than double the statewide 500 kV average of 22%.</figcaption>
 </figure>
 </div>
 </details>
-
 <details>
 <summary>Appendix B: Methodology notes</summary>
 <div class="detail-content">
 <p><strong>Fire exposure measurement.</strong> Generation fire exposure uses point-in-polygon tests (each generator's lat/lon tested against HFTD polygons). Transmission fire exposure uses line-segment intersection (each transmission line geometry intersected with HFTD polygons, with exposure measured as the fraction of line length inside fire zones). Both use the same CPUC HFTD v3 boundaries and are the standard spatial methods for their respective data types. All spatial analysis is projected to EPSG:3310 (California Albers) for accurate area and distance calculations.</p>
-
 <p><strong>Route proxy selection.</strong> The Moss Landing–Metcalf 500 kV line serves as the primary proxy for the Manning–Metcalf route because it is the same voltage class (500 kV), follows a similar geographic path through the Diablo Range foothills, and its geometry is documented in the HIFLD national transmission dataset. The corridor's 50–60% HFTD exposure range is bounded by this proxy (60%) and the least-cost path modeling scenarios (46% for routes closely following existing ROW).</p>
-
 <p><strong>PSPS circuit matching.</strong> Circuit names from CPUC PSPS event reports were matched to HIFLD transmission line geometries using substation endpoint names. Of 60 corridor circuits, 44 (73%) matched to at least one transmission feature. Match quality is categorized as: exact (both endpoints match), partial (one endpoint), inferred (upstream transmission identified), or unmatched (distribution substation not in HIFLD).</p>
-
 <figure class="wide">
-<img src="dc-fire-figures/fig_psps_match_summary.png" alt="PSPS circuit matching results">
-<figcaption><strong>Figure B1.</strong> PSPS circuit GIS match quality for the Manning–Metcalf corridor. Of 60 corridor circuits, 44 (73%) matched to at least one HIFLD transmission feature. Most unmatched circuits are distribution feeders whose substations are not in the HIFLD dataset. Data: CPUC PSPS event reports, HIFLD (2025).</figcaption>
+<img src="dc-fire-figures/fig_psps_match_summary.png" alt="Figure B1: PSPS GIS match quality">
+<figcaption><strong>Figure B1.</strong> Match quality for the PSPS circuit-to-GIS linkage used in the corridor analysis. Transmission circuits are mostly exact or partial endpoint matches to HIFLD geometries; distribution circuits are more often inferred from upstream transmission or remain unmatched because their substations are not in HIFLD. Data: CPUC PSPS event records, HIFLD (2025).</figcaption>
 </figure>
-
 <p><strong>Cost model.</strong> Full assumptions, source documentation, confidence levels, and low/mid/high ranges for all cost parameters are in the <a href="#appendix-cost-model">cost model methodology</a>.</p>
 </div>
 </details>
-
 <details>
 <summary>Appendix C: Data sources</summary>
 <div class="detail-content">
-<table class="data-sources">
+<table>
 <thead>
-<tr><th>Dataset</th><th>Source</th><th>Vintage</th><th>Role in analysis</th></tr>
+<tr>
+<th>Dataset</th>
+<th>Source</th>
+<th>Vintage</th>
+<th>Role in analysis</th>
+</tr>
 </thead>
 <tbody>
-<tr><td>CPUC HFTD v3</td><td>CPUC Fire Threat Map</td><td>August 2021</td><td>Fire zone boundaries</td></tr>
-<tr><td>HIFLD Transmission Lines</td><td>DHS HIFLD</td><td>2025 (edited Aug 2025)</td><td>Transmission geometry, voltage, ownership</td></tr>
-<tr><td>EIA Form 860</td><td>U.S. EIA</td><td>2024</td><td>Generator locations, capacity, fuel type</td></tr>
-<tr><td>CEC 2025 IEPR</td><td>CEC Docket 25-IEPR-03</td><td>November 2025</td><td>Data center load forecast</td></tr>
-<tr><td>PSPS event records</td><td>CPUC filings</td><td>2013–2025</td><td>Shutoff history, duration, circuits</td></tr>
-<tr><td>USGS 3DEP</td><td>USGS</td><td>1/3 arc-second</td><td>Elevation for route modeling</td></tr>
-<tr><td>CAISO Transmission Plan</td><td>CAISO</td><td>2024–2025</td><td>Project specs, cost estimates</td></tr>
-<tr><td>MISO MTEP24 Cost Guide</td><td>MISO</td><td>2024</td><td>Transmission cost benchmarks</td></tr>
-<tr><td>NREL ATB</td><td>NREL</td><td>2024</td><td>National transmission cost medians</td></tr>
-<tr><td>PG&E/SCE WMPs</td><td>CPUC/OEIS</td><td>2025</td><td>Hardening costs, PSPS protocols</td></tr>
-<tr><td>LBNL ICE Calculator</td><td>LBNL</td><td>v2.0</td><td>Value of lost load estimates</td></tr>
-<tr><td>SDG&E Sunrise Powerlink</td><td>CPUC Decision 08-12-058</td><td>2012</td><td>500 kV fire-terrain cost anchor</td></tr>
+<tr>
+<td>CPUC HFTD v3</td>
+<td>CPUC Fire Threat Map</td>
+<td>August 2021</td>
+<td>Fire zone boundaries</td>
+</tr>
+<tr>
+<td>HIFLD Transmission Lines</td>
+<td>DHS HIFLD</td>
+<td>2025 (edited Aug 2025)</td>
+<td>Transmission geometry, voltage, ownership</td>
+</tr>
+<tr>
+<td>EIA Form 860</td>
+<td>U.S. EIA</td>
+<td>2024</td>
+<td>Generator locations, capacity, fuel type</td>
+</tr>
+<tr>
+<td>CEC 2025 IEPR</td>
+<td>CEC Docket 25-IEPR-03</td>
+<td>November 2025</td>
+<td>Data center load forecast</td>
+</tr>
+<tr>
+<td>PSPS event records</td>
+<td>CPUC filings</td>
+<td>2013–2025</td>
+<td>Shutoff history, duration, circuits</td>
+</tr>
+<tr>
+<td>USGS 3DEP</td>
+<td>USGS</td>
+<td>1/3 arc-second</td>
+<td>Elevation for route modeling</td>
+</tr>
+<tr>
+<td>CAISO Transmission Plan</td>
+<td>CAISO</td>
+<td>2024–2025</td>
+<td>Project specs, cost estimates</td>
+</tr>
+<tr>
+<td>MISO MTEP24 Cost Guide</td>
+<td>MISO</td>
+<td>2024</td>
+<td>Transmission cost benchmarks</td>
+</tr>
+<tr>
+<td>NREL ATB</td>
+<td>NREL</td>
+<td>2024</td>
+<td>National transmission cost medians</td>
+</tr>
+<tr>
+<td>PG&amp;E/SCE WMPs</td>
+<td>CPUC/OEIS</td>
+<td>2025</td>
+<td>Hardening costs, PSPS protocols</td>
+</tr>
+<tr>
+<td>LBNL ICE Calculator</td>
+<td>LBNL</td>
+<td>v2.0</td>
+<td>Value of lost load estimates</td>
+</tr>
+<tr>
+<td>SDG&amp;E Sunrise Powerlink</td>
+<td>CPUC Decision 08-12-058</td>
+<td>2012</td>
+<td>500 kV fire-terrain cost anchor</td>
+</tr>
 </tbody>
 </table>
-
-<p style="font-size: 0.9em; color: #555; margin-top: 16px;">Full code, data, and methodology available in the project repository.</p>
 </div>
 </details>
-
 <details id="appendix-cost-model">
 <summary>Appendix D: Cost model methodology</summary>
 <div class="detail-content">
-
-<div class="note">
-<p><strong>Important caveats.</strong> This model is illustrative, not predictive. Five limitations are especially important:</p>
+<p>Five limitations are especially important:</p>
 <ol>
 <li><strong>No public data exists for 500 kV transmission fire hardening costs per mile.</strong> The hardening premium is estimated from distribution-level data and engineering judgment.</li>
-<li><strong>PSPS probability for a specific 500 kV line is unknown.</strong> We derive estimates from historical corridor PSPS data, which covers distribution and lower-voltage transmission.</li>
+<li><strong>PSPS probability for a specific 500 kV line is unknown.</strong> Estimates are derived from historical corridor PSPS data, which covers distribution and lower-voltage transmission.</li>
 <li><strong>Wildfire liability follows an extreme fat-tailed distribution.</strong> The expected value is dominated by rare catastrophic events that are inherently unpredictable.</li>
-<li><strong>ROW acquisition costs are highly site-specific</strong> and cannot be reliably estimated without detailed property and environmental data.</li>
+<li><strong>ROW acquisition costs are highly site-specific.</strong> They cannot be reliably estimated without parcel-level property and environmental data.</li>
 <li><strong>The actual route has not been disclosed.</strong> All scenarios are hypothetical.</li>
 </ol>
-</div>
-
-<h3>Assumptions</h3>
-
-<p>Each parameter has low, mid, and high values reflecting genuine uncertainty. Confidence levels indicate data quality: <strong style="color: #2e7d32;">SOURCED</strong> = directly from a named public document, <strong style="color: #e65100;">DERIVED</strong> = calculated from sourced data with stated methodology, <strong style="color: #c62828;">ESTIMATED</strong> = informed estimate based on analogous data (highest uncertainty).</p>
-
-<table class="cost-table">
+<h4>Assumptions</h4>
+<p>Each parameter has low, mid, and high values reflecting genuine uncertainty. Confidence levels indicate data quality:</p>
+<ul>
+<li><strong>SOURCED</strong> = directly from a named public document</li>
+<li><strong>DERIVED</strong> = calculated from sourced data with stated methodology</li>
+<li><strong>ESTIMATED</strong> = informed estimate based on analogous data; highest uncertainty</li>
+</ul>
+<table>
 <thead>
-<tr><th>Parameter</th><th>Low</th><th>Mid</th><th>High</th><th>Unit</th><th>Confidence</th></tr>
+<tr>
+<th>Parameter</th>
+<th style="text-align: right;">Low</th>
+<th style="text-align: right;">Mid</th>
+<th style="text-align: right;">High</th>
+<th>Unit</th>
+<th>Confidence</th>
+</tr>
 </thead>
 <tbody>
-<tr><td>Base construction cost</td><td class="num">5.0</td><td class="num">6.5</td><td class="num">9.0</td><td>$M/mile</td><td><strong style="color: #2e7d32;">SOURCED</strong></td></tr>
-<tr><td>Fire hardening (Tier 2)</td><td class="num">0.5</td><td class="num">1.0</td><td class="num">2.0</td><td>$M/mile additional</td><td><strong style="color: #c62828;">ESTIMATED</strong></td></tr>
-<tr><td>Fire hardening (Tier 3)</td><td class="num">1.0</td><td class="num">2.0</td><td class="num">4.0</td><td>$M/mile additional</td><td><strong style="color: #c62828;">ESTIMATED</strong></td></tr>
-<tr><td>ROW (existing corridor)</td><td class="num">0.1</td><td class="num">0.3</td><td class="num">0.5</td><td>$M/mile</td><td><strong style="color: #c62828;">ESTIMATED</strong></td></tr>
-<tr><td>ROW (new acquisition)</td><td class="num">1.0</td><td class="num">2.0</td><td class="num">4.0</td><td>$M/mile</td><td><strong style="color: #c62828;">ESTIMATED</strong></td></tr>
-<tr><td>PSPS probability</td><td class="num">0.05</td><td class="num">0.15</td><td class="num">0.30</td><td>/year</td><td><strong style="color: #e65100;">DERIVED</strong></td></tr>
-<tr><td>PSPS duration</td><td class="num">12</td><td class="num">24</td><td class="num">48</td><td>hours/event</td><td><strong style="color: #e65100;">DERIVED</strong></td></tr>
-<tr><td>Data center load at risk</td><td class="num">200</td><td class="num">500</td><td class="num">1,000</td><td>MW</td><td><strong style="color: #e65100;">DERIVED</strong></td></tr>
-<tr><td>Value of lost load</td><td class="num">5,000</td><td class="num">20,000</td><td class="num">50,000</td><td>$/MWh</td><td><strong style="color: #c62828;">ESTIMATED</strong></td></tr>
-<tr><td>Wildfire ignition rate</td><td class="num">0.001</td><td class="num">0.003</td><td class="num">0.008</td><td>fires/HFTD-mile/yr</td><td><strong style="color: #c62828;">ESTIMATED</strong></td></tr>
-<tr><td>Wildfire expected damage</td><td class="num">50</td><td class="num">200</td><td class="num">1,000</td><td>$M/fire</td><td><strong style="color: #c62828;">ESTIMATED</strong></td></tr>
-<tr><td>Project life</td><td class="num">40</td><td class="num">50</td><td class="num">60</td><td>years</td><td><strong style="color: #2e7d32;">SOURCED</strong></td></tr>
-<tr><td>Discount rate</td><td class="num">0.04</td><td class="num">0.06</td><td class="num">0.08</td><td>real</td><td><strong style="color: #2e7d32;">SOURCED</strong></td></tr>
+<tr>
+<td>Base construction cost</td>
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">6.5</td>
+<td style="text-align: right;">9.0</td>
+<td>$M/mile</td>
+<td>SOURCED</td>
+</tr>
+<tr>
+<td>Fire hardening (Tier 2)</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td>$M/mile additional</td>
+<td>ESTIMATED</td>
+</tr>
+<tr>
+<td>Fire hardening (Tier 3)</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">4.0</td>
+<td>$M/mile additional</td>
+<td>ESTIMATED</td>
+</tr>
+<tr>
+<td>ROW (existing corridor)</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.5</td>
+<td>$M/mile</td>
+<td>ESTIMATED</td>
+</tr>
+<tr>
+<td>ROW (new acquisition)</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">4.0</td>
+<td>$M/mile</td>
+<td>ESTIMATED</td>
+</tr>
+<tr>
+<td>PSPS probability</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.30</td>
+<td>/year</td>
+<td>DERIVED</td>
+</tr>
+<tr>
+<td>PSPS duration</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">48</td>
+<td>hours/event</td>
+<td>DERIVED</td>
+</tr>
+<tr>
+<td>Data center load at risk</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">1000</td>
+<td>MW</td>
+<td>DERIVED</td>
+</tr>
+<tr>
+<td>Value of lost load</td>
+<td style="text-align: right;">5000</td>
+<td style="text-align: right;">20000</td>
+<td style="text-align: right;">50000</td>
+<td>$/MWh</td>
+<td>ESTIMATED</td>
+</tr>
+<tr>
+<td>Wildfire ignition rate</td>
+<td style="text-align: right;">0.001</td>
+<td style="text-align: right;">0.003</td>
+<td style="text-align: right;">0.008</td>
+<td>fires/HFTD-mile/yr</td>
+<td>ESTIMATED</td>
+</tr>
+<tr>
+<td>Wildfire expected damage</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">1000</td>
+<td>$M/fire</td>
+<td>ESTIMATED</td>
+</tr>
+<tr>
+<td>Project life</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">60</td>
+<td>years</td>
+<td>SOURCED</td>
+</tr>
+<tr>
+<td>Discount rate</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">0.08</td>
+<td>real</td>
+<td>SOURCED</td>
+</tr>
 </tbody>
 </table>
-
-<p class="table-note">ROW cost is blended per route: each route's existing/new ROW fraction is computed by buffering HIFLD transmission lines by 1 km (in UTM 10N) and measuring what share of the route falls inside the buffer.</p>
-
-<details>
-<summary>Detailed source notes for each parameter</summary>
-<div class="detail-content" style="font-size: 0.9em;">
-
-<p><strong>Base construction cost.</strong> CAISO 2024–2025 Transmission Plan: Manning–Metcalf at $500–700M for ~100 miles = $5–7M/mile. CAISO 2023–2024 Plan: Humboldt–Collinsville 500 kV at $980M–$1.4B for ~140 miles = $7–10M/mile. MISO MTEP24 Cost Estimation Guide: $6.9M/mile for 500 kV (Midwest). Brattle Group (2024): $6M/mile for 765 kV. <em>California costs tend to be higher than national averages due to labor, environmental review, and terrain.</em></p>
-
-<p><strong>Fire hardening (Tier 2/3).</strong> PG&E 2025 WMP: distribution undergrounding at $3.1M/mile; transmission hardening budget $30.6M (Target GH-11), no per-mile breakdown. No public data exists for 500 kV hardening cost premiums. <em>Tier 2 premium estimated at 8–30% of base cost; Tier 3 assumed ~2× Tier 2. Actual costs depend on whether PG&E uses covered conductor, steel monopoles, undergrounding, or enhanced vegetation management.</em></p>
-
-<p><strong>ROW (existing vs. new).</strong> Existing ROW typically requires easement renewal, not acquisition — dramatically cheaper. New ROW through the Coast Range involves land acquisition from private ranchers, environmental review, and potentially eminent domain. CA High-Speed Rail ROW: $10–50M/mile in urban areas (not comparable). Rural transmission ROW in western states: ~$0.5–2M/mile (industry estimates). CEQA/CPCN environmental review adds $10–50M per project (not per-mile).</p>
-
-<p><strong>PSPS probability.</strong> CPUC PSPS reports (2013–2025): corridor circuits average ~1 event/2 years. Existing 230 kV Metcalf–Monta Vista: 2 PSPS events in 12 years (17%/year). Distribution circuits see ~50% annual probability; transmission much less. <em>We adjust down for 500 kV, which PG&E has not historically de-energized.</em></p>
-
-<p><strong>PSPS duration.</strong> Metcalf–Monta Vista averaged ~29 hours per event. Distribution circuits: 24–48 hours typical. <em>Based on actual PSPS durations for corridor circuits.</em></p>
-
-<p><strong>Data center load at risk.</strong> CEC forecasts South Bay data center load growth. Current PG&E Rule 30 applications: 145 MW baseline (2014–2022). <em>Depends on how much of the South Bay fleet is served through this corridor and whether backup paths exist.</em></p>
-
-<p><strong>Value of lost load.</strong> LBNL ICE Calculator 2.0: large C&amp;I interruption cost ~$20–50/kWh ($20,000–50,000/MWh). Data center SLA penalties and equipment damage costs are at the high end. Residential VoLL: ~$5–10/kWh for comparison. <em>Data center VoLL is among the highest of any customer class.</em></p>
-
-<p><strong>Wildfire ignition rate.</strong> CAL FIRE: ~100 utility-caused fires/year across ~25,000 miles of HFTD lines. Implied rate: ~0.004 fires/mile-year (statewide, all voltages). Transmission causes fewer fires than distribution (better clearances). <em>We adjust down for 500 kV.</em></p>
-
-<p><strong>Wildfire expected damage.</strong> PG&E Camp Fire (2018): $30B+ in damages. PG&E bankruptcy: ~$30B total wildfire liabilities. Most utility fires cause &lt;$1M; catastrophic fires dominate the tail. AB 1054 Wildfire Fund: $21B capitalization. <em>The $200M mid reflects a blend of many small fires and rare catastrophic ones.</em></p>
-
-<p><strong>Project life / discount rate.</strong> FERC/CPUC typical transmission depreciation: 40–60 years. CPUC cost of capital proceedings: PG&E authorized ROE ~10% nominal, ~6–7% real.</p>
-</div>
-</details>
-
-<h3>Full lifecycle results (mid estimates)</h3>
-
-<p>The table below extends the capital-only comparison in the main text to include NPV of ongoing risk exposure over the project's 50-year life.</p>
-
-<table class="cost-table">
+<p>ROW cost is blended per route: each route's existing/new ROW fraction is computed by buffering HIFLD transmission lines by 1 km in UTM 10N and measuring what share of the route falls inside the buffer.</p>
+<h4>Detailed source notes</h4>
+<p><strong>Base construction cost.</strong> CAISO's 2024–2025 Transmission Plan estimates Manning–Metcalf at $500–700M for roughly 100 miles, or about $5–7M/mile. CAISO's 2023–2024 plan puts Humboldt–Collinsville 500 kV at roughly $7–10M/mile, MISO MTEP24 gives $6.9M/mile for 500 kV, and Brattle (2024) reports about $6M/mile for 765 kV. California costs tend to run above national averages because of labor, terrain, and permitting.</p>
+<p><strong>Fire hardening (Tier 2/Tier 3).</strong> PG&amp;E's 2025 WMP reports distribution undergrounding near $3.1M/mile and a $30.6M transmission hardening budget without a per-mile breakdown. No public 500 kV hardening premium exists. Tier 2 is treated as roughly an 8–30% premium on base cost; Tier 3 is assumed to be about 2x Tier 2. Actual costs depend on whether mitigation is driven by pole design, vegetation management, undergrounding, or more specialized fire-resistant construction.</p>
+<p><strong>ROW (existing vs. new).</strong> Existing ROW generally requires easement renewal or widening, not full acquisition. New ROW through the Coast Range can require private land acquisition, environmental review, and potentially eminent domain. Rural western transmission ROW estimates are commonly cited around $0.5–2M/mile, with project-level CEQA/CPCN review adding additional fixed costs not captured here.</p>
+<p><strong>PSPS probability.</strong> CPUC PSPS reports from 2013–2025 show corridor circuits averaging roughly one event every two years. The existing Metcalf–Monta Vista 230 kV line appears in two PSPS events over twelve years, or about 17% annually. Distribution circuits in the corridor see much higher frequencies; this study adjusts downward for 500 kV because PG&amp;E has not historically de-energized bulk 500 kV lines.</p>
+<p><strong>PSPS duration.</strong> Corridor transmission and distribution events typically last 24–48 hours; the Metcalf–Monta Vista 230 kV line averaged about 29 hours per event.</p>
+<p><strong>Data center load at risk.</strong> CEC forecasts imply major South Bay data center load growth, while PG&amp;E's Rule 30 record shows a much smaller historical baseline. The load at risk depends on how much of the South Bay fleet is ultimately served through this corridor and whether backup paths exist.</p>
+<p><strong>Value of lost load.</strong> LBNL's ICE Calculator 2.0 gives large commercial and industrial interruption costs in roughly the $20–50/kWh range. Data center SLA penalties and equipment sensitivity put this customer class near the upper end of that spectrum.</p>
+<p><strong>Wildfire ignition rate.</strong> CAL FIRE data implies a statewide utility-caused fire rate on HFTD lines around 0.004 fires per mile-year across all voltage classes. Transmission should be lower than distribution because of greater clearances and different design standards, so the model adjusts downward for 500 kV.</p>
+<p><strong>Wildfire expected damage.</strong> Most utility-caused fires are small, but catastrophic fires dominate the expected value. The Camp Fire and PG&amp;E bankruptcy illustrate the tail risk. The $200M mid assumption reflects a blend of many small fires and rare catastrophic losses.</p>
+<p><strong>Project life / discount rate.</strong> FERC and CPUC depreciation schedules imply roughly 40–60 years for large transmission assets. CPUC cost-of-capital proceedings imply a real discount rate near the 6–7% range.</p>
+<h4>Full lifecycle results</h4>
+<p>The table below extends the capital-only comparison in the main text to include the NPV of ongoing risk exposure over the project's 50-year life.</p>
+<table>
 <thead>
-<tr><th>Scenario</th><th>HFTD</th><th>Construction</th><th>Hardening</th><th>ROW</th><th>PSPS (NPV)</th><th>Wildfire (NPV)</th><th>Total</th></tr>
+<tr>
+<th>Scenario</th>
+<th>HFTD</th>
+<th style="text-align: right;">Construction</th>
+<th style="text-align: right;">Hardening</th>
+<th style="text-align: right;">ROW</th>
+<th style="text-align: right;">PSPS (NPV)</th>
+<th style="text-align: right;">Wildfire (NPV)</th>
+<th style="text-align: right;">Total</th>
+</tr>
 </thead>
 <tbody>
-<tr><td class="route-name">Avoid fire zones</td><td><span class="hftd-badge hftd-low">3%</span></td><td class="num">$242M</td><td class="num">$1M</td><td class="num">$43M</td><td class="num">$16M</td><td class="num">$10M</td><td class="num total">$313M</td></tr>
-<tr><td class="route-name">Balanced</td><td><span class="hftd-badge hftd-low">4%</span></td><td class="num">$240M</td><td class="num">$2M</td><td class="num">$32M</td><td class="num">$24M</td><td class="num">$15M</td><td class="num total">$312M</td></tr>
-<tr class="highlight"><td class="route-name">Utility-realistic</td><td><span class="hftd-badge hftd-med">11%</span></td><td class="num">$218M</td><td class="num">$4M</td><td class="num">$27M</td><td class="num">$62M</td><td class="num">$35M</td><td class="num total">$344M</td></tr>
-<tr><td class="route-name">Shortest path</td><td><span class="hftd-badge hftd-med">14%</span></td><td class="num">$202M</td><td class="num">$4M</td><td class="num">$34M</td><td class="num">$78M</td><td class="num">$40M</td><td class="num total">$359M</td></tr>
-<tr><td class="route-name">Co-locate w/ existing</td><td><span class="hftd-badge hftd-med">15%</span></td><td class="num">$244M</td><td class="num">$5M</td><td class="num">$20M</td><td class="num">$83M</td><td class="num">$52M</td><td class="num total">$404M</td></tr>
-<tr><td class="route-name">Follow terrain</td><td><span class="hftd-badge hftd-med">16%</span></td><td class="num">$233M</td><td class="num">$6M</td><td class="num">$38M</td><td class="num">$89M</td><td class="num">$53M</td><td class="num total">$418M</td></tr>
-<tr><td class="route-name">Follow existing ROW</td><td><span class="hftd-badge hftd-high">46%</span></td><td class="num">$286M</td><td class="num">$25M</td><td class="num">$39M</td><td class="num">$263M</td><td class="num">$193M</td><td class="num total">$806M</td></tr>
-<tr class="reference"><td class="route-name">Existing proxy (Moss Ldg–Metcalf)</td><td><span class="hftd-badge hftd-extreme">60%</span></td><td class="num">$232M</td><td class="num">$28M</td><td class="num">$14M</td><td class="num">$338M</td><td class="num">$201M</td><td class="num total">$813M</td></tr>
-<tr class="reference"><td class="route-name">Straight line</td><td><span class="hftd-badge hftd-extreme">85%</span></td><td class="num">$221M</td><td class="num">$38M</td><td class="num">$62M</td><td class="num">$483M</td><td class="num">$274M</td><td class="num total">$1,079M</td></tr>
+<tr>
+<td>Avoid fire zones</td>
+<td>3%</td>
+<td style="text-align: right;">$242M</td>
+<td style="text-align: right;">$1M</td>
+<td style="text-align: right;">$43M</td>
+<td style="text-align: right;">$16M</td>
+<td style="text-align: right;">$10M</td>
+<td style="text-align: right;"><strong>$313M</strong></td>
+</tr>
+<tr>
+<td>Balanced</td>
+<td>4%</td>
+<td style="text-align: right;">$240M</td>
+<td style="text-align: right;">$2M</td>
+<td style="text-align: right;">$32M</td>
+<td style="text-align: right;">$24M</td>
+<td style="text-align: right;">$15M</td>
+<td style="text-align: right;"><strong>$312M</strong></td>
+</tr>
+<tr>
+<td>Utility-realistic</td>
+<td>11%</td>
+<td style="text-align: right;">$218M</td>
+<td style="text-align: right;">$4M</td>
+<td style="text-align: right;">$27M</td>
+<td style="text-align: right;">$62M</td>
+<td style="text-align: right;">$35M</td>
+<td style="text-align: right;"><strong>$344M</strong></td>
+</tr>
+<tr>
+<td>Shortest path</td>
+<td>14%</td>
+<td style="text-align: right;">$202M</td>
+<td style="text-align: right;">$4M</td>
+<td style="text-align: right;">$34M</td>
+<td style="text-align: right;">$78M</td>
+<td style="text-align: right;">$40M</td>
+<td style="text-align: right;"><strong>$359M</strong></td>
+</tr>
+<tr>
+<td>Co-locate w/ existing</td>
+<td>15%</td>
+<td style="text-align: right;">$244M</td>
+<td style="text-align: right;">$5M</td>
+<td style="text-align: right;">$20M</td>
+<td style="text-align: right;">$83M</td>
+<td style="text-align: right;">$52M</td>
+<td style="text-align: right;"><strong>$404M</strong></td>
+</tr>
+<tr>
+<td>Follow terrain</td>
+<td>16%</td>
+<td style="text-align: right;">$233M</td>
+<td style="text-align: right;">$6M</td>
+<td style="text-align: right;">$38M</td>
+<td style="text-align: right;">$89M</td>
+<td style="text-align: right;">$53M</td>
+<td style="text-align: right;"><strong>$418M</strong></td>
+</tr>
+<tr>
+<td>Follow existing ROW</td>
+<td>46%</td>
+<td style="text-align: right;">$286M</td>
+<td style="text-align: right;">$25M</td>
+<td style="text-align: right;">$39M</td>
+<td style="text-align: right;">$263M</td>
+<td style="text-align: right;">$193M</td>
+<td style="text-align: right;"><strong>$806M</strong></td>
+</tr>
+<tr>
+<td>Existing proxy (Moss Ldg–Metcalf)</td>
+<td>60%</td>
+<td style="text-align: right;">$232M</td>
+<td style="text-align: right;">$28M</td>
+<td style="text-align: right;">$14M</td>
+<td style="text-align: right;">$338M</td>
+<td style="text-align: right;">$201M</td>
+<td style="text-align: right;"><strong>$813M</strong></td>
+</tr>
+<tr>
+<td>Straight line</td>
+<td>85%</td>
+<td style="text-align: right;">$221M</td>
+<td style="text-align: right;">$38M</td>
+<td style="text-align: right;">$62M</td>
+<td style="text-align: right;">$483M</td>
+<td style="text-align: right;">$274M</td>
+<td style="text-align: right;"><strong>$1,079M</strong></td>
+</tr>
 </tbody>
 </table>
-
-<p class="table-note">All values in millions of 2024 dollars. PSPS and wildfire columns are net present value over the project's 50-year life at a 6% real discount rate. Reference rows (italicized) are existing/hypothetical baselines, not modeled routes.</p>
-
-<h3>Key takeaways</h3>
-
+<p>All values are in millions of 2024 dollars. PSPS and wildfire columns are net present value over the project's 50-year life at a 6% real discount rate.</p>
+<h4>Key takeaways</h4>
 <ol>
-<li><strong>Base construction dominates all scenarios</strong> — fire-related costs are a meaningful but secondary component of total lifecycle cost.</li>
-<li><strong>The fire cost differential between routing scenarios is significant</strong> — the spread between the lowest-fire and highest-fire routes quantifies what fire zone avoidance is worth in dollar terms.</li>
-<li><strong>PSPS outage costs dwarf other fire-related costs</strong> under mid assumptions, driven by the extremely high value of lost load for data centers.</li>
-<li><strong>Uncertainty is large</strong> — the low-to-high range on total cost spans roughly 2–3×, reflecting genuine uncertainty in fire-related cost parameters.</li>
+<li><strong>Base construction dominates all scenarios.</strong> Fire-related costs are meaningful but secondary in the lower-exposure cases.</li>
+<li><strong>The routing spread is still material.</strong> The gap between low-fire and high-fire routes quantifies what fire-zone avoidance is worth in dollar terms.</li>
+<li><strong>PSPS outage costs drive much of the risk.</strong> That result is a direct consequence of the very high value of lost load for large data center customers.</li>
+<li><strong>Uncertainty is large.</strong> Total lifecycle cost spans roughly 2–3x across low/high assumptions.</li>
 </ol>
-
-<h3>Sensitivity analysis</h3>
-
-<p>Base case: utility-realistic route (11% HFTD, 71% existing ROW), mid assumptions. Total lifecycle cost: <strong>$344M</strong>. Each parameter is varied individually from its low to high value while all others are held at mid.</p>
-
+<h4>Sensitivity analysis</h4>
+<p>Base case: utility-realistic route (11% HFTD), mid assumptions. Total lifecycle cost: <strong>$344M</strong>.</p>
 <figure class="wide">
-<img src="dc-fire-figures/fig_sensitivity_tornado.png" alt="Sensitivity tornado chart">
-<figcaption><strong>Figure D1.</strong> One-at-a-time sensitivity analysis for the utility-realistic route. Bars show the change in total lifecycle cost when each parameter is varied from low to high. Blue = lower cost, orange = higher cost. Red squares show structural "what if" scenarios. Wildfire damage, value of lost load, and base construction cost are the three largest drivers of uncertainty.</figcaption>
+<img src="dc-fire-figures/fig_sensitivity_tornado.png" alt="Figure D1: Sensitivity tornado chart">
+<figcaption><strong>Figure D1.</strong> One-at-a-time sensitivity analysis for the utility-realistic route. Bars show the change in total lifecycle cost when each parameter is varied from low to high. Blue = lower cost, orange = higher cost. Red squares show structural "what if" scenarios. Wildfire damage, value of lost load, and base construction cost are the three largest drivers of uncertainty. Data: author's cost model.</figcaption>
 </figure>
-
-<table class="cost-table">
+<table>
 <thead>
-<tr><th>Parameter</th><th>Low</th><th>Mid</th><th>High</th><th>Low Cost</th><th>High Cost</th><th>Swing</th></tr>
+<tr>
+<th>Parameter</th>
+<th style="text-align: right;">Low</th>
+<th style="text-align: right;">Mid</th>
+<th style="text-align: right;">High</th>
+<th style="text-align: right;">Low Cost</th>
+<th style="text-align: right;">High Cost</th>
+<th style="text-align: right;">Swing</th>
+</tr>
 </thead>
 <tbody>
-<tr><td>Wildfire damage/fire</td><td class="num">50</td><td class="num">200</td><td class="num">1,000</td><td class="num">$318M</td><td class="num">$482M</td><td class="num total">$164M</td></tr>
-<tr><td>Value of lost load</td><td class="num">5,000</td><td class="num">20,000</td><td class="num">50,000</td><td class="num">$298M</td><td class="num">$437M</td><td class="num total">$139M</td></tr>
-<tr><td>Base construction cost</td><td class="num">5.0</td><td class="num">6.5</td><td class="num">9.0</td><td class="num">$294M</td><td class="num">$428M</td><td class="num total">$134M</td></tr>
-<tr><td>PSPS probability</td><td class="num">0.05</td><td class="num">0.15</td><td class="num">0.30</td><td class="num">$303M</td><td class="num">$406M</td><td class="num total">$103M</td></tr>
-<tr><td>Data center load</td><td class="num">200</td><td class="num">500</td><td class="num">1,000</td><td class="num">$307M</td><td class="num">$406M</td><td class="num total">$99M</td></tr>
-<tr><td>Wildfire ignition rate</td><td class="num">0.001</td><td class="num">0.003</td><td class="num">0.008</td><td class="num">$321M</td><td class="num">$402M</td><td class="num total">$81M</td></tr>
-<tr><td>Discount rate</td><td class="num">0.04</td><td class="num">0.06</td><td class="num">0.08</td><td class="num">$379M</td><td class="num">$323M</td><td class="num total">$57M</td></tr>
-<tr><td>ROW (new)</td><td class="num">1.0</td><td class="num">2.0</td><td class="num">4.0</td><td class="num">$335M</td><td class="num">$364M</td><td class="num total">$29M</td></tr>
-<tr><td>ROW (existing)</td><td class="num">0.1</td><td class="num">0.3</td><td class="num">0.5</td><td class="num">$340M</td><td class="num">$349M</td><td class="num total">$10M</td></tr>
-<tr><td>Fire hardening (Tier 2)</td><td class="num">0.5</td><td class="num">1.0</td><td class="num">2.0</td><td class="num">$343M</td><td class="num">$348M</td><td class="num total">$5M</td></tr>
-<tr><td>Fire hardening (Tier 3)</td><td class="num">1.0</td><td class="num">2.0</td><td class="num">4.0</td><td class="num">$344M</td><td class="num">$344M</td><td class="num total">$0M</td></tr>
+<tr>
+<td>Wildfire damage/fire</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">$318M</td>
+<td style="text-align: right;">$482M</td>
+<td style="text-align: right;">$164M</td>
+</tr>
+<tr>
+<td>Value of lost load</td>
+<td style="text-align: right;">5000</td>
+<td style="text-align: right;">20000</td>
+<td style="text-align: right;">50000</td>
+<td style="text-align: right;">$298M</td>
+<td style="text-align: right;">$437M</td>
+<td style="text-align: right;">$139M</td>
+</tr>
+<tr>
+<td>Base construction cost</td>
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">6.5</td>
+<td style="text-align: right;">9.0</td>
+<td style="text-align: right;">$294M</td>
+<td style="text-align: right;">$428M</td>
+<td style="text-align: right;">$134M</td>
+</tr>
+<tr>
+<td>PSPS probability</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">$303M</td>
+<td style="text-align: right;">$406M</td>
+<td style="text-align: right;">$103M</td>
+</tr>
+<tr>
+<td>Data center load</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">$307M</td>
+<td style="text-align: right;">$406M</td>
+<td style="text-align: right;">$99M</td>
+</tr>
+<tr>
+<td>Wildfire ignition rate</td>
+<td style="text-align: right;">0.001</td>
+<td style="text-align: right;">0.003</td>
+<td style="text-align: right;">0.008</td>
+<td style="text-align: right;">$321M</td>
+<td style="text-align: right;">$402M</td>
+<td style="text-align: right;">$81M</td>
+</tr>
+<tr>
+<td>Discount rate</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">$379M</td>
+<td style="text-align: right;">$323M</td>
+<td style="text-align: right;">$57M</td>
+</tr>
+<tr>
+<td>ROW (new)</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">$335M</td>
+<td style="text-align: right;">$364M</td>
+<td style="text-align: right;">$29M</td>
+</tr>
+<tr>
+<td>ROW (existing)</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">$340M</td>
+<td style="text-align: right;">$349M</td>
+<td style="text-align: right;">$10M</td>
+</tr>
+<tr>
+<td>Fire hardening (Tier 2)</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">$343M</td>
+<td style="text-align: right;">$348M</td>
+<td style="text-align: right;">$5M</td>
+</tr>
+<tr>
+<td>Fire hardening (Tier 3)</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">$344M</td>
+<td style="text-align: right;">$344M</td>
+<td style="text-align: right;">$0M</td>
+</tr>
 </tbody>
 </table>
-
-<p class="table-note">Sorted by swing (largest impact first). The Tier 3 hardening row shows $0 swing because the utility-realistic route has 0% Tier 3 exposure. Discount rate has an inverted effect: higher rates reduce the NPV of future risk costs.</p>
-
-<h3>Structural scenarios</h3>
-
-<p>Beyond one-at-a-time parameter sweeps, three "what if" scenarios test whether the fire cost premium survives under alternative structural assumptions:</p>
-
-<table class="cost-table">
+<p>Sorted by swing. The Tier 3 hardening row shows no movement because the utility-realistic route has no Tier 3 exposure.</p>
+<h4>Structural scenarios</h4>
+<p>Three "what if" scenarios test whether the fire-cost premium survives under different structural assumptions:</p>
+<table>
 <thead>
-<tr><th>Scenario</th><th>Description</th><th>Total Cost</th><th>vs. Base</th></tr>
+<tr>
+<th>Scenario</th>
+<th>Description</th>
+<th style="text-align: right;">Total Cost</th>
+<th style="text-align: right;">vs. Base</th>
+</tr>
 </thead>
 <tbody>
-<tr><td class="route-name">No PSPS on 500 kV</td><td>PSPS probability = 0 (500 kV never de-energized)</td><td class="num">$282M</td><td class="num total">−$62M</td></tr>
-<tr><td class="route-name">Wildfire liability capped</td><td>Wildfire damage capped at $50M (insured amount, no inverse condemnation)</td><td class="num">$318M</td><td class="num total">−$26M</td></tr>
-<tr><td class="route-name">No fire hardening</td><td>Zero hardening premium (standard construction in HFTD)</td><td class="num">$341M</td><td class="num total">−$4M</td></tr>
+<tr>
+<td>No PSPS on 500 kV</td>
+<td>PSPS probability = 0 (500 kV never de-energized)</td>
+<td style="text-align: right;">$282M</td>
+<td style="text-align: right;">-$62M</td>
+</tr>
+<tr>
+<td>Wildfire liability capped</td>
+<td>Wildfire damage capped at $50M (insured amount, no inverse condemnation)</td>
+<td style="text-align: right;">$318M</td>
+<td style="text-align: right;">-$26M</td>
+</tr>
+<tr>
+<td>No fire hardening</td>
+<td>Zero hardening premium (standard construction in HFTD)</td>
+<td style="text-align: right;">$341M</td>
+<td style="text-align: right;">-$4M</td>
+</tr>
 </tbody>
 </table>
-
-<p>Even under the most aggressive assumption — that 500 kV lines are never subject to PSPS — the fire-related cost premium doesn't disappear; it drops by $62M but wildfire liability and ROW costs remain. The finding that fire zone routing costs more is robust across all three structural alternatives.</p>
-
+<p>Even under the most aggressive assumption — that 500 kV lines are never subject to PSPS — the fire-related cost premium does not disappear. It falls, but wildfire liability and ROW costs remain.</p>
+<p>Full code, data, and methodology available in the project repository.</p>
 </div>
 </details>
+<hr>
+<p><em>This analysis uses only public data and open-source tools. It is independent research — not affiliated with any utility, developer, or regulatory party.</em></p>
 
-<div class="note">
-<p>This analysis uses only public data and open-source tools. It is independent research — not affiliated with any utility, developer, or regulatory party.</p>
-</div>
+
+
+
+
+
+
+
+
 
 </div>
 </body>

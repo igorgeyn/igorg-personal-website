@@ -67,7 +67,7 @@ h1 {
   margin-bottom: 6px;
   letter-spacing: -0.012em;
   text-wrap: balance;
-  max-width: 19ch;
+  max-width: 26ch;
 }
 
 h1::after {
@@ -137,6 +137,8 @@ h3::before {
 
 p {
   margin-bottom: 11px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 strong {
@@ -164,6 +166,11 @@ figure {
 figure.wide {
   margin-left: -36px;
   margin-right: -36px;
+}
+
+figure.wide figcaption {
+  margin-left: 36px;
+  margin-right: 36px;
 }
 
 figure img {
@@ -350,6 +357,8 @@ ol {
 
 li {
   margin-bottom: 4px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 details {
@@ -378,6 +387,16 @@ summary:hover {
 
 .detail-content {
   padding: 12px;
+}
+
+.detail-content figure.wide {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.detail-content figure.wide figcaption {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 hr {
@@ -414,6 +433,11 @@ hr {
   figure.wide {
     margin-left: -20px;
     margin-right: -20px;
+  }
+
+  figure.wide figcaption {
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }
 
