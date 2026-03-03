@@ -1680,31 +1680,59 @@ span.pub-title {
 }
 
 /* === Home Page Tighter Spacing === */
-.intro {
+.home-page .main {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+.home-page .main section {
+    margin-bottom: 1.35rem;
+}
+
+.home-page .hero {
+    margin-bottom: 1.75rem;
+    padding-bottom: 1rem;
+}
+
+.home-page .hero-subtitle {
+    margin-bottom: 0.3rem;
+}
+
+.home-page .main h2 {
+    margin-bottom: 0.55rem;
+    padding-bottom: 0.28rem;
+}
+
+.home-page .main p {
+    margin-bottom: 0.8rem;
+    line-height: 1.35;
+}
+
+.home-page .intro {
     line-height: 1.6;
 }
 
-.intro p {
+.home-page .intro p {
     margin-bottom: 0.9rem;
 }
 
-.intro .lead {
+.home-page .intro .lead {
     margin-bottom: 1rem;
 }
 
-.intro ul {
+.home-page .intro ul {
     margin-top: 0.5rem;
     margin-bottom: 1rem;
     padding-left: 1.5rem;
     list-style: none;
 }
 
-.intro li {
+.home-page .intro li {
     margin-bottom: 0.4rem;
     position: relative;
 }
 
-.intro li::before {
+.home-page .intro li::before {
     content: '—';
     position: absolute;
     left: -1.5rem;
@@ -1888,5 +1916,156 @@ span.pub-title {
     .projects-grid {
         flex-direction: column;
         gap: 0.75rem;
+    }
+}
+
+/* === Resume PDF Source === */
+.resume-pdf-page {
+    background: #fff;
+    color: var(--color-ink);
+    text-align: left;
+}
+
+.resume-pdf-main {
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 0.5in 0.55in;
+    font-family: var(--font-body);
+}
+
+.resume-pdf-header {
+    margin-bottom: 0.9rem;
+}
+
+.resume-pdf-title {
+    font-family: var(--font-body);
+    font-size: 1.55rem;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 0.2rem;
+    letter-spacing: -0.02em;
+}
+
+.resume-pdf-contact,
+.resume-pdf-location {
+    font-size: 0.82rem;
+    line-height: 1.35;
+    margin-bottom: 0.1rem;
+}
+
+.resume-pdf-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+.resume-pdf-contact a,
+.resume-pdf-education-line a,
+.resume-pdf-summary-line a {
+    color: inherit;
+    border-bottom: none;
+}
+
+.resume-pdf-contact a:hover,
+.resume-pdf-education-line a:hover,
+.resume-pdf-summary-line a:hover {
+    color: inherit;
+    border-bottom: none;
+}
+
+.resume-pdf-section {
+    margin-bottom: 0.74rem;
+}
+
+.resume-pdf-section h2 {
+    font-family: var(--font-body);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.35rem;
+    padding-bottom: 0.15rem;
+    border-bottom: 1px solid #9e9e9e;
+}
+
+.resume-pdf-skills,
+.resume-pdf-entry p,
+.resume-pdf-education-line,
+.resume-pdf-summary-line {
+    font-size: 0.755rem;
+    line-height: 1.34;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.resume-pdf-skills {
+    margin-bottom: 0;
+}
+
+.resume-pdf-sep {
+    margin: 0 0.25rem;
+}
+
+.resume-pdf-entry {
+    margin-bottom: 0.4rem;
+}
+
+.resume-pdf-entry-last {
+    margin-bottom: 0;
+}
+
+.resume-pdf-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 0.08rem;
+}
+
+.resume-pdf-entry-title {
+    font-size: 0.82rem;
+    line-height: 1.3;
+}
+
+.resume-pdf-entry-date {
+    flex-shrink: 0;
+    font-size: 0.76rem;
+    line-height: 1.3;
+    white-space: nowrap;
+}
+
+.resume-pdf-entry p,
+.resume-pdf-education-line,
+.resume-pdf-summary-line {
+    margin-bottom: 0.14rem;
+}
+
+.resume-pdf-education-line:last-child,
+.resume-pdf-summary-line:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 720px) {
+    .resume-pdf-main {
+        padding: 1rem;
+    }
+
+    .resume-pdf-entry-header {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .resume-pdf-entry-date {
+        white-space: normal;
+    }
+}
+
+@media print {
+    .resume-pdf-page {
+        background: #fff;
+    }
+
+    .resume-pdf-main {
+        max-width: none;
+        padding: 0;
     }
 }
