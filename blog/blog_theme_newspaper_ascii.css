@@ -12,9 +12,9 @@
   --table-head: #f3f5f8;
   --row-alt: #fafbfd;
   --highlight: #eef4ff;
-  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, "Times New Roman", serif;
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --serif: Charter, Georgia, Cambria, "Times New Roman", serif;
+  --sans: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
 * {
@@ -39,7 +39,7 @@ body {
 }
 
 .container {
-  max-width: 908px; /* ~0.75in narrower than 980px at 96dpi */
+  max-width: 812px;
   margin: 0 auto;
   padding: 28px 24px 64px;
   background: var(--surface);
@@ -164,13 +164,13 @@ figure {
 }
 
 figure.wide {
-  margin-left: -36px;
-  margin-right: -36px;
+  margin-left: -84px;
+  margin-right: -84px;
 }
 
 figure.wide figcaption {
-  margin-left: 36px;
-  margin-right: 36px;
+  margin-left: 84px;
+  margin-right: 84px;
 }
 
 figure img {
