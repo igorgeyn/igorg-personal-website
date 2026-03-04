@@ -70,15 +70,6 @@ h1 {
   max-width: 26ch;
 }
 
-h1::after {
-  content: " // FIELD BRIEF";
-  font-family: var(--mono);
-  font-size: 0.32em;
-  color: #7a3f39;
-  letter-spacing: 0.08em;
-  vertical-align: middle;
-}
-
 .subtitle {
   color: var(--muted);
   font-size: clamp(0.95rem, 1.08vw, 1.05rem);
@@ -449,11 +440,6 @@ hr {
   .container {
     padding-top: 18px;
     padding-bottom: 44px;
-  }
-
-  h1::after {
-    display: block;
-    margin-top: 6px;
   }
 
   h2 {
