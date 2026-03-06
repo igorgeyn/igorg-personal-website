@@ -293,16 +293,7 @@ section:last-of-type {
     font-size: 0.9rem;
 }
 
-/* === Quick Links === */
-.quick-links {
-    background: var(--color-paper-warm);
-    padding: var(--spacing-md);
-    border-left: 3px solid var(--color-accent);
-}
-
-.quick-links p {
-    margin: 0;
-}
+/* === Quick Links (legacy, unused) */
 
 /* === Footer === */
 .footer {
@@ -1803,12 +1794,7 @@ span.pub-title {
     display: flex;
     gap: var(--spacing-sm);
     justify-content: center;
-}
-
-@media (max-width: 768px) {
-    .quick-links-buttons {
-        flex-wrap: wrap;
-    }
+    align-items: center;
 }
 
 .quick-link {
@@ -1820,6 +1806,13 @@ span.pub-title {
     border-radius: 4px;
     text-decoration: none;
     color: var(--color-ink);
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .quick-links-buttons {
+        flex-wrap: wrap;
+    }
 }
 
 .quick-link:hover {
