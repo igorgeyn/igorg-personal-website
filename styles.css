@@ -1832,6 +1832,20 @@ span.pub-title {
     border-color: var(--color-accent-hover);
 }
 
+/* === Connect Section (bottom of home page) === */
+.connect {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-border);
+}
+
+.connect-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 /* Education grid */
 .education-grid {
     display: grid;
