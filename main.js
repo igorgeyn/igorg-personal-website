@@ -1,5 +1,16 @@
-// Mobile navigation toggle
+// Mobile navigation toggle + theme toggle
 document.addEventListener('DOMContentLoaded', function() {
+    // Theme toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+    }
+
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
     

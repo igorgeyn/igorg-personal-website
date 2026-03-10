@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your A/B Test Was Representative. Your Analysis Wasn't. — Igor Geyn</title>
+    <meta name="description" content="You randomized perfectly—but your analysis sample is skewed. A practical guide to diagnosing measurement coverage problems in A/B tests and deciding when reweighting or MRP-style adjustment is worth it.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Your A/B Test Was Representative. Your Analysis Wasn't.">
+    <meta property="og:description" content="You randomized perfectly—but your analysis sample is skewed. A practical guide to diagnosing measurement coverage problems in A/B tests and deciding when reweighting or MRP-style adjustment is worth it.">
+    <meta property="og:url" content="https://igorgeyn.com/blog/ab-test-representative-analysis-wasnt.html">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Your A/B Test Was Representative. Your Analysis Wasn't.">
+    <meta name="twitter:description" content="You randomized perfectly—but your analysis sample is skewed. A practical guide to diagnosing measurement coverage problems in A/B tests and deciding when reweighting or MRP-style adjustment is worth it.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <script>(function(){var t=localStorage.getItem('theme');if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6NGE1NBEKZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6NGE1NBEKZ');
+    </script>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo">Igor Geyn</a>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../resume.html">Resume/CV</a></li>
+                <li><a href="../research.html">Research</a></li>
+                <li><a href="../freelance.html">Freelance</a></li>
+                <li><a href="index.html" class="active">Blog</a></li>
+            </ul>
+            <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="4.22" x2="19.78" y2="5.64"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <main class="main">
+        <article class="blog-post">
+            <nav class="post-breadcrumb">
+                <a href="index.html">&larr; Blog</a>
+            </nav>
+            <header class="post-header">
+                <h1>Your A/B Test Was Representative. Your Analysis Wasn't.</h1>
+                <time class="post-date" datetime="2026-02-20">February 20, 2026</time>
+            </header>
+            <div class="post-content">
+
+<blockquote>
+<p><strong>TL;DR</strong> &mdash; Randomized assignment doesn't guarantee a representative <em>analysis</em> sample. Telemetry loss, privacy filters, app-version gaps, and metric-firing conditions all create measurement coverage skew that biases your ATE&mdash;even when the experiment itself is perfectly designed. This post walks through a simulated example, compares naive ITT vs. reweighted ITT vs. MRP-style partial-pooling estimators, and gives you a Monday-morning checklist for catching and fixing this in your own experiments.</p>
+</blockquote>
+
+<p>You did the "right" thing: broad rollout, randomized assignment, no weird eligibility filters. The experiment platform did its job.</p>
+
+<p>Then you sanity-checked the analysis sample against known company demographics&hellip;and it was skewed. Not by a little.</p>
+
+<ul>
+<li>Web is under-measured.</li>
+<li>Some regions are missing more than others.</li>
+<li>New users drop out of logging at higher rates.</li>
+<li>And your metric is computed only when certain events fire (or fire reliably).</li>
+</ul>
+
+<p>If this sounds familiar: you don't have a randomization problem&mdash;you have a <strong>measurement coverage problem</strong>. And that's an external validity problem even when the experiment is perfectly randomized.</p>
+
+<p>This post is a practical, engineering-style guide to:</p>
+
+<ol>
+<li>diagnosing "representative assignment, skewed measurement,"</li>
+<li>deciding whether you should do anything beyond a naive ITT,</li>
+<li>and quantifying whether a more sophisticated adjustment (MRP-style) is worth it.</li>
+</ol>
+
+<hr>
+
+<h2>Why this happens in real systems</h2>
+
+<p>In a textbook A/B test, every assigned user contributes an outcome. In production, that's rarely true. Here are the most common culprits:</p>
+
+<ul>
+<li><strong>Telemetry loss.</strong> Client-side logging fails more on low-end devices, spotty networks, and older app versions. Web platforms often lose events to ad blockers and aggressive browser privacy settings. The result: your analysis sample under-represents exactly the users who differ most from your power users.</li>
+<li><strong>Privacy and consent filters.</strong> GDPR opt-outs, CCPA deletions, and app tracking transparency prompts remove users from your analysis non-randomly. Users who opt out tend to be more privacy-conscious, more technically savvy, and often in specific geos (EU, California).</li>
+<li><strong>Eligibility vs. measurement.</strong> A user can be <em>assigned</em> to a treatment arm but never trigger the feature surface (e.g., they don't open the relevant tab, or the feature is gated behind a secondary condition). If your metric only fires when the surface loads, those users vanish from the analysis.</li>
+<li><strong>Metric definition scope.</strong> Many metrics are defined as "among users who did X, what happened to Y?" This conditions on a post-treatment event, which can create collider bias even if the conditioning event seems innocuous.</li>
+</ul>
+
+<p>All of these produce the same signature: <strong>the assigned population and the measured population have different covariate distributions</strong>, and if treatment effects vary across those covariates, your naive estimate is biased for the population-level ATE.</p>
+
+<hr>
+
+<h2>The setting (realistic, and common in tech)</h2>
+
+<ul>
+<li><strong>Population</strong>: <em>all eligible users assigned to the experiment</em></li>
+<li><strong>Analysis dataset</strong>: <em>users for whom the metric is actually observed</em></li>
+</ul>
+
+<p>Those sets differ because "observed" depends on device/network/privacy/app version/edge-case logging paths&hellip;not because randomization failed.</p>
+
+<hr>
+
+<h2>A concrete example (simulated, but close to reality)</h2>
+
+<p>I simulated a large A/B test with user covariates <strong>geo &times; device &times; tenure</strong>, a heterogeneous treatment effect, and a measurement mechanism where outcomes are missing more often for Web, LATAM, and new users (plus mild outcome-dependent missingness).</p>
+
+<h3>Step 1: "Is my analysis sample skewed?"</h3>
+
+<p><img alt="Geo distribution: assigned vs. measured populations" src="images/ab-mrp/dist_geo.png"></p>
+<p><img alt="Device distribution: assigned vs. measured populations" src="images/ab-mrp/dist_device.png"></p>
+<p><img alt="Tenure distribution: assigned vs. measured populations" src="images/ab-mrp/dist_tenure.png"></p>
+
+<h3>Step 2: Where is measurement coverage failing?</h3>
+
+<p><img alt="Coverage heatmap across geo-device-tenure cells" src="images/ab-mrp/coverage_heatmap.png"></p>
+
+<hr>
+
+<h2>The "juice worth the squeeze" harness</h2>
+
+<p>We compare three estimators:</p>
+
+<ul>
+<li><strong>A &mdash; Naive ITT</strong>: diff-in-means among users with observed outcome</li>
+<li><strong>B &mdash; Reweighted ITT</strong>: poststratification/calibration weights to match the assigned population mix</li>
+<li><strong>C &mdash; MRP-like</strong>: partial pool cell-level treatment effects, then poststratify to the assigned mix</li>
+</ul>
+
+<p><img alt="Weight distribution for reweighted estimator" src="images/ab-mrp/weights_hist.png"></p>
+
+<p><img alt="Partial pooling shrinkage of cell-level estimates" src="images/ab-mrp/partial_pooling_cells.png"></p>
+
+<hr>
+
+<h2>Results</h2>
+
+<p><img alt="Estimator comparison: point estimates and confidence intervals" src="images/ab-mrp/estimators_errorbars.png"></p>
+
+<h3>Numeric summary (this run)</h3>
+
+<table>
+<thead>
+<tr><th>Estimator</th><th style="text-align:right">ATE (&Delta; revenue per user, $)</th><th style="text-align:right">SE (bootstrap)</th></tr>
+</thead>
+<tbody>
+<tr><td>True ATE (all assigned)</td><td style="text-align:right">0.1065</td><td style="text-align:right">&mdash;</td></tr>
+<tr><td>Naive ITT (observed only)</td><td style="text-align:right">0.1137</td><td style="text-align:right">0.0052</td></tr>
+<tr><td>Reweighted ITT (poststrat weights)</td><td style="text-align:right">0.1078</td><td style="text-align:right">0.0053</td></tr>
+<tr><td>MRP-like (partial pooling + poststrat)</td><td style="text-align:right">0.1123</td><td style="text-align:right">0.0049</td></tr>
+</tbody>
+</table>
+
+<p>A few takeaways:</p>
+
+<ol>
+<li><strong>Naive ITT can be biased</strong> if measurement coverage is correlated with covariates and/or outcome.</li>
+<li><strong>Reweighting often fixes the headline</strong> when skew is explainable by observed covariates.</li>
+<li><strong>MRP-like adds a bias&ndash;variance trade</strong>: it can stabilize thin slices and reduce wiggle, but it won't automatically move you "toward truth" unless the pooling assumptions line up.</li>
+</ol>
+
+<h3>Stability under resampling</h3>
+
+<p><img alt="Bootstrap distribution of each estimator" src="images/ab-mrp/bootstrap_stability.png"></p>
+
+<hr>
+
+<h2>What to do Monday morning</h2>
+
+<p>A checklist for your next experiment review:</p>
+
+<ol>
+<li><strong>Plot assigned vs. measured distributions.</strong> Break out every covariate you have (geo, device, platform, tenure, plan tier). If the bars look the same, you're probably fine&mdash;stop here and ship the naive ITT.</li>
+<li><strong>If there's visible skew, compute reweighted ITT.</strong> Poststratification weights = (share in assigned) / (share in measured) for each cell. This is fast and requires nothing beyond crosstabs.</li>
+<li><strong>Check weight diagnostics.</strong> Effective sample size (ESS), top-1% weight share, and max/median weight ratio. If ESS drops below ~50% of n, or the top 1% of weights accounts for &gt;5% of the total, your cells are too thin and weights are unstable.</li>
+<li><strong>If weights are spiky, try partial pooling.</strong> Fit a multilevel model (or simple ridge/shrinkage) on cell-level treatment effects, then poststratify. This is the MRP-like approach&mdash;it trades a small amount of bias for substantial variance reduction in thin cells.</li>
+<li><strong>Report both estimates.</strong> If naive and reweighted agree, great&mdash;that's a robustness win. If they disagree meaningfully, the difference itself is informative: it tells you the treatment effect varies across the coverage gap.</li>
+</ol>
+
+<p>Diagnostics from this simulation's reweighting step:</p>
+
+<ul>
+<li><strong>ESS</strong> &asymp; 160,609 (out of n = 169,494)</li>
+<li><strong>Top 1% weight share</strong> &asymp; 2.23%</li>
+<li><strong>Max/median weight ratio</strong> &asymp; 3.14</li>
+</ul>
+
+<p>All healthy&mdash;which is why reweighting worked well here and MRP didn't add much.</p>
+
+<hr>
+
+<h2>Gotchas</h2>
+
+<p>A few things that can make this harder than the simulation above suggests:</p>
+
+<ul>
+<li><strong>MNAR (missing not at random).</strong> If missingness depends on the <em>outcome itself</em>&mdash;e.g., users who would have churned are also less likely to fire the metric event&mdash;then reweighting on observed covariates won't fully fix the bias. You'll need bounds, sensitivity analysis, or a direct fix to the logging pipeline. The simulation above includes mild outcome-dependent missingness; real systems can be worse.</li>
+<li><strong>Conditioning on post-treatment subsets (collider bias).</strong> If your metric is defined as "revenue among users who opened the app at least once this week," you're conditioning on a post-treatment variable (app opens). If treatment affects app opens, you've opened a collider path and your estimate is biased even with perfect coverage. Fix: define metrics on the full assigned population whenever possible (e.g., revenue per assigned user, including zeros).</li>
+<li><strong>Too many cells, not enough data.</strong> If you poststratify on geo &times; device &times; tenure &times; plan &times; OS version, you'll end up with thousands of cells, many with single-digit counts. Reweighting becomes unstable and MRP becomes essential&mdash;but also harder to validate. Start coarse, add dimensions only when the data support it.</li>
+<li><strong>Multiple metrics, different coverage.</strong> Your primary metric and your guardrail metrics may have different measurement coverage patterns. A treatment that looks neutral on a well-measured guardrail can still be biased on a poorly-measured primary. Check coverage for each metric separately.</li>
+</ul>
+
+<hr>
+
+<h2>Practical decision rule</h2>
+
+<p>Start here:</p>
+
+<ul>
+<li>If assigned vs. measured distributions are close &rarr; stop, ship naive ITT.</li>
+<li>If there's visible skew &rarr; compute reweighted ITT.</li>
+<li>If reweighting creates spiky weights or slices are unstable &rarr; try MRP-like pooling + poststrat.</li>
+</ul>
+
+<hr>
+
+<h2>Appendix: reproduce this analysis</h2>
+
+<p>The full simulation, all figures, and the summary table can be reproduced with a single Python script. It generates synthetic A/B test data with realistic coverage skew and computes all three estimators.</p>
+
+<p><a href="ab-test-representative-analysis-wasnt/reproduce/simulate_and_plot.py">Download simulate_and_plot.py</a></p>
+
+<p>Minimum inputs for running this on your own data:</p>
+
+<ul>
+<li>Counts for <em>all assigned</em> users by covariates (geo/device/tenure/plan)</li>
+<li>Counts for <em>measured</em> users by the same covariates</li>
+<li>Outcome by treatment among measured users</li>
+</ul>
+
+<p>Then:</p>
+
+<ol>
+<li>Plot assigned vs. measured distributions</li>
+<li>Compute naive ITT</li>
+<li>Compute poststrat/calibration weights + reweighted ITT</li>
+<li>Compute cell-level treatment effects, partial pool, then poststratify</li>
+</ol>
+
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <p>Independent analysis. Does not reflect views of UCLA or any other organization.</p>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>
