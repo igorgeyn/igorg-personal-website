@@ -1677,7 +1677,7 @@ span.pub-title {
 }
 
 .home-page .main section {
-    margin-bottom: 1.35rem;
+    margin-bottom: 2.25rem;
 }
 
 .home-page .hero {
@@ -2012,7 +2012,7 @@ span.pub-title {
 }
 
 .resume-pdf-section {
-    margin-bottom: 0.74rem;
+    margin-bottom: 0.95rem;
 }
 
 .resume-pdf-section h2 {
@@ -2044,7 +2044,7 @@ span.pub-title {
 }
 
 .resume-pdf-entry {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.55rem;
 }
 
 .resume-pdf-entry-last {
@@ -2074,7 +2074,7 @@ span.pub-title {
 .resume-pdf-entry p,
 .resume-pdf-education-line,
 .resume-pdf-summary-line {
-    margin-bottom: 0.14rem;
+    margin-bottom: 0.22rem;
 }
 
 .resume-pdf-education-line:last-child,
