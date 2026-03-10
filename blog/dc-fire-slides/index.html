@@ -515,7 +515,7 @@ html, body { background: var(--bg-base); }
   <h2>Executive Summary</h2>
   <p style="max-width: 800px; font-size: 0.78em; line-height: 1.55; color: var(--text-secondary);">California's data center boom is driving the largest transmission buildout in a generation. The centerpiece is the <strong style="color: var(--text-primary);">Manning&ndash;Metcalf 500 kV corridor</strong> &mdash; ~36 miles of new 500 kV line through the Diablo Range foothills south of San Jose, with an estimated cost of $500&ndash;700M and an in-service target of 2034. Roughly <strong style="color: var(--tier2);">60% of the corridor passes through CPUC High Fire Threat Districts</strong>, more than double the 25% average for PG&amp;E's existing 500 kV network. Depending on routing, HFTD exposure ranges from 3% to 85% &mdash; fire-avoidant routes exist but require longer paths through the Central Valley.</p>
   <p style="max-width: 800px; font-size: 0.78em; line-height: 1.55; color: var(--text-secondary);">The cost consequences are large. Lifecycle cost differences between routes reach up to <strong style="color: var(--text-primary);">$767M</strong> over 50 years, driven primarily by PSPS outage risk and wildfire liability &mdash; categories that can account for up to 70% of total cost on high-fire routes. The corridor already experiences shutoffs: <strong style="color: var(--text-primary);">58 PSPS events</strong> on existing lower-voltage infrastructure since 2019, with a 41-hour median duration that far exceeds the 4&ndash;8 hours of battery backup most data centers carry. A single 24-hour shutoff on 500 MW of data center load represents roughly <strong style="color: var(--text-primary);">$240M</strong> in economic damage.</p>
-  <p style="max-width: 800px; font-size: 0.78em; line-height: 1.55; color: var(--text-secondary);">Despite this, PG&amp;E's Rule 30 filing &mdash; the document shaping cost allocation for this infrastructure &mdash; contains <strong style="color: var(--tier2);">zero mentions</strong> of fire, wildfire, HFTD, PSPS, or hardening. This is not an oversight by any single actor; it is a structural consequence of sequential regulation, where cost allocation is locked before route selection and fire analysis. The CEQA/CPCN application has not been filed. The window to incorporate fire risk into planning is still open.</p>
+  <p style="max-width: 800px; font-size: 0.78em; line-height: 1.55; color: var(--text-secondary);">California's transmission approval process is sequential: CAISO determines need, the CPUC sets cost allocation, and a separate CEQA/CPCN proceeding selects the route and evaluates environmental impacts including fire. The Manning&ndash;Metcalf CEQA/CPCN application has not yet been filed &mdash; exact routing remains to be determined.</p>
   <p style="margin-top: 14px; font-size: 0.72em; color: var(--text-muted); max-width: 800px;">Independent analysis built on public geospatial data (HIFLD, CPUC HFTD v3), PSPS records, CAISO planning documents, and route/cost modeling. All scenarios are illustrative. <a href="https://www.igorgeyn.com/blog/california-data-center-fire-risk.html">Read the full analysis &rarr;</a></p>
 </section>
 
@@ -544,7 +544,7 @@ html, body { background: var(--bg-base); }
 <!-- SLIDE 5: CORRIDOR MAP -->
 <section>
   <h2>The Largest New Line Crosses the Most Fire-Exposed Terrain</h2>
-  <p class="slide-desc">New 500 kV from Manning (Hollister) to Metcalf (south San Jose) through the Diablo Range foothills. PG&amp;E has not filed its CEQA/CPCN application &mdash; exact routing is undetermined, but every plausible corridor crosses significant fire-threat terrain.</p>
+  <p class="slide-desc">New 500 kV from Manning (Hollister) to Metcalf (south San Jose) through the Diablo Range foothills. Exact routing has not been finalized &mdash; every plausible corridor crosses significant fire-threat terrain.</p>
   <div class="two-col" style="align-items: stretch; flex: 1; min-height: 0;">
     <div class="col-img" style="flex: 1.4;"><div id="chart-corridor-map" class="chart-container" style="margin: 0;"></div></div>
     <div class="col-stats" style="flex: 0.6;">
@@ -579,7 +579,7 @@ html, body { background: var(--bg-base); }
   <p class="slide-desc">Manning Substation (southern terminus) has 78% HFTD within 5 km. Moving north, exposure drops sharply &mdash; Metcalf 37%, San Jose B 14%, and effectively 0% at Newark and Ravenswood where data centers connect. The fire risk is upstream and invisible at the point of consumption.</p>
   <div id="chart-substation-gradient" class="chart-container"></div>
   <div class="slide-footer">
-    <div class="why-matters"><strong>Why this matters:</strong> A data center operator in Newark sees 0% HFTD at their substation, but their power flows through a corridor that is 78% HFTD at the source end. The fire risk is real but invisible at the point of consumption &mdash; and absent from interconnection agreements.</div>
+    <div class="why-matters"><strong>Why this matters:</strong> A data center operator in Newark sees 0% HFTD at their substation, but their power flows through a corridor that is 78% HFTD at the source end. The fire risk is real but invisible at the point of consumption.</div>
     <div class="source-note">5 km buffer analysis. <a href="https://hifld-geoplatform.hub.arcgis.com/">HIFLD</a> substations &times; <a href="https://www.cpuc.ca.gov/industries-and-topics/wildfires/fire-threat-maps-and-fire-safety-rulemaking">CPUC HFTD v3</a>.</div>
   </div>
 </section>
@@ -596,7 +596,7 @@ html, body { background: var(--bg-base); }
     </div>
   </div>
   <div class="slide-footer">
-    <div class="why-matters"><strong>Why this matters:</strong> The CEQA/CPCN application hasn't been filed &mdash; the route is not locked. Choosing a 4% HFTD route over a 60% route avoids ~$500M in lifecycle fire costs, but adds ~$30M in construction for a longer path. That's a 17:1 benefit-cost ratio.</div>
+    <div class="why-matters"><strong>Why this matters:</strong> Choosing a 4% HFTD route over a 60% route avoids ~$500M in lifecycle fire costs, but adds ~$30M in construction for a longer path &mdash; a 17:1 benefit-cost ratio for fire avoidance.</div>
     <div class="source-note">Least-cost-path with Gilroy/Morgan Hill waypoints. <strong>Illustrative envelopes, not engineering designs.</strong></div>
   </div>
 </section>
@@ -607,7 +607,7 @@ html, body { background: var(--bg-base); }
   <p class="slide-desc">Lifecycle costs include hardening, PSPS outage damages, and wildfire liability &mdash; categories that can dwarf construction cost. Over 50 years, total cost ranges from $312M (4% HFTD route) to $1,079M (85% HFTD). PSPS and wildfire account for up to 70% of lifecycle cost on high-fire routes.</p>
   <div id="chart-cost-impact" class="chart-container"></div>
   <div class="slide-footer">
-    <div class="why-matters"><strong>Why this matters:</strong> Rule 30 sets cost allocation using construction cost only. PSPS and wildfire liability &mdash; which account for up to 70% of lifecycle cost on high-fire routes &mdash; are externalities borne by ratepayers and the utility, not reflected in the interconnection price signal.</div>
+    <div class="why-matters"><strong>Why this matters:</strong> Construction cost alone understates total cost on high-fire routes. PSPS outage damages and wildfire liability can account for up to 70% of lifecycle cost &mdash; categories that scale directly with HFTD exposure.</div>
     <div class="source-note">Construction $6.5M/mi. Hardening $1&ndash;2M/mi (est.). PSPS: 15%/yr, 24-hr, 500 MW, $20k/MWh. Wildfire: 0.003 fires/HFTD-mi/yr, $200M/fire. <strong>Illustrative.</strong></div>
   </div>
 </section>
@@ -655,14 +655,14 @@ html, body { background: var(--bg-base); }
   </div>
 </section>
 
-<!-- SLIDE 12: REGULATORY GAP -->
+<!-- SLIDE 12: REGULATORY PROCESS -->
 <section>
-  <h2>Fire Risk Enters the Regulatory Process Too Late</h2>
-  <p class="slide-desc">California's transmission approval is sequential: CAISO determines need, the CPUC sets cost allocation via Rule 30, then a separate CEQA/CPCN proceeding selects the route and evaluates fire impacts. Cost allocation is locked before the route is known. PG&amp;E's Rule 30 filing (A.24-11-007, ~50 pages) contains <strong style="color: var(--tier2);">zero mentions</strong> of fire, wildfire, HFTD, PSPS, or hardening. The CEQA/CPCN application has not been filed &mdash; the window is still open.</p>
+  <h2>How California Approves Transmission Lines</h2>
+  <p class="slide-desc">California's transmission approval is sequential: CAISO determines need, the CPUC sets cost allocation via Rule 30, then a separate CEQA/CPCN proceeding selects the route and evaluates environmental impacts including fire. Fire exposure and hardening costs become visible at the CEQA/CPCN stage, after the cost allocation framework is established.</p>
   <div id="chart-regulatory" class="chart-container" style="margin-top: 10px;"></div>
-  <p style="margin-top: 10px; font-size: 0.82em; color: var(--text-secondary); max-width: 780px; line-height: 1.45;">PG&amp;E budgeted <strong style="color: var(--text-primary);">$30.6M</strong> for all transmission hardening in 2025. Manning&ndash;Metcalf alone might require <strong style="color: var(--text-primary);">$25&ndash;38M</strong>. <span style="color: var(--dc-blue-light); font-weight: 600;">The CEQA/CPCN application hasn't been filed. The window is still open.</span></p>
+  <p style="margin-top: 10px; font-size: 0.82em; color: var(--text-secondary); max-width: 780px; line-height: 1.45;">PG&amp;E budgeted <strong style="color: var(--text-primary);">$30.6M</strong> for all transmission hardening in 2025. Manning&ndash;Metcalf alone might require <strong style="color: var(--text-primary);">$25&ndash;38M</strong> depending on the route selected.</p>
   <div class="slide-footer">
-    <div class="why-matters"><strong>Why this matters:</strong> Fire analysis enters at Step 3, but cost incentives are locked at Step 2. The route chosen will operate for 50+ years.</div>
+    <div class="why-matters"><strong>Why this matters:</strong> Cost allocation is set at Step 2; fire exposure becomes visible at Step 3. Route decisions for lines operating 50+ years are downstream of cost decisions.</div>
     <div class="source-note"><a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2411007">Rule 30 (A.24-11-007)</a>. CPUC ALJ Feb 2026. <a href="https://www.caiso.com/documents/iso-board-approved-2024-2025-transmission-plan.pdf">CAISO TPP</a>. PG&amp;E 2025 WMP (GH-11).</div>
   </div>
 </section>
@@ -673,7 +673,7 @@ html, body { background: var(--bg-base); }
   <ol class="takeaway-list">
     <li><strong>Fire-avoidant routes exist</strong> (3&ndash;4% HFTD) but require longer paths. The corridor's fire exposure is a route-selection decision, not a given.</li>
     <li><strong>Realistic routes cross 50&ndash;60% fire-threat territory</strong> &mdash; 2.2x the PG&amp;E 500 kV avg. Lifecycle cost differences reach hundreds of millions of dollars.</li>
-    <li><strong>Cost allocation is being set now, before fire exposure is analyzed.</strong> Rule 30 doesn't mention fire. The regulatory process is sequential; fire enters too late.</li>
+    <li><strong>PSPS and wildfire costs can dwarf construction costs.</strong> On high-fire routes, outage damages and liability account for up to 70% of lifecycle cost &mdash; categories that scale with HFTD exposure.</li>
     <li><strong>58 PSPS events already</strong> on existing infrastructure. 41-hour median shutoff far exceeds battery backup (4&ndash;8 hrs).</li>
   </ol>
 </section>
