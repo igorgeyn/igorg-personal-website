@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Igor Geyn - Service and Operations Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-ink: #1a1a1a;
+            --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .resume-pdf-page {
+            background: #fff;
+            color: var(--color-ink);
+            text-align: left;
+        }
+
+        .resume-pdf-main {
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.5in 0.55in;
+            font-family: var(--font-body);
+        }
+
+        .resume-pdf-header {
+            margin-bottom: 0.9rem;
+        }
+
+        .resume-pdf-title {
+            font-family: var(--font-body);
+            font-size: 1.55rem;
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 0.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .resume-pdf-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            font-size: 0.82rem;
+            line-height: 1.35;
+            margin-bottom: 0.1rem;
+        }
+
+        .resume-pdf-contact a,
+        .resume-pdf-summary-line a {
+            color: inherit;
+            border-bottom: none;
+            text-decoration: none;
+        }
+
+        .resume-pdf-section {
+            margin-bottom: 0.74rem;
+        }
+
+        .resume-pdf-section h2 {
+            font-family: var(--font-body);
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.35rem;
+            padding-bottom: 0.15rem;
+            border-bottom: 1px solid #9e9e9e;
+        }
+
+        .resume-pdf-entry p,
+        .resume-pdf-summary-line {
+            font-size: 0.755rem;
+            line-height: 1.34;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .resume-pdf-entry {
+            margin-bottom: 0.4rem;
+        }
+
+        .resume-pdf-entry-last {
+            margin-bottom: 0;
+        }
+
+        .resume-pdf-entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.75rem;
+            margin-bottom: 0.08rem;
+        }
+
+        .resume-pdf-entry-title {
+            font-size: 0.82rem;
+            line-height: 1.3;
+        }
+
+        .resume-pdf-entry-date {
+            flex-shrink: 0;
+            font-size: 0.76rem;
+            line-height: 1.3;
+            white-space: nowrap;
+        }
+
+        .resume-pdf-entry p,
+        .resume-pdf-summary-line {
+            margin-bottom: 0.14rem;
+        }
+
+        .resume-pdf-summary-line:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 720px) {
+            .resume-pdf-main {
+                padding: 1rem;
+            }
+
+            .resume-pdf-entry-header {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .resume-pdf-entry-date {
+                white-space: normal;
+            }
+        }
+
+        @media print {
+            .resume-pdf-page {
+                background: #fff;
+            }
+
+            .resume-pdf-main {
+                max-width: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body class="resume-pdf-page">
+    <main class="resume-pdf-main">
+        <header class="resume-pdf-header">
+            <h1 class="resume-pdf-title">Igor Geyn</h1>
+            <p class="resume-pdf-contact">
+                <a href="mailto:igorgeyn@gmail.com">igorgeyn@gmail.com</a>
+                <span>|</span>
+                <a href="tel:5102072686">510-207-2686</a>
+                <span>|</span>
+                <a href="https://www.igorgeyn.com/" target="_blank" rel="noopener">igorgeyn.com</a>
+                <span>|</span>
+                <a href="https://www.linkedin.com/in/igorgeyn/" target="_blank" rel="noopener">linkedin.com/in/igorgeyn</a>
+            </p>
+        </header>
+
+        <section class="resume-pdf-section">
+            <h2>SKILLS / QUALIFICATIONS</h2>
+            <p class="resume-pdf-summary-line">Enthusiastic about, interested in, and knowledgeable about beer; completed three homebrew batches.</p>
+            <p class="resume-pdf-summary-line">Experienced in preparing and selling food in fast-paced outdoor market environments.</p>
+            <p class="resume-pdf-summary-line">Highly personable, conversational, and focused in dynamic multitasking workplaces.</p>
+            <p class="resume-pdf-summary-line">Keen eye for customer service from both aesthetic and human interaction perspectives.</p>
+            <p class="resume-pdf-summary-line">Native Russian speaker; proficient in Spanish (five years of formal study).</p>
+        </section>
+
+        <section class="resume-pdf-section">
+            <h2>PROFESSIONAL EXPERIENCE</h2>
+
+            <article class="resume-pdf-entry">
+                <div class="resume-pdf-entry-header">
+                    <div class="resume-pdf-entry-title"><strong>Programs Assistant</strong> | The Basement, ACE, UC San Diego</div>
+                    <div class="resume-pdf-entry-date">Apr 2015 - Jun 2015</div>
+                </div>
+                <p>Launched social media platforms and campaigns to increase community engagement.</p>
+                <p>Handled intellectual property contracts and ensured compliance with university policies.</p>
+                <p>Managed event planning and logistics for speaker panels, expert office hours, and Alumni Weekend.</p>
+            </article>
+
+            <article class="resume-pdf-entry">
+                <div class="resume-pdf-entry-header">
+                    <div class="resume-pdf-entry-title"><strong>VP Finance &amp; Resources</strong> | Associated Students of UC San Diego</div>
+                    <div class="resume-pdf-entry-date">Apr 2014 - Jun 2015</div>
+                </div>
+                <p>Implemented allocation of a $3.8 million budget across more than 20 offices and commissions.</p>
+                <p>Introduced a first-time expenditure tracking system through internal accounting integration.</p>
+                <p>Recruited, hired, and managed a staff of 10 students, including three Associate VPs.</p>
+            </article>
+
+            <article class="resume-pdf-entry">
+                <div class="resume-pdf-entry-header">
+                    <div class="resume-pdf-entry-title"><strong>Student Worker</strong> | San Diego DA's Office / CA Department of Insurance</div>
+                    <div class="resume-pdf-entry-date">Sep 2013 - Sep 2014</div>
+                </div>
+                <p>Performed administrative and legal support tasks for DDAs, paralegals, and investigators.</p>
+                <p>Compiled investigation reports for DA review and potential prosecution decisions.</p>
+                <p>Supported evidence collection by running searches and background checks on suspects.</p>
+            </article>
+
+            <article class="resume-pdf-entry">
+                <div class="resume-pdf-entry-header">
+                    <div class="resume-pdf-entry-title"><strong>Farmer's Market &amp; Catering Assistant</strong> | HEIN Catering &amp; Smokehouse</div>
+                    <div class="resume-pdf-entry-date">Jun 2009 - Sep 2011</div>
+                </div>
+                <p>Assisted with food preparation, on-site cooking, and cash handling at offsite events.</p>
+                <p>Provided customer service to diverse customers in fast-paced and physically hot environments.</p>
+                <p>Supported setup and teardown of equipment, including large BBQs, canopies, and tables.</p>
+            </article>
+
+            <article class="resume-pdf-entry resume-pdf-entry-last">
+                <div class="resume-pdf-entry-header">
+                    <div class="resume-pdf-entry-title"><strong>Handyman &amp; Carpentry Assistant</strong> | Douglas Holmes</div>
+                    <div class="resume-pdf-entry-date">May 2008 - Sep 2008</div>
+                </div>
+                <p>Assisted with comprehensive home remodeling work, including carpentry, painting, and repair tasks.</p>
+                <p>Performed recurring gardening work for a wide range of plants requiring different care approaches.</p>
+                <p>Completed physically demanding labor in cramped and hot conditions, often for five-plus-hour shifts.</p>
+            </article>
+        </section>
+
+        <section class="resume-pdf-section">
+            <h2>VOLUNTEER EXPERIENCE</h2>
+
+            <article class="resume-pdf-entry">
+                <div class="resume-pdf-entry-header">
+                    <div class="resume-pdf-entry-title"><strong>Legal Aid Provider</strong> | Family Law Facilitator of San Diego (JusticeCorps)</div>
+                    <div class="resume-pdf-entry-date">Oct 2012 - Jul 2013</div>
+                </div>
+                <p>Provided more than 300 hours of legal assistance to self-represented litigants.</p>
+                <p>Assisted thousands of clients in high-stress, emotionally charged environments under time constraints.</p>
+                <p>Counseled litigants on child custody and visitation matters, including form preparation.</p>
+            </article>
+
+            <article class="resume-pdf-entry resume-pdf-entry-last">
+                <div class="resume-pdf-entry-header">
+                    <div class="resume-pdf-entry-title"><strong>Philanthropy Chair</strong> | Multiple College Organizations</div>
+                    <div class="resume-pdf-entry-date">Feb 2014 - Mar 2015</div>
+                </div>
+                <p>Coordinated a 56-hour philanthropic event that raised $5,600 for the San Diego Food Bank.</p>
+                <p>Organized and incentivized attendance at group philanthropic events.</p>
+                <p>Solicited donations, secured raffle giveaways, and supported outreach and media relations.</p>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
