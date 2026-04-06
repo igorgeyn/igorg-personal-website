@@ -1,10 +1,10 @@
 ---
-title: "California's Power Plants and Fire: What the Maps Show and What They Miss"
+title: "Understanding the Fire Risk in California's Power Grid: Generation"
 date: "2026-04-06"
 description: "Part 1 of a series on California's energy grid and wildfire risk. A data-driven analysis of how California's 3,018 generators overlap with fire threat zones, historical fire perimeters, and fire weather patterns."
 ---
 
-# California's Power Plants and Fire: What the Maps Show and What They Miss
+# Understanding the Fire Risk in California's Power Grid: Generation
 
 *Part 1 of a series on California's energy grid and wildfire risk*
 
