@@ -268,7 +268,7 @@ html, body { background: var(--bg-base); }
 </section>
 
 </div>
-<div style="position:fixed;bottom:12px;right:20px;font-size:10px;color:rgba(255,255,255,0.3);z-index:50;pointer-events:none;font-family:var(--font-sans);">Igor Geyn &middot; igorgeyn.com</div>
+<div style="position:fixed;bottom:55px;right:20px;font-size:10px;color:rgba(255,255,255,0.3);z-index:50;pointer-events:none;font-family:var(--font-sans);">Igor Geyn &middot; igorgeyn.com</div>
 </div>
 
 <div class="d3-tooltip" id="tooltip"></div>
@@ -629,8 +629,8 @@ html, body { background: var(--bg-base); }
   // CHART 5: SITING BY ERA (two-panel grouped bars)
   // ============================================================
   function initSitingEra(id) {
-    var w = 860, h = 380;
-    var margin = {top: 35, right: 30, bottom: 65, left: 50};
+    var w = 860, h = 400;
+    var margin = {top: 35, right: 30, bottom: 80, left: 50};
     var svg = d3.select('#' + id).append('svg')
       .attr('viewBox', '0 0 ' + w + ' ' + h)
       .attr('preserveAspectRatio', 'xMidYMid meet');
@@ -674,7 +674,7 @@ html, body { background: var(--bg-base); }
     g1.selectAll('.tick text').each(function(d, i) {
       var el = d3.select(this); el.text('');
       el.append('tspan').attr('x', 0).attr('dy', 0).text(eras[i]);
-      el.append('tspan').attr('x', 0).attr('dy', '1.1em').attr('font-size', '9px').text(eraLabels[i]);
+      el.append('tspan').attr('x', 0).attr('dy', '1.2em').attr('font-size', '8px').attr('fill', '#6b7280').text(eraLabels[i]);
     });
     g1.append('g').attr('class', 'axis').call(d3.axisLeft(y1).ticks(5).tickFormat(function(d){return d + '%';}));
     g1.append('g').attr('class', 'grid').call(d3.axisLeft(y1).ticks(5).tickSize(-panelW).tickFormat(''));
@@ -684,7 +684,7 @@ html, body { background: var(--bg-base); }
     g2.selectAll('.tick text').each(function(d, i) {
       var el = d3.select(this); el.text('');
       el.append('tspan').attr('x', 0).attr('dy', 0).text(eras[i]);
-      el.append('tspan').attr('x', 0).attr('dy', '1.1em').attr('font-size', '9px').text(eraLabels[i]);
+      el.append('tspan').attr('x', 0).attr('dy', '1.2em').attr('font-size', '8px').attr('fill', '#6b7280').text(eraLabels[i]);
     });
     g2.append('g').attr('class', 'axis').call(d3.axisLeft(y2).ticks(5).tickFormat(function(d){return d + '%';}));
     g2.append('g').attr('class', 'grid').call(d3.axisLeft(y2).ticks(5).tickSize(-panelW).tickFormat(''));
