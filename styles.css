@@ -2196,4 +2196,13 @@ span.pub-title {
         max-width: none;
         padding: 0;
     }
+
+    .resume-pdf-entry-header {
+        flex-direction: row;
+        gap: 0.75rem;
+    }
+
+    .resume-pdf-entry-date {
+        white-space: nowrap;
+    }
 }
