@@ -734,10 +734,14 @@ section:last-of-type {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
+    width: 140%;
+    margin-left: -20%;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
     .pub-grid {
+        width: 100%;
+        margin-left: 0;
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -768,6 +772,10 @@ section:last-of-type {
 
 .pub-grid .pub-item:last-child {
     padding-bottom: 1.25rem;
+}
+
+.pub-grid .pub-description {
+    text-align: left;
 }
 
 /* Publication items */
