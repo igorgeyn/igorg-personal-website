@@ -739,6 +739,13 @@ section:last-of-type {
     margin-left: calc((100% - min(1450px, 100vw - 3rem)) / 2);
 }
 
+/* Center headings above wide publication grids */
+.section-compact:has(.pub-grid) h2 {
+    text-align: center;
+    width: min(1450px, calc(100vw - 3rem));
+    margin-left: calc((100% - min(1450px, 100vw - 3rem)) / 2);
+}
+
 .pub-grid .pub-header {
     flex-direction: column;
     gap: 0;
