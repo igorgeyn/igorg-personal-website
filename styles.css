@@ -57,8 +57,13 @@
     border: 1px solid var(--color-border);
 }
 
-[data-theme="dark"] .blog-entry-link:hover {
-    background: var(--color-paper-warm);
+[data-theme="dark"] .preview-card-image {
+    background: #0d0d0d;
+    border-color: #2a2a2a;
+}
+
+[data-theme="dark"] .preview-card:hover .preview-card-image {
+    border-color: #4a4a4a;
 }
 
 /* Theme toggle button */
@@ -1515,55 +1520,168 @@ span.pub-title {
 }
 
 /* === Blog === */
+.blog-index .main {
+    max-width: 960px;
+}
+
 .blog-list {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: 0;
 }
 
 .blog-entry {
-    padding-bottom: var(--spacing-md);
+    display: flex;
+    gap: 2.25rem;
+    align-items: flex-start;
+    padding: 2rem 0;
     border-bottom: 1px solid var(--color-border);
+}
+
+.blog-entry:first-child {
+    padding-top: 0.75rem;
 }
 
 .blog-entry:last-child {
     border-bottom: none;
-    padding-bottom: 0;
 }
 
 .blog-entry-link {
+    flex: 1 1 0;
+    min-width: 0;
     display: block;
     border: none;
-    padding: var(--spacing-sm);
-    margin: calc(-1 * var(--spacing-sm));
-    border-radius: 4px;
-    transition: background-color 0.2s ease;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    background: transparent;
+    transition: none;
 }
 
 .blog-entry-link:hover {
-    background: var(--color-paper-warm);
+    background: transparent;
     border: none;
 }
 
+.blog-entry-link:hover .blog-entry-title {
+    color: var(--color-accent);
+}
+
 .blog-entry-title {
-    font-size: 1.15rem;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 1.45rem;
     font-weight: 500;
-    margin-bottom: var(--spacing-xs);
+    line-height: 1.22;
+    margin: 0 0 0.55rem;
     padding-bottom: 0;
+    color: var(--color-ink);
     border-bottom: none;
+    text-align: left;
+    transition: color 0.18s ease;
 }
 
 .blog-entry-date {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--color-ink-muted);
     display: block;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: 0.65rem;
+    letter-spacing: 0.02em;
+    text-align: left;
 }
 
 .blog-entry-description {
-    font-size: 0.9rem;
+    font-size: 0.94rem;
     color: var(--color-ink-light);
+    line-height: 1.55;
     margin-bottom: 0;
+    text-align: left;
+}
+
+.blog-entry-previews {
+    flex: 0 0 auto;
+    width: 360px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+    align-self: flex-start;
+}
+
+.preview-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    border: none;
+    border-bottom: none;
+    transition: transform 0.2s ease;
+}
+
+.preview-card:hover {
+    border: none;
+    transform: translateY(-3px);
+}
+
+.preview-card-image {
+    aspect-ratio: 800 / 565;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    background: #0d0d0d;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.preview-card:hover .preview-card-image {
+    border-color: var(--color-ink-muted);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.preview-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.preview-card:hover .preview-card-image img {
+    transform: scale(1.025);
+}
+
+.preview-card-label {
+    font-size: 0.74rem;
+    font-weight: 500;
+    color: var(--color-ink-muted);
+    letter-spacing: 0.01em;
+    transition: color 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.preview-card-icon {
+    font-size: 0.7rem;
+    line-height: 1;
+}
+
+.preview-card:hover .preview-card-label {
+    color: var(--color-accent);
+}
+
+@media (max-width: 720px) {
+    .blog-entry {
+        flex-direction: column;
+        gap: 1.25rem;
+        padding: 1.5rem 0;
+    }
+    .blog-entry-previews {
+        width: 100%;
+        max-width: 480px;
+    }
+    .blog-entry-title {
+        font-size: 1.25rem;
+    }
 }
 
 .no-posts {
