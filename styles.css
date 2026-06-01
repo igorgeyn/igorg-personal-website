@@ -2055,6 +2055,22 @@ span.pub-title {
     text-align: center;
 }
 
+.home-bio {
+    margin-top: 1.35rem;
+    padding-top: 1.15rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.home-page .home-bio p {
+    color: var(--color-ink-light);
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+}
+
+.home-page .home-bio p:last-child {
+    margin-bottom: 0;
+}
+
 .home-page .intro .lead {
     margin-bottom: 1rem;
 }
