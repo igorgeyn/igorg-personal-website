@@ -11,11 +11,13 @@
     <meta property="og:title" content="Understanding the Fire Risk in California's Power Grid: Generation">
     <meta property="og:description" content="Part 1 of a series on California's energy grid and wildfire risk. A data-driven analysis of how California's 3,018 generators overlap with fire threat zones, historical fire perimeters, and fire weather patterns.">
     <meta property="og:url" content="https://igorgeyn.com/blog/california-generation-fire-risk.html">
+    <meta property="og:image" content="https://igorgeyn.com/blog/images/california-generation-fire-risk-cover.png">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Understanding the Fire Risk in California's Power Grid: Generation">
     <meta name="twitter:description" content="Part 1 of a series on California's energy grid and wildfire risk. A data-driven analysis of how California's 3,018 generators overlap with fire threat zones, historical fire perimeters, and fire weather patterns.">
+    <meta name="twitter:image" content="https://igorgeyn.com/blog/images/california-generation-fire-risk-cover.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,6 +27,7 @@
     <style>
     .post-content .caption { font-size: 13px; color: #6b7280; line-height: 1.5; margin-top: 4px; margin-bottom: 20px; }
     .post-content .caption strong { color: #4b5563; font-weight: 600; }
+    .post-header .post-subtitle { font-size: 1.05rem; color: #4b5563; margin: 4px 0 8px; font-style: italic; }
     </style>
 </head>
 <body>
@@ -53,16 +56,15 @@
             </nav>
             <header class="post-header">
                 <h1>Understanding the Fire Risk in California's Power Grid: Generation</h1>
+                <p class="post-subtitle">Part 1 of a series on California's energy grid and wildfire risk</p>
                 <time class="post-date" datetime="2026-04-06">April 06, 2026</time>
             </header>
+            <img src="images/california-generation-fire-risk-cover.png" alt="Editorial illustration: stylized California map with power generation markers overlaid on fire-risk shading." style="width: 100%; max-width: 800px; height: auto; display: block; margin: 16px auto 20px; border-radius: 8px;">
             <div style="display: flex; gap: 12px; margin-top: 4px; margin-bottom: 16px;">
                 <a href="grid-fire-slides/index.html" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; font-size: 0.78rem; font-weight: 600; color: #6b7280; border: 1.5px solid #6b7280; border-radius: 5px; text-decoration: none; transition: all 0.15s;" onmouseover="this.style.background='#6b7280';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#6b7280'">&#9654; Interactive slides</a>
                 <a href="grid-fire-slides/california-generation-fire-risk.pdf" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; font-size: 0.78rem; font-weight: 600; color: #6b7280; border: 1.5px solid #6b7280; border-radius: 5px; text-decoration: none; transition: all 0.15s;" onmouseover="this.style.background='#6b7280';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#6b7280'">&#8681; PDF slides</a>
             </div>
             <div class="post-content">
-<h1>Understanding the Fire Risk in California's Power Grid: Generation</h1>
-<p><em>Part 1 of a series on California's energy grid and wildfire risk</em></p>
-<hr />
 <h2>California's fire maps: a quick guide</h2>
 <p>California has two main fire-risk mapping systems, run by different agencies for different purposes.</p>
 <p><strong>Fire Hazard Severity Zones (FHSZ)</strong>, maintained by CAL FIRE, classify land by how severe wildfire behavior is likely to be—based on fuel type, slope, and fire weather. FHSZ was created after the <a href="https://en.wikipedia.org/wiki/Oakland_firestorm_of_1991">1991 Oakland Hills fire</a> (AB 337, 1992) and determines building codes and defensible space requirements (<a href="https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=PRC&amp;division=4.&amp;title=&amp;part=2.&amp;chapter=1.&amp;article=">Public Resources Code §4201-4204</a>, <a href="https://law.justia.com/codes/california/2005/gov/51175-51189.html">Government Code §51175-51189</a>). It applies to all development, not just utilities. In 2025, CAL FIRE released <a href="https://osfm.fire.ca.gov/what-we-do/community-wildfire-preparedness-and-mitigation/fire-hazard-severity-zones">updated FHSZ maps</a> reflecting current climate conditions.</p>
