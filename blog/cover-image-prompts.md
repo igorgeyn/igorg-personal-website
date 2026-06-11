@@ -167,7 +167,7 @@ When the model returns an image, save the file into the post's image folder usin
 | Generation fire risk | `blog/grid-fire-figures/cover.png` |
 | Manning–Metcalf corridor | `blog/dc-fire-figures/cover.png` |
 | PSPS analysis | `blog/psps-interactive/cover.png` or `blog/images/psps-cover.png` |
-| PSPS effectiveness | `blog/images/california-psps-effectiveness-cover.png` |
+| PSPS effectiveness | `blog/images/california-psps-effectiveness-cover-v2.png` |
 | Tuition subsidies × voting | `blog/images/tuition-voting-cover.png` |
 
 Then add the appropriate `<img>` tag or Open Graph meta tag to the corresponding HTML file. (For Open Graph: `<meta property="og:image" content="...">` in the `<head>` of each post.)
