@@ -129,6 +129,35 @@ Landscape orientation, 3:2 aspect ratio.
 
 ---
 
+## 5. How Effective Is PSPS at Preventing Wildfires?
+
+**Date:** 2026-06-11
+**URL:** [`california-psps-effectiveness.html`](california-psps-effectiveness.html)
+**Topic:** Estimating the causal effect of PSPS on wildfire ignitions, and why the missing counterfactual requires utility-held operational data.
+
+### Prompt
+
+```
+An editorial-style conceptual illustration for a blog post about estimating
+the causal effect of Public Safety Power Shutoffs (PSPS) on wildfire
+ignitions. Composition: a finely drawn utility circuit crosses a sparse
+California foothill landscape, then splits near the center into two nearly
+identical parallel branches like a causal comparison. One branch is solid
+graphite and de-energized with an open switch; the other is faint and
+ghosted as the missing counterfactual path. Around the branches, a few
+small abstract data marks and blank record cards suggest observed data
+versus utility-held records. Include one tiny restrained spark mark only as
+a conceptual ignition point, not a literal fire. Color palette: warm
+off-white background with paper texture, graphite black line work, exactly
+one accent color: muted electric blue for the ghosted counterfactual and
+data marks. Style: New Yorker editorial illustration crossed with
+mid-century Bauhaus poster restraint, conceptual rather than literal,
+generous negative space, no text, no labels, no numbers, no logos, no
+people, no photorealism, no large flames. Landscape orientation, 3:2.
+```
+
+---
+
 ## File placement after generation
 
 When the model returns an image, save the file into the post's image folder using the post's slug. Suggested locations:
@@ -138,6 +167,7 @@ When the model returns an image, save the file into the post's image folder usin
 | Generation fire risk | `blog/grid-fire-figures/cover.png` |
 | Manning–Metcalf corridor | `blog/dc-fire-figures/cover.png` |
 | PSPS analysis | `blog/psps-interactive/cover.png` or `blog/images/psps-cover.png` |
+| PSPS effectiveness | `blog/images/california-psps-effectiveness-cover.png` |
 | Tuition subsidies × voting | `blog/images/tuition-voting-cover.png` |
 
 Then add the appropriate `<img>` tag or Open Graph meta tag to the corresponding HTML file. (For Open Graph: `<meta property="og:image" content="...">` in the `<head>` of each post.)
