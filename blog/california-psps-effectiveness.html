@@ -26,7 +26,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-06-11">
+<meta name="dcterms.date" content="2026-06-12">
 
 <title>How effective is PSPS at preventing wildfires? — Igor Geyn</title>
 <style>
@@ -135,11 +135,13 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#this-psps-analysis-builds-on-a-sister-analysis-of-another-program-epss" id="toc-this-psps-analysis-builds-on-a-sister-analysis-of-another-program-epss" class="nav-link active" data-scroll-target="#this-psps-analysis-builds-on-a-sister-analysis-of-another-program-epss">This PSPS analysis builds on a ‘sister’ analysis of another program, EPSS</a></li>
+  <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link active" data-scroll-target="#executive-summary">Executive Summary</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#this-psps-analysis-builds-on-a-sister-analysis-of-another-program-epss" id="toc-this-psps-analysis-builds-on-a-sister-analysis-of-another-program-epss" class="nav-link" data-scroll-target="#this-psps-analysis-builds-on-a-sister-analysis-of-another-program-epss">This PSPS analysis builds on a ‘sister’ analysis of another program, EPSS</a></li>
   <li><a href="#how-can-turning-off-the-power-cause-more-wildfires-starting-with-the-naive-comparison" id="toc-how-can-turning-off-the-power-cause-more-wildfires-starting-with-the-naive-comparison" class="nav-link" data-scroll-target="#how-can-turning-off-the-power-cause-more-wildfires-starting-with-the-naive-comparison">How can turning off the power cause more wildfires? Starting with the naive comparison</a></li>
-  <li><a href="#what-if-i-compare-only-places-and-days-where-shutoffs-were-on-the-table" id="toc-what-if-i-compare-only-places-and-days-where-shutoffs-were-on-the-table" class="nav-link" data-scroll-target="#what-if-i-compare-only-places-and-days-where-shutoffs-were-on-the-table">What if I compare only places and days where shutoffs were on the table?</a></li>
+  <li><a href="#what-about-comparing-only-places-and-days-where-shutoffs-were-on-the-table" id="toc-what-about-comparing-only-places-and-days-where-shutoffs-were-on-the-table" class="nav-link" data-scroll-target="#what-about-comparing-only-places-and-days-where-shutoffs-were-on-the-table">What about comparing only places and days where shutoffs were on the table?</a></li>
   <li><a href="#maybe-high-risk-circuits-are-just-different-places" id="toc-maybe-high-risk-circuits-are-just-different-places" class="nav-link" data-scroll-target="#maybe-high-risk-circuits-are-just-different-places">Maybe high-risk circuits are just different places?</a></li>
-  <li><a href="#what-if-i-control-for-everything-i-can-measure" id="toc-what-if-i-control-for-everything-i-can-measure" class="nav-link" data-scroll-target="#what-if-i-control-for-everything-i-can-measure">What if I control for everything I can measure?</a></li>
+  <li><a href="#what-about-controlling-for-everything-measurable" id="toc-what-about-controlling-for-everything-measurable" class="nav-link" data-scroll-target="#what-about-controlling-for-everything-measurable">What about controlling for everything measurable?</a></li>
   <li><a href="#can-flexible-machine-learning-squeeze-the-bias-out" id="toc-can-flexible-machine-learning-squeeze-the-bias-out" class="nav-link" data-scroll-target="#can-flexible-machine-learning-squeeze-the-bias-out">Can flexible machine learning squeeze the bias out?</a></li>
   <li><a href="#how-bad-could-the-hidden-bias-be" id="toc-how-bad-could-the-hidden-bias-be" class="nav-link" data-scroll-target="#how-bad-could-the-hidden-bias-be">How bad could the hidden bias be?</a></li>
   <li><a href="#is-the-benchmark-just-picking-up-bad-fire-weather" id="toc-is-the-benchmark-just-picking-up-bad-fire-weather" class="nav-link" data-scroll-target="#is-the-benchmark-just-picking-up-bad-fire-weather">Is the benchmark just picking up bad fire weather?</a></li>
@@ -147,7 +149,8 @@ window.Quarto = {
   <li><a href="#can-rule-changes-act-as-a-natural-experiment" id="toc-can-rule-changes-act-as-a-natural-experiment" class="nav-link" data-scroll-target="#can-rule-changes-act-as-a-natural-experiment">Can rule changes act as a natural experiment?</a></li>
   <li><a href="#so-what-would-actually-answer-the-question" id="toc-so-what-would-actually-answer-the-question" class="nav-link" data-scroll-target="#so-what-would-actually-answer-the-question">So what would actually answer the question?</a>
   <ul class="collapse">
-  <li><a href="#is-there-a-public-shortcut-i-checked-the-three-large-california-ious." id="toc-is-there-a-public-shortcut-i-checked-the-three-large-california-ious." class="nav-link" data-scroll-target="#is-there-a-public-shortcut-i-checked-the-three-large-california-ious.">Is there a public shortcut? I checked the three large California IOUs.</a></li>
+  <li><a href="#the-sce-companion-panel-how-its-built-and-its-limits" id="toc-the-sce-companion-panel-how-its-built-and-its-limits" class="nav-link" data-scroll-target="#the-sce-companion-panel-how-its-built-and-its-limits">The SCE companion panel: how it’s built, and its limits</a></li>
+  <li><a href="#is-there-a-public-shortcut-a-check-across-the-three-large-california-ious" id="toc-is-there-a-public-shortcut-a-check-across-the-three-large-california-ious" class="nav-link" data-scroll-target="#is-there-a-public-shortcut-a-check-across-the-three-large-california-ious">Is there a public shortcut? A check across the three large California IOUs</a></li>
   </ul></li>
   <li><a href="#every-public-data-approach-lands-in-the-same-place" id="toc-every-public-data-approach-lands-in-the-same-place" class="nav-link" data-scroll-target="#every-public-data-approach-lands-in-the-same-place">Every public-data approach lands in the same place</a></li>
   <li><a href="#methodology-data" id="toc-methodology-data" class="nav-link" data-scroll-target="#methodology-data">Methodology &amp; data</a></li>
@@ -172,7 +175,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 11, 2026</p>
+      <p class="date">June 12, 2026</p>
     </div>
   </div>
   
@@ -187,11 +190,20 @@ window.Quarto = {
 
 
 <blockquote class="blockquote">
-<p>The premise. When the wind turns dangerous, California utilities cut power to high-risk lines—a <strong>Public Safety Power Shutoff (PSPS)</strong>—so a failing wire can’t start a fire. During major events, millions of Californians can lose power. How well does PSPS do its job of preventing wildfires? Using public data, I walk from naive comparisons to stricter designs and show why even the best public-data estimate is not yet causal. At each step I explain what the revision buys, why it still falls short, and what would fix it. I close with a call for more, richer data.</p>
+<p>When the wind turns dangerous, California utilities cut power to high-risk lines—a <strong>Public Safety Power Shutoff (PSPS)</strong>—so a failing wire can’t start a fire. During major events, hundreds of thousands of customers can lose power. Can we put a number to the damage PSPS prevents? And what stands in for the counterfactual—the fires that would have burned had the power stayed on—when that outcome can never be observed directly? Using public data, this post walks from naive comparisons to stricter designs and shows why even the best public-data estimate is not yet causal. Each step explains what the revision buys, why it still falls short, and what would fix it. The close is a call for more, richer data.</p>
 </blockquote>
-<p>A PSPS is a standing program—California’s utilities pre-emptively de-energize high fire-risk circuits several times a year, cutting power to hundreds of circuits at a time—and the public accounting of its benefits is built on simulation, not on observed outcomes. PG&amp;E’s headline figure for 2024 comes from “24-hour fire simulations conducted by Technosylva in damage locations,” which, in PG&amp;E’s words, “found that our 2024 PSPS events may have avoided up to 76,314.4 acres burned,” with 10,841 buildings and 10,868 residents in the simulated fires’ paths (<a href="https://webproda.cpuc.ca.gov/-/media/cpuc-website/divisions/safety-and-enforcement-division/reports/2024-psps-post-season-reports/pge2024postseasonreport1narrative.pdf">2024 PSPS Post-Season Report</a>, § IV.1, p.&nbsp;32): the model takes each damage point identified during post-event patrols as a would-be ignition and simulates the fire that didn’t happen. The acres, the structures, the people—all of it is a counterfactual generated inside a model. What it is not—and what, as far as I can find, no one has produced—is an estimate of PSPS’s effect checked against actual ignition outcomes.</p>
-<p>Pinning down the effect behind that figure runs into the same problem as most work in observational causal inference: I want the counterfactual—what would have happened without the shutoff—but I can’t run the obvious experiment (nobody will randomly leave dangerous lines energized to see what catches fire), so I must recover cause from the data the program happened to produce. That’s hard here for one reason above all: the utility shuts off exactly the circuits it judges most dangerous, so any naive comparison tangles the effect of the shutoff with the very risk that triggered it (i.e.&nbsp;“correlation is not causation”).</p>
-<p>New to PSPS? Start with <a href="https://www.igorgeyn.com/blog/california-psps-analysis.html">my earlier primer on California’s shutoff program</a>.</p>
+<section id="executive-summary" class="level1">
+<h1>Executive Summary</h1>
+<p>California’s utilities justify power shutoffs with simulations: models of the fires that would have burned had the power stayed on. No one, it appears, has checked the program against fires that actually happened. This post does, with public data.</p>
+<p>The check runs into a wall. Shut-off circuit-days show 15.1× the ignition rate of ordinary days—read causally, shutoffs <em>cause</em> fires. They don’t. Utilities cut power exactly where and when fire risk peaks, so the raw comparison measures the risk, not the policy. Stripping that selection out every way the data allow—high-risk restrictions, circuit fixed effects, matching within storms, machine learning—leaves every adjusted estimate between +0.003 and +0.004 ignitions per circuit-day. Always positive, never near zero. Grant one mild assumption, that a de-energized line cannot start a fire, and a positive effect is impossible: what survives is bias, not effect. Two quasi-experiments don’t rescue it. One is too noisy to read; the other fails its own pre-test.</p>
+<p>The trap is not PG&amp;E’s alone. The same comparison at Southern California Edison gives the same pattern: a raw 24.5× collapses to 12.1× once the comparison is restricted to high-risk circuits. SDG&amp;E publishes too little to check at all. And the records that would settle the question—the circuits considered for a shutoff but left on, and the risk scores behind each call—never leave the utilities. Public data cannot say whether shutoffs work. Utility data could.</p>
+</section>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>PSPS is a standing program. California’s utilities pre-emptively de-energize high fire-risk circuits during peak fire conditions (especially when winds are high), cutting power in some cases to hundreds of circuits. The public accounting of its benefits—the numbers that feed cost-benefit calculations—is built on simulation rather than observed outcomes. PG&amp;E’s headline figure for 2024 comes from “24-hour fire simulations conducted by Technosylva in damage locations,” which, in PG&amp;E’s words, “found that our 2024 PSPS events may have avoided up to 76,314.4 acres burned,” with 10,841 buildings and 10,868 residents in the simulated fires’ paths (<a href="https://webproda.cpuc.ca.gov/-/media/cpuc-website/divisions/safety-and-enforcement-division/reports/2024-psps-post-season-reports/pge2024postseasonreport1narrative.pdf">2024 PSPS Post-Season Report</a>, § IV.1, p.&nbsp;32). The model takes each damage point identified during post-event patrols as a would-be ignition and simulates the fire that didn’t happen. The acres, the structures, the people—all of it is a counterfactual generated inside a model. What it is not—and what no one appears to have produced—is an estimate of PSPS’s effect checked against actual, observed ignition outcomes. That check is worth doing.</p>
+<p>Pinning down the effect behind that figure runs into the same problem as most work in observational causal inference: the quantity that matters is the counterfactual—what would have happened (i.e. acres burned, structures lost, etc.) without the shutoff. In a clinical trial, there would be a control group to stand for this outcome. Here, the obvious experiment is off the table—nobody will randomly leave dangerous lines energized to see what catches fire—so cause has to be recovered from the data the program happened to produce. That’s hard here for one reason above all: the utility shuts off exactly the circuits it judges most dangerous, so any naive comparison tangles the effect of the shutoff with the very risk that triggered it (i.e.&nbsp;“correlation is not causation”). Another way of saying this: any naive estimate of PSPS’s effect on fire outcomes is biased away from the truth—and that bias is what the rest of this piece is about.</p>
+<p>In case you need a primer on PSPS, you can read <a href="https://www.igorgeyn.com/blog/california-psps-analysis.html">an earlier blog on California’s shutoff program here</a>.</p>
+<p>One scope note before the estimates begin: the deep ladder below is PG&amp;E’s, because PG&amp;E is the only utility with a covariate-rich public panel. Where an approximate SCE companion panel supports the same step—the raw comparison, the high-risk restriction, circuit fixed effects, the bounds—SCE’s results appear alongside, clearly labeled (how that panel is built, and its limits, comes later in the post). SDG&amp;E lacks a public circuit map and is tracked in Methodology &amp; data. Nothing here is folded into a California-wide estimate.</p>
 <hr>
 <style>
 /* ---- Methodology appendix: quiet card accordion ---------------------------- */
@@ -282,24 +294,29 @@ details.meth tbody td:first-child { font-weight: 600; color: #1f2937; }
 .cell-output-display tbody tr:hover td { background: #f7fafc; }
 .cell-output-display tbody td:first-child { font-weight: 600; color: #1f2937; }
 </style>
+</section>
 <section id="this-psps-analysis-builds-on-a-sister-analysis-of-another-program-epss" class="level1">
 <h1>This PSPS analysis builds on a ‘sister’ analysis of another program, EPSS</h1>
-<p>A team of UC Berkeley researchers—<a href="https://doi.org/10.1038/s41558-025-02436-5">Warner, Callaway &amp; Fowlie (2025)</a>, in <em>Nature Climate Change</em>—studies the causal effect of <strong>Enhanced Powerline Safety Settings (EPSS)</strong>: “fast-trip” settings that cut power within a fraction of a second of sensing a fault, giving a developing fault far less time to spark. Using quasi-experimental methods much like the ones below, they estimate that enabling fast-trip on a high-risk day cuts a circuit’s probability of causing an ignition by about 82% (67–90% CI). Their outcome is vegetation-caused ignitions on distribution circuits in PG&amp;E’s high fire-threat districts. Fast-trip alone, they find, drives roughly 80% of PG&amp;E’s total ignition reduction—at a lower cost per structure saved from burning than undergrounding lines or trimming vegetation. Numbers like these feed the cost-benefit ratios (now, increasingly, “benefit-cost ratios”) behind utility rate cases and wildfire-mitigation plans—and every such ratio needs an effectiveness number from somewhere. <!-- In a grid linked to ~1.3 million acres burned over 2015–2023---almost all
-vegetation-caused in high-threat areas---that is a large effect. --></p>
-<p>For EPSS, the paper estimates the effect. For PSPS, it takes a simpler approach: assume the program is 100% effective—once a line is de-energized, a fire on it is treated as impossible. It’s the same structural move as the Technosylva accounting above: effectiveness assumed, not estimated.</p>
-<p>My analysis drops that assumption: it refuses to take perfect implementation on faith. PSPS runs on machine-learning inputs and an algorithmic decision process, but implementation comes down to people identifying and de-energizing specific lines—so there is room for error, and for misses even without error: the wrong lines cut, or the right lines for the wrong window. Warner et al.&nbsp;flag the geographic piece themselves: their accounting assumes a called PSPS de-energizes all of a circuit’s high fire-threat line-miles, “though in practice, fewer miles may be de-energized.”</p>
-<p>So this analysis—in blog form for now—uses observational data (what actually happened, not an experiment) and quasi-experimental methods like theirs to produce a sequence of increasingly credible estimates of PSPS’s effect in practice: the kind of number that informs decision-making at California’s utilities and, through rate cases, the rates Californians pay for electricity.</p>
+<!-- Their outcome is vegetation-caused ignitions on distribution circuits in PG&E's high
+fire-threat districts. -->
+<p>A team of UC Berkeley researchers—<a href="https://doi.org/10.1038/s41558-025-02436-5">Warner, Callaway &amp; Fowlie (2025)</a>, in <em>Nature Climate Change</em>—studies the causal effect of <strong>Enhanced Powerline Safety Settings (EPSS)</strong>: “fast-trip” settings that cut power within a fraction of a second of sensing a fault, giving a developing fault far less time to spark. Using quasi-experimental methods similar to the ones this piece outlines, they estimate that enabling fast-trip on a high-risk day cuts a circuit’s probability of causing an ignition by about 82% (67–90% CI). Fast-trip alone, they find, drives roughly 80% of PG&amp;E’s total ignition reduction—at a lower cost per structure saved from burning than undergrounding lines or trimming vegetation. Numbers like these feed the cost-benefit ratios (now, increasingly, “benefit-cost ratios”) behind utility rate cases and wildfire-mitigation plans—and every such ratio needs an effectiveness number from somewhere. <!-- In a grid linked to ~1.3 million acres burned over 2015–2023---almost
+all vegetation-caused in high-threat areas---that is a large effect. --></p>
+<p>The paper addresses PSPS as well, taking a simple approach: assuming the program is 100% effective. Once a line is de-energized, a fire on it is treated as impossible. It’s the same structural move as the Technosylva accounting above: effectiveness assumed, not estimated.</p>
+<p>The proposal here: drop that assumption and estimate how PSPS actually performs in the wild. PSPS runs on machine-learning inputs and an algorithmic decision process, but implementation comes down to people identifying and de-energizing specific lines—so there is room for error, and for misses even without error: the wrong lines cut (too many or too few), or the right lines for the wrong window. Warner et al.&nbsp;note a version of this in their data: when a PSPS is called on a circuit, they record all of its high fire-threat line-miles as de-energized, “though in practice, fewer miles may be de-energized.” The grid’s sectionalizing devices mean parts of a “shut-off” circuit can stay live. What’s recorded as treated and what actually loses power are not the same thing.</p>
+<p>This analysis—in blog form for now—uses observational data (recorded vegetation conditions, relative humidity, wind, and so on) and quasi-experimental methods like those in Warner et al. (2025) to produce a sequence of increasingly credible estimates of PSPS’s effect in practice: the kind of number that informs decision-making at California’s utilities and, through rate cases, the rates Californians pay for electricity.</p>
 <hr>
 </section>
 <section id="how-can-turning-off-the-power-cause-more-wildfires-starting-with-the-naive-comparison" class="level1">
 <h1>How can turning off the power cause more wildfires? Starting with the naive comparison</h1>
-<p>I want the causal effect of de-energization on ignitions: on a circuit-day I actually shut off power, how much did shutting off change ignitions relative to leaving it energized? In the potential-outcomes framework, circuit-day <span class="math inline">i</span> has treatment <span class="math inline">D_i\in\{0,1\}</span> (<span class="math inline">1</span> = de-energized) and two potential outcomes—<span class="math inline">Y_i(1)</span> if shut off, <span class="math inline">Y_i(0)</span> if not. I define the average treatment effect on the treated as <span class="math display">
+<p>The target is the causal effect of de-energization on ignitions as a first-order outcome: on a circuit-day the utility actually shut off power, how much did shutting off change ignitions relative to leaving it energized? In the potential-outcomes framework, circuit-day <span class="math inline">i</span> has treatment <span class="math inline">D_i\in\{0,1\}</span> (<span class="math inline">1</span> = de-energized) and two potential outcomes—<span class="math inline">Y_i(1)</span> if shut off, <span class="math inline">Y_i(0)</span> if not. The estimand is the average treatment effect on the treated, <span class="math display">
 \tau_{\text{ATT}} \;=\; \mathbb{E}\!\left[\,Y_i(1) - Y_i(0) \mid D_i = 1\,\right],
-</span> so a protective PSPS effect is negative, and “ignitions averted” is <span class="math inline">-\tau_{\text{ATT}}</span>. The catch—the fundamental problem of causal inference—is that for any shut-off circuit-day I see <span class="math inline">Y_i(1)</span> but never <span class="math inline">Y_i(0)</span>. Estimating the effect is therefore less measurement than substitution: I have to construct a believable value for the <span class="math inline">Y_i(0)</span> I never see, using the circuit-days I do. How I build that substitute—and how much I can trust it—is the central problem; every step below is a progressively better stand-in.</p>
-<p>The crudest stand-in: use the ignition rate on the days I didn’t shut off as the counterfactual: <span class="math display">
+</span> so a protective PSPS effect is negative, and “ignitions averted” is <span class="math inline">-\tau_{\text{ATT}}</span>. The catch—the fundamental problem of causal inference—is that any shut-off circuit-day reveals <span class="math inline">Y_i(1)</span> but never <span class="math inline">Y_i(0)</span>. (You can observe how someone feels after taking a vaccine; you can’t observe how that same person would have felt without it.) Estimating the effect is therefore less measurement than substitution: a believable value for the never-observed <span class="math inline">Y_i(0)</span> (i.e.&nbsp;the counterfactual) has to be built from the circuit-days that are observed. <!-- How that substitute is built---and how far it can be trusted---is the central problem; every step below
+is a progressively better stand-in. --></p>
+<p>The crudest stand-in: use the ignition rate on the days without a shutoff as the counterfactual: <span class="math display">
 \widehat{\text{RD}} = \bar Y_1 - \bar Y_0,\qquad \widehat{\text{RR}} = \bar Y_1 \big/ \bar Y_0 .
-</span> Here <span class="math inline">\bar Y_1</span> is the average number of ignitions on shut-off (PSPS) days and <span class="math inline">\bar Y_0</span> the average on days without one. These are the same comparison on two scales: the risk difference <span class="math inline">\widehat{\text{RD}}</span> subtracts one from the other—how many more ignitions per circuit-day a shutoff goes with—while the rate ratio <span class="math inline">\widehat{\text{RR}}</span> divides them—how many times as likely an ignition is. What they share is the move that matters: both take <span class="math inline">\bar Y_0</span>, the days I did not shut off, as the stand-in for the <span class="math inline">Y_i(0)</span> I never observe.</p>
-<p>That substitution works only if shut-off days would have looked like other days absent treatment. The figure says why they don’t: an unobserved common cause <span class="math inline">U</span>—the dangerous conditions the operator is reacting to: high winds, dry vegetation, low humidity—drives both the shutoff (<span class="math inline">U\to D</span>) and ignitions (<span class="math inline">U\to Y</span>).</p>
+</span> Here <span class="math inline">\bar Y_1</span> is the average number of ignitions on shut-off (PSPS) days and <span class="math inline">\bar Y_0</span> the average on days without one. These are the same comparison on two scales: the risk difference <span class="math inline">\widehat{\text{RD}}</span> subtracts one from the other—how many more ignitions per circuit-day a shutoff goes with—while the rate ratio <span class="math inline">\widehat{\text{RR}}</span> divides them—how many times as likely an ignition is. What they share is the move that matters: both take <span class="math inline">\bar Y_0</span>, the rate on days without a shutoff, as the stand-in for the <span class="math inline">Y_i(0)</span> that is never observed.</p>
+<p>That substitution works only if shut-off days would have looked like other days absent treatment. The figure says why they don’t: an unobserved common cause <span class="math inline">U</span>—the dangerous conditions the operator is reacting to: high winds, dry vegetation, low humidity—drives both the shutoff (<span class="math inline">U\to
+D</span>) and ignitions (<span class="math inline">U\to Y</span>).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -310,27 +327,27 @@ vegetation-caused in high-threat areas---that is a large effect. --></p>
 </div>
 </div>
 </div>
-<p>Across PG&amp;E’s full panel of ~12.2 million circuit-days, shut-off days ignite far more often than other days:</p>
+<p>Across PG&amp;E’s full panel of ~12.2 million circuit-days—and, in parallel, on the SCE companion panel assembled from public sources later in the post—shut-off days ignite far more often than other days:</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
    <th style="text-align:left;"> Quantity </th>
-   <th style="text-align:right;"> Estimate </th>
-   <th style="text-align:right;"> 95% CI </th>
+   <th style="text-align:right;"> PG&amp;E </th>
+   <th style="text-align:right;"> SCE </th>
   </tr>
  </thead>
 <tbody>
   <tr>
    <td style="text-align:left;"> Rate ratio (RR) </td>
-   <td style="text-align:right;"> 15.1× </td>
-   <td style="text-align:right;"> [10.9, 21.0] </td>
+   <td style="text-align:right;"> 15.1× [10.9, 21.0] </td>
+   <td style="text-align:right;"> 24.5× [7.9, 76.1] </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Risk difference (RD) </td>
-   <td style="text-align:right;"> +0.0048 </td>
-   <td style="text-align:right;"> [+0.0031, +0.0065] </td>
+   <td style="text-align:right;"> +0.0048 [+0.0031, +0.0065] </td>
+   <td style="text-align:right;"> +0.0017 [-0.0003, +0.0037] </td>
   </tr>
 </tbody>
 </table>
@@ -341,14 +358,14 @@ vegetation-caused in high-threat areas---that is a large effect. --></p>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ladder_files/figure-html/rung0-fig-1.png" class="img-fluid figure-img" alt="Bar chart of ignition rates: 0.513 percent on shut-off circuit-days versus 0.034 percent on all other days, roughly fifteen times higher." width="720"></p>
-<figcaption>Shut-off circuit-days ignite ~15× more often than other days. Read naively, this says PSPS causes fire—which is exactly the trap.</figcaption>
+<p><img src="ladder_files/figure-html/rung0-fig-1.png" class="img-fluid figure-img" alt="Two-panel bar chart of ignition rates per circuit-day. PG&amp;E: 0.513 percent on shut-off days versus 0.034 percent on other days, roughly fifteen times higher. SCE: 0.175 percent versus 0.007 percent, roughly twenty-five times higher." width="720"></p>
+<figcaption>Shut-off circuit-days ignite far more often than other days at both utilities—PG&amp;E ~15×, SCE ~25× (note the different rate scales). Read naively, this says PSPS causes fire—which is exactly the trap, and it is not specific to one utility.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Add and subtract the treated group’s untreated outcome and the difference in means splits cleanly: <span class="math display">
-\underbrace{\bar Y_1 - \bar Y_0}_{\text{what I computed}}=
+\underbrace{\bar Y_1 - \bar Y_0}_{\text{the computed gap}}=
 \underbrace{\mathbb{E}[Y_i(1)-Y_i(0)\mid D_i=1]}_{\textstyle\color{#1a9850}{\tau_{\text{ATT}}\ \text{(want)}}}+
 \underbrace{\mathbb{E}[Y_i(0)\mid D_i=1]-\mathbb{E}[Y_i(0)\mid D_i=0]}_{\textstyle\color{#b2182b}{\text{selection bias}}}.
 </span></p>
@@ -363,29 +380,29 @@ vegetation-caused in high-threat areas---that is a large effect. --></p>
 </div>
 <div class="callout-body-container callout-body">
 <p>The red term asks: would shut-off days have had more ignitions even if left energized? Emphatically yes—the utility selects the highest-risk days, so <span class="math inline">\mathbb{E}[Y_i(0)\mid D_i=1]\gg
-\mathbb{E}[Y_i(0)\mid D_i=0]</span>. The term is large and positive, so <span class="math inline">\widehat{\text{RD}}</span> is badly upward-biased; the 15× is mostly <span class="math inline">\color{#b2182b}{\text{selection}}</span>, not <span class="math inline">\color{#1a9850}{\tau}</span>. I can’t even sign the causal effect from this.</p>
+\mathbb{E}[Y_i(0)\mid D_i=0]</span>. The term is large and positive, so <span class="math inline">\widehat{\text{RD}}</span> is badly upward-biased; the 15× is mostly <span class="math inline">\color{#b2182b}{\text{selection}}</span>, not <span class="math inline">\color{#1a9850}{\tau}</span>. The causal effect can’t even be signed from this.</p>
 </div>
 </div>
 <p>The bias shrinks only if treated and control days are made comparable. The cheapest next step: restrict to the places and days where a shutoff was even on the table, and watch how much of the 15× survives.</p>
 <hr>
 </section>
-<section id="what-if-i-compare-only-places-and-days-where-shutoffs-were-on-the-table" class="level1">
-<h1>What if I compare only places and days where shutoffs were on the table?</h1>
-<p>This step keeps only the circuit-days where a shutoff was a live possibility: circuits in designated high fire-threat areas (the state’s HFTD tiers), on days when a PSPS event was underway somewhere on the system. The idea is to “condition” on an observed measure of risk—to stop comparing across the whole sample and instead compare only within groups that share the same value of that measure. Each such group is a “stratum”; mine is defined by place and day at once. (One bookkeeping note: this step imposes both restrictions together—the ladder’s one-change-per-step discipline starts at the next step.) Recomputing the gap inside that stratum, <span class="math display">
+<section id="what-about-comparing-only-places-and-days-where-shutoffs-were-on-the-table" class="level1">
+<h1>What about comparing only places and days where shutoffs were on the table?</h1>
+<p>This step keeps only the circuit-days where a shutoff was a live possibility: circuits in designated high fire-threat areas (the state’s HFTD tiers), on days when a PSPS event was underway somewhere on the system. The idea is to “condition” on an observed measure of risk—to stop comparing across the whole sample and instead compare only within groups that share the same value of that measure. Each such group is a “stratum”; here it is defined by place and day at once. (One bookkeeping note: this step imposes both restrictions together—the ladder’s one-change-per-step discipline starts at the next step.) Recomputing the gap inside that stratum, <span class="math display">
 \widehat{\text{RD}}_X = \mathbb{E}[Y\mid D=1,X]-\mathbb{E}[Y\mid D=0,X],
 </span> compares shut-off and non-shut-off circuit-days that at least fall in the same risk category. The payoff: the gap can no longer be inflated simply because shut-offs concentrate in dangerous places on dangerous days while most circuit-days are neither.</p>
-<p>I drop every other circuit-day from the control pool—they were never plausible counterfactuals—and recompute within the high-risk stratum only. This closes the part of the back-door path running through the observed slice of <span class="math inline">U</span>.</p>
+<p>Every other circuit-day is dropped from the control pool—they were never plausible counterfactuals—and the gap is recomputed within the high-risk stratum only. This closes the part of the back-door path running through the observed slice of <span class="math inline">U</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ladder_files/figure-html/rung1-fig-1.png" class="img-fluid figure-img" alt="Bar chart: the raw rate ratio of 15.1 falls to 3.7 when the comparison is restricted to high fire-threat circuits on PSPS-event days; a dashed line marks 1, meaning no association." width="720"></p>
-<figcaption>Restricting to comparable high-risk circuit-days erases about three-quarters of the raw 15×—most of that gap was never about PSPS, just which circuit-days get shut off.</figcaption>
+<p><img src="ladder_files/figure-html/rung1-fig-1.png" class="img-fluid figure-img" alt="Grouped bar chart: PG&amp;E's raw rate ratio of 15.1 falls to 3.7 and SCE's raw 24.5 falls to 12.1 when the comparison is restricted to high fire-threat circuits on PSPS-event days; a dashed line marks 1, meaning no association." width="720"></p>
+<figcaption>Restricting to comparable high-risk circuit-days erases three-quarters of PG&amp;E’s raw gap and half of SCE’s (PG&amp;E 15.1× → 3.7×; SCE 24.5× → 12.1×)—much of the raw gap was never about PSPS, just which circuit-days get shut off.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The risk difference barely moves (+0.0048 → +0.0040), but the ratio falls from 15.1× to 3.7×. That one restriction erased most of the alarm. The two scales disagree because the baseline moved: ignitions are several times more common on these high-risk circuit-days than on average days, so a nearly unchanged absolute gap becomes a much smaller multiple of it.</p>
+<p>The risk difference barely moves (+0.0048 → +0.0040), but the ratio falls from 15.1× to 3.7×. That one restriction erased most of the alarm. The two scales disagree because the baseline moved: ignitions are several times more common on these high-risk circuit-days than on average days, so a nearly unchanged absolute gap becomes a much smaller multiple of it. The SCE panel behaves identically: the ratio halves (24.5× → 12.1×) while the absolute gap barely moves (+0.0017 → +0.0016).</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -396,18 +413,19 @@ vegetation-caused in high-threat areas---that is a large effect. --></p>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Restricting to <span class="math inline">X=\text{high}</span> removes only the confounding captured by the proxy. The operator’s real signal—wind gusts, equipment age, vegetation contact—is far richer than a binary tier. So within the high-risk stratum, shut-off days are still the riskier ones: <span class="math inline">\mathbb{E}[Y(0)\mid D=1,X]\ \color{#b2182b}{&gt;}\ \mathbb{E}[Y(0)\mid D=0,X]</span>. The bias shrank; it didn’t vanish—and it stuck at ~3.7×, not 1×.</p>
+<p>Restricting to <span class="math inline">X=\text{high}</span> removes only the confounding captured by the proxy. The operator’s real signal—wind gusts, equipment age, vegetation contact—is far richer than a binary tier. So within the high-risk stratum, shut-off days are still the riskier ones: <span class="math inline">\mathbb{E}[Y(0)\mid D=1,X]\
+\color{#b2182b}{&gt;}\ \mathbb{E}[Y(0)\mid D=0,X]</span>. The bias shrank; it didn’t vanish—and it stuck at ~3.7×, not 1×.</p>
 </div>
 </div>
-<p>But a binary fire-threat tier is a coarse description of a place. So next I push the place adjustment as far as it can go—compare each circuit only to itself.</p>
+<p>But a binary fire-threat tier is a coarse description of a place. So the next step pushes the place adjustment as far as it can go—compare each circuit only to itself.</p>
 <hr>
 </section>
 <section id="maybe-high-risk-circuits-are-just-different-places" class="level1">
 <h1>Maybe high-risk circuits are just different places?</h1>
 <p>Maybe the shut-off circuits aren’t just having worse days—they’re worse places. The circuits the utility de-energizes may run through steeper, drier, more wind-exposed terrain than the ones it never touches—so even the high-risk-only comparison could be picking up permanent differences between locations rather than the effect of the shutoff itself.</p>
-<p>To rule that out, I stop comparing circuits to each other and compare each circuit only to itself. Every circuit gets its own baseline ignition rate—a “fixed effect,” written <span class="math inline">\alpha_i</span>—and I ask whether a circuit has more ignitions on the days it’s shut off than on its own ordinary days. In the model <span class="math display">
+<p>To rule that out, stop comparing circuits to each other and compare each circuit only to itself. Every circuit gets its own baseline ignition rate—a “fixed effect,” written <span class="math inline">\alpha_i</span>—and the question becomes whether a circuit has more ignitions on the days it’s shut off than on its own ordinary days. In the model <span class="math display">
 Y_{it} = \alpha_i + \tau D_{it} + \varepsilon_{it},
-</span> <span class="math inline">Y_{it}</span> is the ignition outcome for circuit <span class="math inline">i</span> in period <span class="math inline">t</span>, <span class="math inline">D_{it}</span> marks whether that circuit was shut off in period <span class="math inline">t</span>, and <span class="math inline">\tau</span>—the number I want—is how much a shutoff shifts ignitions. The circuit-specific term <span class="math inline">\alpha_i</span> absorbs everything permanent about a location (its terrain, vegetation, and line age—anything that doesn’t change over time), so none of it can leak into <span class="math inline">\tau</span>; <span class="math inline">\varepsilon_{it}</span> is everything else.</p>
+</span> <span class="math inline">Y_{it}</span> is the ignition outcome for circuit <span class="math inline">i</span> in period <span class="math inline">t</span>, <span class="math inline">D_{it}</span> marks whether that circuit was shut off in period <span class="math inline">t</span>, and <span class="math inline">\tau</span>—the target—is how much a shutoff shifts ignitions. The circuit-specific term <span class="math inline">\alpha_i</span> absorbs everything permanent about a location (its terrain, vegetation, and line age—anything that doesn’t change over time), so none of it can leak into <span class="math inline">\tau</span>; <span class="math inline">\varepsilon_{it}</span> is everything else.</p>
 <p>Because each circuit serves as its own control, never-shut-off circuits contribute nothing; the estimate comes entirely from circuits de-energized on some days and not others—each one’s shut-off days against its own quiet days. That contrast is what “within-circuit variation” means.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -415,27 +433,27 @@ Y_{it} = \alpha_i + \tau D_{it} + \varepsilon_{it},
  <thead>
   <tr>
    <th style="text-align:left;"> Quantity </th>
-   <th style="text-align:right;"> Estimate </th>
-   <th style="text-align:right;"> 95% CI </th>
+   <th style="text-align:right;"> PG&amp;E </th>
+   <th style="text-align:right;"> SCE </th>
   </tr>
  </thead>
 <tbody>
   <tr>
    <td style="text-align:left;"> Rate ratio (within-circuit) </td>
-   <td style="text-align:right;"> 2.8× </td>
-   <td style="text-align:right;"> [1.8, 4.3] </td>
+   <td style="text-align:right;"> 2.8× [1.8, 4.3] </td>
+   <td style="text-align:right;"> --- </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Risk difference </td>
-   <td style="text-align:right;"> +0.0034 </td>
-   <td style="text-align:right;"> [+0.0016, +0.0052] </td>
+   <td style="text-align:right;"> +0.0034 [+0.0016, +0.0052] </td>
+   <td style="text-align:right;"> +0.0015 [-0.0004, +0.0034] </td>
   </tr>
 </tbody>
 </table>
 
 </div>
 </div>
-<p>This step trims the estimate but doesn’t change the story. A shut-off day on a given circuit still shows about 2.8× the ignition rate of that same circuit on its ordinary days (down from 3.7× when circuits were compared to each other), and the absolute gap, +0.0034 ignitions per circuit-day, sits close to the previous step’s +0.0040. Giving every circuit its own baseline—and so erasing every permanent difference between locations—shaved off a slice of the gap and left the rest standing, which means the inflated gap was never mainly about which places get shut off. It’s about which days.</p>
+<p>This step trims the estimate but doesn’t change the story. A shut-off day on a given circuit still shows about 2.8× the ignition rate of that same circuit on its ordinary days (down from 3.7× when circuits were compared to each other), and the absolute gap, +0.0034 ignitions per circuit-day, sits close to the previous step’s +0.0040. Giving every circuit its own baseline—and so erasing every permanent difference between locations—shaved off a slice of the gap and left the rest standing, which means the inflated gap was never mainly about which places get shut off. It’s about which days. (SCE, within-circuit: +0.0015—same direction, same story, wider interval.)</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -449,13 +467,14 @@ Y_{it} = \alpha_i + \tau D_{it} + \varepsilon_{it},
 <p><span class="math inline">\alpha_i</span> removes confounders constant within a circuit. But PSPS is switched on for each circuit’s worst days—the treatment is correlated with the time-varying error, <span class="math inline">\color{#b2182b}{\operatorname{Cov}(D_{it},\varepsilon_{it})&gt;0}</span>. Being your own control doesn’t help when the question is which days you were treated on.</p>
 </div>
 </div>
-<p>So next I match on the time-varying conditions too—each shut-off circuit-day to comparable non-shut-off circuit-days in the same storm.</p>
+<p>So the next step matches on the time-varying conditions too—each shut-off circuit-day to comparable non-shut-off circuit-days in the same storm.</p>
 <hr>
 </section>
-<section id="what-if-i-control-for-everything-i-can-measure" class="level1">
-<h1>What if I control for everything I can measure?</h1>
-<p>The last step pointed at days, not places—so now I go after the days directly. For every shut-off circuit-day, I pull a comparison set of non-shut-off circuit-days from the same weather event, matched as closely as the data allow on the conditions I can measure: wind, humidity, fuel dryness, vegetation, line mileage, terrain (call them <span class="math inline">X</span>). Then I compare ignitions within each matched set.</p>
-<p>This works only under an assumption called conditional ignorability, written <span class="math inline">\{Y(0),Y(1)\}\perp D\mid X</span>. In plain terms: once two circuit-days match on everything in <span class="math inline">X</span>, which one happened to be shut off is as good as random—so absent any treatment they would have ignited at the same rate, and the matched gap is the true effect <span class="math inline">\tau_{\text{ATT}}</span>. It is a demanding comparison: same-storm matching plus a Poisson (or linear) model that also absorbs each individual circuit and each event.</p>
+<section id="what-about-controlling-for-everything-measurable" class="level1">
+<h1>What about controlling for everything measurable?</h1>
+<p>The last step pointed at days, not places—so this one goes after the days directly. Every shut-off circuit-day gets a comparison set of non-shut-off circuit-days from the same weather event, matched as closely as the data allow on the measurable conditions: wind, humidity, fuel dryness, vegetation, line mileage, terrain (call them <span class="math inline">X</span>). Ignitions are then compared within each matched set.</p>
+<p>This works only under an assumption called conditional ignorability, written <span class="math inline">\{Y(0),Y(1)\}\perp
+D\mid X</span>. In plain terms: once two circuit-days match on everything in <span class="math inline">X</span>, which one happened to be shut off is as good as random—so absent any treatment they would have ignited at the same rate, and the matched gap is the true effect <span class="math inline">\tau_{\text{ATT}}</span>. It is a demanding comparison: same-storm matching plus a Poisson (or linear) model that also absorbs each individual circuit and each event.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -482,6 +501,7 @@ Y_{it} = \alpha_i + \tau D_{it} + \varepsilon_{it},
 
 </div>
 </div>
+<p><em>(From here through the machine-learning step, the estimates are PG&amp;E-only: the SCE companion panel lacks the matched weather/fuel covariates. The trail picks SCE back up at the bounds.)</em></p>
 <p>And the gap survives. The rate ratio actually ticks up a little—matching within the same storm sharpens the contrast rather than dissolving it—though its confidence interval is enormous, because ignitions are rare enough that ratios swing wildly from a handful of events. The number to watch is the absolute risk difference, +0.0036 ignitions per circuit-day, which is far steadier: it sits in the same narrow band as every step before it.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -489,22 +509,22 @@ Y_{it} = \alpha_i + \tau D_{it} + \varepsilon_{it},
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Where it breaks: identification rests on an assumption I know is false
+<span class="screen-reader-only">Important</span>Where it breaks: identification rests on an assumption known to be false
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Conditional ignorability asks the shutoff to be as good as random among look-alike days. It isn’t: the utility de-energizes on its own real-time read of how dangerous a circuit is right now—judgment and local signals that never make it into <span class="math inline">X</span>. So matched shut-off days are still genuinely riskier than their controls, <span class="math inline">\{Y(0)\}\not\perp D\mid X</span>, and the estimate remains <span class="math inline">\color{#b2182b}{\tau + \text{unobserved-selection bias}}</span>. Matching can only balance what I wrote down.</p>
+<p>Conditional ignorability asks the shutoff to be as good as random among look-alike days. It isn’t: the utility de-energizes on its own real-time read of how dangerous a circuit is right now—judgment and local signals that never make it into <span class="math inline">X</span>. So matched shut-off days are still genuinely riskier than their controls, <span class="math inline">\{Y(0)\}\not\perp D\mid X</span>, and the estimate remains <span class="math inline">\color{#b2182b}{\tau + \text{unobserved-selection bias}}</span>. Matching can only balance what got written down.</p>
 </div>
 </div>
-<p>Maybe the problem is functional form. Next I use flexible machine learning to rule that out.</p>
+<p>Maybe the problem is functional form. Flexible machine learning can rule that out—that’s next.</p>
 <hr>
 </section>
 <section id="can-flexible-machine-learning-squeeze-the-bias-out" class="level1">
 <h1>Can flexible machine learning squeeze the bias out?</h1>
-<p>So I let machine learning fit the relationships between conditions and ignitions however the data want—no assumed straight lines—and remove as much observed-confounding bias as the measured covariates possibly allow.</p>
+<p>So let machine learning fit the relationships between conditions and ignitions however the data want—no assumed straight lines—and remove as much observed-confounding bias as the measured covariates possibly allow.</p>
 <p>The tool is the doubly-robust AIPW estimator. It leans on two models: a propensity model <span class="math inline">e(X)</span>, which predicts how likely each circuit-day was to be shut off, and an outcome model <span class="math inline">m_0(X)=\mathbb{E}[Y\mid X,D=0]</span>, which predicts its ignition rate had it not been. The appeal is the “doubly robust” property—the estimate stays valid as long as at least one of those two models is right: <span class="math display">
 \hat\tau_{\text{AIPW}}=\tfrac1{n_1}\sum_i\Big[D_i(Y_i-\hat m_0)-(1-D_i)\tfrac{\hat e}{1-\hat e}(Y_i-\hat m_0)\Big].
-</span> I fit both with lasso over a richly expanded set of <span class="math inline">X</span>, cross-fit by circuit so no day is scored by a model that trained on it, and trim circuit-days with no real counterpart.</p>
+</span> Both are fit with lasso over a richly expanded set of <span class="math inline">X</span>, cross-fit by circuit so no day is scored by a model that trained on it; circuit-days with no real counterpart are trimmed.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -525,19 +545,19 @@ Y_{it} = \alpha_i + \tau D_{it} + \varepsilon_{it},
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Double robustness still buys nothing without ignorability: both models see only the observed <span class="math inline">X</span>. Flexible ML can fix a wrong-shape problem, but it cannot recover a variable I never recorded—and the estimate didn’t budge from rigid matching, so the leftover bias isn’t something any observed-covariate adjustment can reach. The leading suspect is the one from before: <span class="math inline">\color{#b2182b}{\text{unobserved acute-risk selection}}</span>. (Overlap is poor, too—about half the control days have almost no chance of being shut off—a separate sign that a clean counterfactual barely exists in this data.)</p>
+<p>Double robustness still buys nothing without ignorability: both models see only the observed <span class="math inline">X</span>. Flexible ML can fix a wrong-shape problem, but it cannot recover a variable that was never recorded—and the estimate didn’t budge from rigid matching, so the leftover bias isn’t something any observed-covariate adjustment can reach. The leading suspect is the one from before: <span class="math inline">\color{#b2182b}{\text{unobserved acute-risk selection}}</span>. (Overlap is poor, too—about half the control days have almost no chance of being shut off—a separate sign that a clean counterfactual barely exists in this data.)</p>
 </div>
 </div>
-<p>If I can’t remove the bias, can I at least bound it without assuming ignorability? That’s next.</p>
+<p>If the bias can’t be removed, can it at least be bounded without assuming ignorability? That’s next.</p>
 <hr>
 </section>
 <section id="how-bad-could-the-hidden-bias-be" class="level1">
 <h1>How bad could the hidden bias be?</h1>
-<p>Every step so far has tried to remove the bias and failed, because the thing driving it was never in my data. So instead of removing it, let me bound it: without assuming the bias away, how large could the true effect actually be? That’s the idea behind “partial identification”—rather than a single estimate resting on assumptions I don’t believe, I report the entire range of effects the data cannot rule out.</p>
-<p>The move is to confront the missing piece directly. For every shut-off circuit-day I never observe <span class="math inline">Y_i(0)</span>, the ignition outcome it would have had if left energized—but I know one thing for certain: it’s a probability, so it lies somewhere in <span class="math inline">[0,1]</span>. Plug in the most favorable value everywhere (every shut-off day would have ignited on its own) and you get the largest protective effect the data permit; plug in the least favorable (none would have) and you get the largest harmful effect. Those two extremes are the “Manski worst-case bounds”—the widest the truth could possibly be, while assuming nothing whatsoever about why circuits get shut off.</p>
-<p>One side can be tightened with a single, mild assumption: “monotone treatment response,” the premise that cutting power never adds ignitions (<span class="math inline">Y_i(1)\le Y_i(0)</span>). It’s about as mild as assumptions get—a de-energized line is not more likely to spark—and it pins the harmful edge of the range at zero: whatever PSPS does, it can’t be worse than doing nothing.</p>
-<p>Here’s what that yields. The assumption-free Manski band runs from -0.994 to +0.006 ignitions per circuit-day—from “PSPS averts essentially every ignition” all the way to “it slightly increases them.” My benchmark estimate (about +0.004) sits inside that band, as it mechanically must.</p>
-<p>But add monotone treatment response and something sharper happens. The harmful edge drops to 0—and the benchmark now sits <em>outside</em> the band. Under an assumption as mild as “cutting power doesn’t start fires,” a positive number cannot be the causal effect of PSPS—and this is not a point-estimate artifact, because the benchmark’s entire confidence interval ([+0.0012, +0.0063]) sits above zero. The bounds don’t just fail to pin down the truth; they quietly convict the benchmark. Whatever +0.004 is, it isn’t the effect of the shutoff—it’s the selection bias I’ve been chasing since the first comparison, caught here by something other than my own design logic.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The band assumes next to nothing, yet it still stretches from a near-total reduction in ignitions all the way to none at all.</p>
+<p>Every step so far has tried to remove the bias and failed, because the thing driving it was never in the data. So instead of removing it, bound it: without assuming the bias away, how large could the true effect actually be? That’s the idea behind “partial identification”—rather than a single estimate resting on assumptions there is no reason to believe, report the entire range of effects the data cannot rule out.</p>
+<p>The move is to confront the missing piece directly. For every shut-off circuit-day, <span class="math inline">Y_i(0)</span>—the ignition outcome it would have had if left energized—goes unobserved. But one thing is certain: it’s a probability, so it lies somewhere in <span class="math inline">[0,1]</span>. Plug in the most favorable value everywhere (every shut-off day would have ignited on its own) and you get the largest protective effect the data permit; plug in the least favorable (none would have) and you get the largest harmful effect. Those two extremes are the “Manski worst-case bounds”—the widest the truth could possibly be, while assuming nothing whatsoever about why circuits get shut off.</p>
+<p>One side can be tightened with a single additional assumption: “monotone treatment response,” the premise that cutting power never adds ignitions (<span class="math inline">Y_i(1)\le Y_i(0)</span>). It’s about as mild as assumptions get—a de-energized line is not more likely to spark—and it pins the harmful edge of the range at zero: whatever PSPS does, it can’t be worse than doing nothing.</p>
+<p>Here’s what that yields. The assumption-free Manski band runs from -0.994 to +0.006 ignitions per circuit-day—from “PSPS averts essentially every ignition” all the way to “it slightly increases them.” The benchmark estimate (about +0.004) sits inside that band, as it mechanically must.</p>
+<p>But add monotone treatment response and something sharper happens. The harmful edge drops to 0—and the benchmark now sits <em>outside</em> the band. Under an assumption as mild as “cutting power doesn’t start fires,” a positive number cannot be the causal effect of PSPS—and this is not a point-estimate artifact, because the benchmark’s entire confidence interval ([+0.0012, +0.0063]) sits above zero. The bounds don’t just fail to pin down the truth; they quietly convict the benchmark. Whatever +0.004 is, it isn’t the effect of the shutoff—it’s the selection bias this post has been chasing since the first comparison, caught here by something other than the designs’ own logic.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The band assumes next to nothing, yet it still stretches from a near-total reduction in ignitions all the way to none at all. And the construction is portable: on the SCE companion panel the Manski band is [-0.998, +0.0018] with the same MTR edge at zero—and SCE’s naive estimate (+0.0017) sits outside it too.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -548,17 +568,17 @@ Y_{it} = \alpha_i + \tau D_{it} + \varepsilon_{it},
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The bounds make no unwarranted assumptions—and tell me almost nothing actionable. Ignitions occur on only about 0.2% of circuit-days even in this high-risk analysis sample (about 0.03% across the full panel), and against a base rate that small, the range of logically-possible effects dwarfs the effect I’m trying to measure. The one thing the bounds do say cleanly is about the benchmark, not the effect: a positive estimate sits outside the MTR band, so it has to be bias.</p>
+<p>The bounds make no unwarranted assumptions—and say almost nothing actionable. Ignitions occur on only about 0.2% of circuit-days even in this high-risk analysis sample (about 0.03% across the full panel), and against a base rate that small, the range of logically-possible effects dwarfs the effect being measured. The one thing the bounds do say cleanly is about the benchmark, not the effect: a positive estimate sits outside the MTR band, so it has to be bias.</p>
 </div>
 </div>
-<p>Before abandoning observation, a diagnostic: is my benchmark even detecting confounding the way I think? A falsification test comes next.</p>
+<p>Before abandoning observation, a diagnostic: is the benchmark even detecting confounding as advertised? A falsification test comes next.</p>
 <hr>
 </section>
 <section id="is-the-benchmark-just-picking-up-bad-fire-weather" class="level1">
 <h1>Is the benchmark just picking up bad fire weather?</h1>
-<p>I’ve suspected all along that the benchmark gap is mostly confounding—dangerous fire weather driving both the decision to shut off and the ignitions themselves. A direct check is to find an outcome PSPS physically cannot affect but that the same bad weather still would, and run the identical matched comparison on it. If the method turns up a gap there, that gap has to be confounding, because there is no real effect for it to detect.</p>
+<p>The suspicion all along has been that the benchmark gap is mostly confounding—dangerous fire weather driving both the decision to shut off and the ignitions themselves. A direct check is to find an outcome PSPS physically cannot affect but that the same bad weather still would, and run the identical matched comparison on it. If the method turns up a gap there, that gap has to be confounding, because there is no real effect for it to detect.</p>
 <p>Non-utility ignitions—lightning strikes, arson, vehicle fires—are exactly that kind of outcome. De-energizing a power line does nothing to stop a lightning strike or a car fire, yet those fires are still more likely on the same high-risk days. An outcome like this is a “negative control,” or placebo: a true PSPS effect on it is impossible, so any gap the method reports is pure confounding signal—and a clean result, no gap, is reassurance that the method isn’t manufacturing one.</p>
-<p>So I re-run the matched design from step 3, swapping the outcome for non-utility ignitions (drawn from the federal FPA-FOD fire archive, whose current edition ends in 2020—so I use its 2014–2020 overlap with my panel). One fairness note: since the placebo data stop at 2020, the right yardstick is the utility result over those same years, not the larger full-panel headline.</p>
+<p>So the matched design from step 3 is re-run with the outcome swapped for non-utility ignitions (drawn from the federal FPA-FOD fire archive, whose current edition ends in 2020—so the test uses its 2014–2020 overlap with the panel). One fairness note: since the placebo data stop at 2020, the right yardstick is the utility result over those same years, not the larger full-panel headline.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -580,16 +600,16 @@ Y_{it} = \alpha_i + \tau D_{it} + \varepsilon_{it},
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A passing placebo is narrower reassurance than it looks. A negative control can only catch confounders that move both outcomes at once—generic fire weather, which makes every kind of fire more likely. But the confounder I’ve been worried about isn’t generic weather; it’s the utility’s selection on equipment-specific risk—it de-energizes the particular lines it judges most likely to fail. That risk has nothing to do with lightning or arson, so by construction it can’t move the placebo, and the test is blind to precisely the bias that’s biting. Two further cautions: with few non-utility ignitions in the matched sets the placebo is underpowered, and even the real comparator isn’t a fixed number—it runs about 5.7× over the full sample versus 2.8× in 2014–2020, tangled up with the post-2021 EPSS rollout. (The 5.7× is the matched design’s Poisson point estimate; its bootstrap-median counterpart is the 4.4× quoted at step 3.)</p>
+<p>A passing placebo is narrower reassurance than it looks. A negative control can only catch confounders that move both outcomes at once—generic fire weather, which makes every kind of fire more likely. But the confounder that matters here isn’t generic weather; it’s the utility’s selection on equipment-specific risk—it de-energizes the particular lines it judges most likely to fail. That risk has nothing to do with lightning or arson, so by construction it can’t move the placebo, and the test is blind to precisely the bias that’s biting. Two further cautions: with few non-utility ignitions in the matched sets the placebo is underpowered, and even the real comparator isn’t a fixed number—it runs about 5.7× over the full sample versus 2.8× in 2014–2020, tangled up with the post-2021 EPSS rollout. (The 5.7× is the matched design’s Poisson point estimate; its bootstrap-median counterpart is the 4.4× quoted at step 3.)</p>
 </div>
 </div>
-<p>I’ve now adjusted, bounded, and run a falsification test, and every observational tool hits the same wall: the utility’s private, equipment-specific reason for cutting power. Getting past it takes something the adjustment toolkit can’t supply—variation in which circuits lose power that doesn’t come from the utility’s own risk judgment. That means turning to a quasi-experiment.</p>
+<p>Adjusting, bounding, falsifying—every observational tool hits the same wall: the utility’s private, equipment-specific reason for cutting power. Getting past it takes something the adjustment toolkit can’t supply—variation in which circuits lose power that doesn’t come from the utility’s own risk judgment. That means turning to a quasi-experiment.</p>
 <hr>
 </section>
 <section id="can-a-difference-in-differences-design-break-the-tie" class="level1">
 <h1>Can a difference-in-differences design break the tie?</h1>
-<p>Every observational fix so far has tried to measure the confounder and subtract it out. A difference-in-differences design gives up on measuring it and leans on a different assumption instead: parallel trends. The bet is that, absent any shutoff, the circuits that got de-energized would have drifted in step with comparable circuits that didn’t. The controls’ change over time then stands in for what the treated circuits would have done; the effect is whatever extra movement shows up on top. The appeal is that I can partly check the bet: if treated and control circuits were already pulling apart in the weeks before the shutoff, parallel trends is in doubt. Tracking the estimate week by week, on both sides of the shutoff, is called an “event study.”</p>
-<p>PSPS is a switching treatment—circuits cut in and out repeatedly, week to week—so I use PanelMatch, which pairs each shut-off circuit-week with control circuit-weeks that share the same recent on/off history, at weekly resolution. I then read off the gap in the weeks after a shutoff and, as a placebo, in the weeks before it, with bootstrapped confidence intervals (1936 matched sets across 808 circuits). One bookkeeping caution: these are circuit-week risk differences, a coarser scale than the daily ~+0.004 of the earlier steps, so don’t compare the magnitudes directly.</p>
+<p>Every observational fix so far has tried to measure the confounder and subtract it out. A difference-in-differences design gives up on measuring it and leans on a different assumption instead: parallel trends. The bet is that, absent any shutoff, the circuits that got de-energized would have drifted in step with comparable circuits that didn’t. The controls’ change over time then stands in for what the treated circuits would have done; the effect is whatever extra movement shows up on top. The appeal is that the bet can be partly checked: if treated and control circuits were already pulling apart in the weeks before the shutoff, parallel trends is in doubt. Tracking the estimate week by week, on both sides of the shutoff, is called an “event study.”</p>
+<p>PSPS is a switching treatment—circuits cut in and out repeatedly, week to week—so the design here is PanelMatch, which pairs each shut-off circuit-week with control circuit-weeks that share the same recent on/off history, at weekly resolution. The gap is then read off in the weeks after a shutoff and, as a placebo, in the weeks before it, with bootstrapped confidence intervals (1936 matched sets across 808 circuits). One bookkeeping caution: these are circuit-week risk differences, a coarser scale than the daily ~+0.004 of the earlier steps, so don’t compare the magnitudes directly.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -610,7 +630,7 @@ Y_{it} = \alpha_i + \tau D_{it} + \varepsilon_{it},
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The before-shutoff placebo checks are the tell. In the weeks before a circuit is de-energized, treated circuits sit <em>below</em> their matched controls; in the weeks after, they sit above. The lines cross at the shutoff. That crossing is the fingerprint of risk-based selection: shutoffs are timed to circuits on a steeply worsening trajectory, so their ignition rate climbs from under the controls’ to over it right as treatment arrives—exactly the pattern you’d expect whether or not PSPS does anything. But every one of those intervals still spans zero, so I can’t call the pre-trend real, and at weekly resolution the post-shutoff estimates are too imprecise to pin down either. So this is a <span class="math inline">\color{#b2182b}{\text{noisy warning sign}}</span>—not a clean parallel-trends pass, and not a decisive failure. A difference-in-differences built on the utility’s own shutoff decisions can’t escape the selection problem; it can only make it faintly visible.</p>
+<p>The before-shutoff placebo checks are the tell. In the weeks before a circuit is de-energized, treated circuits sit <em>below</em> their matched controls; in the weeks after, they sit above. The lines cross at the shutoff. That crossing is the fingerprint of risk-based selection: shutoffs are timed to circuits on a steeply worsening trajectory, so their ignition rate climbs from under the controls’ to over it right as treatment arrives—exactly the pattern you’d expect whether or not PSPS does anything. But every one of those intervals still spans zero, so the pre-trend can’t be called real, and at weekly resolution the post-shutoff estimates are too imprecise to pin down either. So this is a <span class="math inline">\color{#b2182b}{\text{noisy warning sign}}</span>—not a clean parallel-trends pass, and not a decisive failure. A difference-in-differences built on the utility’s own shutoff decisions can’t escape the selection problem; it can only make it faintly visible.</p>
 </div>
 </div>
 <p>What this design still leaned on: the utility’s own risk-based decisions about which circuits to cut. To break the selection problem for good, the variation in who loses power has to come from somewhere other than a circuit’s own risk. One source remains in public data: a rule-change quasi-experiment.</p>
@@ -670,7 +690,8 @@ Z_{it}=\mathbb{1}[\text{circuit } i \text{ is eligible under the rule in force a
 
 </div>
 </div>
-<p>I pre-committed to one falsification before estimating anything: a check for whether the proxy-eligible circuits were already on a different ignition trajectory before the 2019 rollout. If they were, eligibility is tracking risk rather than a clean rule change, and the instrument is invalid before estimation. They were, decisively (<span class="math inline">\color{#b2182b}{\text{pre-trend } p\approx 10^{-8}}</span>). This is a pre-2019 differential-trend test on the HFTD-proxy circuits, not an event study around every documented revision—but it is decisive for the one contrast the public data let me compute.</p>
+<p>One falsification was pre-committed before any estimation: a check for whether the proxy-eligible circuits were already on a different ignition trajectory before the 2019 rollout. If they were, eligibility is tracking risk rather than a clean rule change, and the instrument is invalid before estimation. They were, decisively (<span class="math inline">\color{#b2182b}{\text{pre-trend } p\approx
+10^{-8}}</span>). This is a pre-2019 differential-trend test on the HFTD-proxy circuits, not an event study around every documented revision—but it is decisive for the one contrast the public data support.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -681,7 +702,7 @@ Z_{it}=\mathbb{1}[\text{circuit } i \text{ is eligible under the rule in force a
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The fallback still emits protective-looking numbers—an ITT Poisson rate ratio of 0.65 and an IV/LATE risk difference of -0.039. Set that second number against the base rates from earlier: even the riskiest circuit-days in this data ignite at about 0.6 per hundred. An effect of -3.9 per hundred would require that, absent the shutoff, the affected circuit-days were going to ignite at roughly 7 times the worst rate ever observed. Compliers are risk-selected, so their counterfactual rate plausibly runs above the average—but several times the observed maximum is implausible even granting that. I show these numbers only as an audit trail: they are the mechanical output of the pre-specified procedure, but the pre-trend failure means they carry no information about whether PSPS works—and the IV’s magnitude isn’t even plausible, which is its own small confirmation that the instrument is broken. On public data, “rule” and “risk” cannot be pried apart—the only eligibility signal I can compute is a risk tier, and risk is the very thing confounding everything else.</p>
+<p>The fallback still emits protective-looking numbers—an ITT Poisson rate ratio of 0.65 and an IV/LATE risk difference of -0.039. Set that second number against the base rates from earlier: even the riskiest circuit-days in this data ignite at about 0.6 per hundred. An effect of -3.9 per hundred would require that, absent the shutoff, the affected circuit-days were going to ignite at roughly 7 times the worst rate ever observed. Compliers are risk-selected, so their counterfactual rate plausibly runs above the average—but several times the observed maximum is implausible even granting that. These numbers appear only as an audit trail: they are the mechanical output of the pre-specified procedure, but the pre-trend failure means they carry no information about whether PSPS works—and the IV’s magnitude isn’t even plausible, which is its own small confirmation that the instrument is broken. On public data, “rule” and “risk” cannot be pried apart—the only computable eligibility signal is a risk tier, and risk is the very thing confounding everything else.</p>
 </div>
 </div>
 <p>Adjust, bound, falsify, and both quasi-experiments—every public-data approach points the same way. The trouble isn’t that the data hold no usable variation; it’s that the variation they expose is the wrong kind, too tangled up with baseline risk to identify anything. The variation that would work lives in records only the utility holds.</p>
@@ -689,17 +710,73 @@ Z_{it}=\mathbb{1}[\text{circuit } i \text{ is eligible under the rule in force a
 </section>
 <section id="so-what-would-actually-answer-the-question" class="level1">
 <h1>So what would actually answer the question?</h1>
-<p>Up to this point, the pattern is clear. The raw 15× gap turned out to be overwhelmingly selection: restrict to high-risk circuit-days and it collapses; compare each circuit to itself and it shrinks only modestly; throw flexible machine learning at it and every adjusted design lands in the same narrow band, +0.003 to +0.004—always positive, never close to zero. Assumption-free worst-case bounds are too wide to pin the effect down—though they do flag the positive benchmark as bias, which is its own kind of useful. A placebo on fires PSPS cannot cause comes back clean—but is blind to the confounder that actually matters. And the two quasi-experiments I could run on public data, the switching DiD and the reform-induced instrument, returned a noisy warning and an outright falsification.</p>
-<p>Strip away the alarm, and one limitation remains. The utility de-energizes on its own real-time, equipment- and location-specific read of how dangerous a circuit is right now—and that read never enters the public record. Because the same risk drives ignitions, it confounds every comparison. Because it decides who gets treated, no amount of adjustment, bounding, falsification, or instrumenting can purge it. I began worried about generic fire weather; I end pinned by something narrower and harder—the operator’s private risk signal. The remaining designs work around that limitation, and each needs data only the utility holds.</p>
+<p>Up to this point, the pattern is clear. The raw 15× gap turned out to be overwhelmingly selection: restrict to high-risk circuit-days and it collapses; compare each circuit to itself and it shrinks only modestly; throw flexible machine learning at it and every adjusted design lands in the same narrow band, +0.003 to +0.004—always positive, never close to zero. Assumption-free worst-case bounds are too wide to pin the effect down—though they do flag the positive benchmark as bias, which is its own kind of useful. A placebo on fires PSPS cannot cause comes back clean—but is blind to the confounder that actually matters. And the two quasi-experiments public data support, the switching DiD and the reform-induced instrument, returned a noisy warning and an outright falsification.</p>
+<p>Strip away the alarm, and one limitation remains. The utility de-energizes on its own real-time, equipment- and location-specific read of how dangerous a circuit is right now—and that read never enters the public record. Because the same risk drives ignitions, it confounds every comparison. Because it decides who gets treated, no amount of adjustment, bounding, falsification, or instrumenting can purge it. The worry at the start was generic fire weather; the wall at the end is something narrower and harder—the operator’s private risk signal. The remaining designs work around that limitation, and each needs data only the utility holds.</p>
 <p>The fix is treatment variation that does not run through the operator’s judgment—variation that is, locally, as good as randomly assigned. Three designs deliver it, and each maps to a specific piece of utility-held data:</p>
 <ul>
 <li>Border RD—adjacent locations across a circuit boundary share the same weather and fuel, but only one side loses power; the jump in <span class="math inline">D</span> at the boundary identifies a local effect (<span class="math inline">\tau_{\text{RD}}=\lim_{x\downarrow 0}\mathbb{E}[Y\mid x]-\lim_{x\uparrow 0}\mathbb{E}[Y\mid x]</span>, with <span class="math inline">x</span> the signed distance to it). Needs circuit and boundary geometry.</li>
 <li>Fuzzy RD at the de-energization threshold—circuits just over the utility’s Fire Potential Index (FPI) cutoff (the FPI is the utility’s daily, model-based fire-risk score) get shut off, just under don’t, and the jump in shutoff probability at the cutoff is the instrument: the measured version of the rule-change idea, taken at the decision margin rather than the rule. Needs the decision-time FPI values and thresholds.</li>
 <li>Reform-induced DiD done right—the reform instrument plus the contemporaneous rationale for each rule change, which is what lets you argue the timing was policy- not risk-driven—the exogeneity the public version could not defend. Needs the revision-rationale record.</li>
 </ul>
-<p>All three also rest on the one thing no public source contains: the scoped-but-not-shut-off circuits— the controls that were eligible for de-energization and didn’t get one. The public rule (per-cell FPI &gt; 0.7, sustained wind &gt; 19 mph, RH &lt; 30%, dead-fuel moisture &lt; 9–11%, plus the ≥ 25 of &gt;45,000 4-km² grid-cell preparation trigger) is necessary but nowhere near sufficient; the effect lives in the realized values and the controls.</p>
-<section id="is-there-a-public-shortcut-i-checked-the-three-large-california-ious." class="level2">
-<h2 class="anchored" data-anchor-id="is-there-a-public-shortcut-i-checked-the-three-large-california-ious.">Is there a public shortcut? I checked the three large California IOUs.</h2>
+<p>All three also rest on the one thing no public source contains: the scoped-but-not-shut-off circuits—the controls that were eligible for de-energization and didn’t get one. The public rule (per-cell FPI &gt; 0.7, sustained wind &gt; 19 mph, RH &lt; 30%, dead-fuel moisture &lt; 9–11%, plus the ≥ 25 of &gt;45,000 4-km² grid-cell preparation trigger) is necessary but nowhere near sufficient; the effect lives in the realized values and the controls.</p>
+<section id="the-sce-companion-panel-how-its-built-and-its-limits" class="level2">
+<h2 class="anchored" data-anchor-id="the-sce-companion-panel-how-its-built-and-its-limits">The SCE companion panel: how it’s built, and its limits</h2>
+<p>The SCE numbers that appear alongside PG&amp;E’s throughout this post come from an approximate companion panel assembled from three public sources: SCE’s DRPEP circuit map (the full 4,261-circuit universe, with geometry), the CPUC’s all-IOU PSPS event records (treatment, by circuit name), and the CPUC fire-incident workbooks (outcomes, joined to circuits by location and validated against the one year SCE reported circuit names directly). Every join is gated: the build refuses to write a panel if a validation threshold fails—and the first attempt did fail, until the name matching was fixed for documented reasons rather than fuzzed.</p>
+<p>Side by side, the two utilities tell one story:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ladder_files/figure-html/rep-fig-1.png" class="img-fluid figure-img" alt="Forest plot on a log scale comparing PG&amp;E and SCE: raw rate ratios of about 15 and 25 both fall sharply under the high fire-threat restriction, to about 4 and 12; a bottom row notes SDG&amp;E is blocked for lack of a public circuit map." width="720"></p>
+<figcaption>The replication check. PG&amp;E’s raw 15× and SCE’s raw 25× both collapse when the comparison is restricted to high fire-threat circuits on event days—the trap is structural to PSPS, not specific to one utility. SCE’s intervals are wide (its panel rests on 3 treated-day ignitions); SDG&amp;E has no public circuit map, so no estimate.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The figure is the headline comparison; the full SCE mini-ladder—including the within-circuit and bounds steps—lands the same way:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Step </th>
+   <th style="text-align:left;"> Rate ratio </th>
+   <th style="text-align:left;"> Risk difference / circuit-day </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 0 raw diff-in-means </td>
+   <td style="text-align:left;"> 24.5× [7.9, 76.1] </td>
+   <td style="text-align:left;"> +0.0017 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 high fire-threat circuits, event days </td>
+   <td style="text-align:left;"> 12.1× [3.6, 41.0] </td>
+   <td style="text-align:left;"> +0.0016 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 circuit fixed effects (LPM) </td>
+   <td style="text-align:left;"> --- </td>
+   <td style="text-align:left;"> +0.0015 [-0.0004, +0.0034] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 5 Manski / MTR bounds </td>
+   <td style="text-align:left;"> --- </td>
+   <td style="text-align:left;"> band [-0.998, +0.0018]; MTR pins the upper edge at 0 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>Within circuits, the estimate trims further while staying positive; and the naive estimate sits <em>outside</em> the monotone-treatment-response band—bias, not effect, by the same logic that convicted the PG&amp;E benchmark. Read all of this as replication of the <em>trap</em>, not as a second deep ladder: SCE’s panel rests on 3 ignitions across 1,714 treated circuit-days, so the intervals are wide (the within-circuit interval crosses zero), and its covariate depth is far below the PG&amp;E panel’s—the matched, DR/DML, and placebo steps aren’t built for SCE yet. SDG&amp;E remains blocked: its CPUC ignition workbooks are staged, but no public circuit universe exists to join them to.</p>
+<p>Why is PG&amp;E the deep case study, then? Because that’s where a deep public panel exists—Warner et al.’s replication package did the heavy covariate assembly for PG&amp;E circuits, and nobody has done the equivalent for SCE—and because the headline simulated counterfactual this post interrogates is PG&amp;E’s. The selection problem itself is structural to how PSPS works, at any utility.</p>
+</section>
+<section id="is-there-a-public-shortcut-a-check-across-the-three-large-california-ious" class="level2">
+<h2 class="anchored" data-anchor-id="is-there-a-public-shortcut-a-check-across-the-three-large-california-ious">Is there a public shortcut? A check across the three large California IOUs</h2>
+<p>The SCE companion panel used everything the public record offers; here is the availability picture for the <em>cleaner</em> designs. The CPUC PSPS rollup covers all three major IOUs, the fire-incident workbooks are now staged for all three, and SCE adds the public circuit map that made its panel buildable (SDG&amp;E publishes no equivalent). The detailed coverage audit is in Methodology &amp; data; the deep ladder remains PG&amp;E-only because only PG&amp;E has a covariate-rich public panel.</p>
+<p>For the cleaner designs, the deeper data gap is common across utilities:</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-hover" style="font-size: 11px; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -709,7 +786,7 @@ Z_{it}=\mathbb{1}[\text{circuit } i \text{ is eligible under the rule in force a
    <th style="text-align:left;"> Decision rule public? </th>
    <th style="text-align:left;"> Treated-circuit FPI values? </th>
    <th style="text-align:left;"> Control identities / FPI? </th>
-   <th style="text-align:left;"> Circuit-resolved ignitions? </th>
+   <th style="text-align:left;"> Ignition outcome staged here? </th>
   </tr>
  </thead>
 <tbody>
@@ -718,28 +795,28 @@ Z_{it}=\mathbb{1}[\text{circuit } i \text{ is eligible under the rule in force a
    <td style="text-align:left;"> Yes (thresholds + logic) </td>
    <td style="text-align:left;"> No (rule only) </td>
    <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> Circuit-level: public (CPUC filings---used here); segment-level: needs DUA (data-use agreement) </td>
+   <td style="text-align:left;"> Yes (PG&amp;E CPUC files via WCF) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> SCE </td>
    <td style="text-align:left;"> Yes (FPI 1–17 + thresholds) </td>
    <td style="text-align:left;"> Yes (per de-energized circuit) </td>
    <td style="text-align:left;"> No (de-energized + downstream only) </td>
-   <td style="text-align:left;"> Yes (CPUC, lat/long) </td>
+   <td style="text-align:left;"> Yes (CPUC workbooks 2014–2025) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> SDG&amp;E </td>
    <td style="text-align:left;"> Yes (FPI ≥ 14) </td>
    <td style="text-align:left;"> District-level only </td>
    <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> Partial </td>
+   <td style="text-align:left;"> Yes (CPUC workbooks 2014–2025) </td>
   </tr>
 </tbody>
 </table>
 
 </div>
 </div>
-<p>In the public sources I checked, utilities publish the rule and the treated circuits—never the controls. (California’s three smaller electric IOUs—PacifiCorp, Liberty, and Bear Valley—also run PSPS programs but are outside this scoping.) SCE is not a public clean-RD escape hatch: its treated-side running variable is unusually rich, but the control-side realized FPI and the scoped controls are still missing. There’s no public-data workaround; the counterfactual is the missing piece everywhere.</p>
+<p>In every public source checked, utilities publish the rule and the treated circuits—never the controls. (California’s three smaller electric IOUs—PacifiCorp, Liberty, and Bear Valley—also run PSPS programs but are outside this scoping.) SCE is not a public clean-RD escape hatch: its treated-side running variable is unusually rich, but the control-side realized FPI and the scoped controls are still missing. SDG&amp;E is thinner still at circuit-level decision-risk resolution. There’s no public-data workaround for the identified designs; the counterfactual is the missing piece everywhere.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -750,7 +827,7 @@ Z_{it}=\mathbb{1}[\text{circuit } i \text{ is eligible under the rule in force a
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>I showed the naive public-data comparison is biased and exactly where each attempt to fix it breaks. What no public method can supply, and what would finally settle how well PSPS works, is the utility’s own operational record: the scoped circuit list, decision-time FPI and thresholds, boundary geometry, and revision rationale. That is the data-release case.</p>
+<p>This post showed the naive public-data comparison is biased and exactly where each attempt to fix it breaks. It also made the service-territory breakout explicit: the deep ladder is PG&amp;E’s; SCE now has an approximate replication panel that reproduces the confounded pattern (and only that); SDG&amp;E is blocked on a public circuit map. None of this replaces what is missing everywhere: the scoped circuit list, decision-time FPI and thresholds, boundary geometry, and revision rationale. That is the data-release case—and it is an industry-wide ask, not a PG&amp;E-specific one.</p>
 </div>
 </div>
 <hr>
@@ -763,7 +840,7 @@ Z_{it}=\mathbb{1}[\text{circuit } i \text{ is eligible under the rule in force a
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="ladder_files/figure-html/fullladder-1.png" class="img-fluid figure-img" alt="Summary list of ten approaches with one-line verdicts: steps 0 through 4 confounded, bounds assumption-free but uninformative, the placebo near 1 but blind to the key confounder, the switching DiD a noisy warning, the reform IV falsified, and the identified designs awaiting utility data, with the last line emphasized in green." width="816"></p>
-<figcaption>The full sequence. Steps 0–4 are estimates on a common scale; 5–9 move to different units/designs and are shown by their verdict. The throughline: every public-data approach lands confounded, uninformative, or falsified—and the credible answer is gated on utility data.</figcaption>
+<figcaption>The full sequence (PG&amp;E panel). Steps 0–4 are estimates on a common scale; 5–9 move to different units/designs and are shown by their verdict. The throughline: every public-data approach lands confounded, uninformative, or falsified—and the credible answer is gated on utility data.</figcaption>
 </figure>
 </div>
 </div>
@@ -773,16 +850,16 @@ Z_{it}=\mathbb{1}[\text{circuit } i \text{ is eligible under the rule in force a
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="ladder_files/figure-html/spine-1.png" class="img-fluid figure-img" alt="Two forest plots for steps 0 through 4. Left, on a log scale: rate ratios collapse from 15.1 to roughly 3 to 4 with wide intervals. Right: risk differences cluster inside a shaded positive band near plus 0.004, and no interval reaches zero." width="960"></p>
-<figcaption>The observational core (steps 0–4). Left: the rate ratio—a 15× gap that collapses then plateaus, with huge uncertainty. Right: the risk difference—every adjusted design lands in a narrow positive band (+0.003 to +0.004, shaded), and none reaches zero.</figcaption>
+<figcaption>The observational core (steps 0–4, PG&amp;E panel). Left: the rate ratio—a 15× gap that collapses then plateaus, with huge uncertainty. Right: the risk difference—every adjusted design lands in a narrow positive band (+0.003 to +0.004, shaded), and none reaches zero.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <blockquote class="blockquote">
-<p>The estimate is stuck on the wrong side of zero—not because PSPS is harmful, but because selection is, and I can’t see past it. Yet.</p>
+<p>The estimate is stuck on the wrong side of zero—not because PSPS is harmful, but because selection is, and public data can’t see past it. Yet.</p>
 </blockquote>
 <hr>
-<p>Public-data benchmarks; none of approaches 0–8 is a clean causal estimate (see each “Where it breaks” box). The switching-DiD is a single underpowered PanelMatch run (a cross-check with two other switching-treatment DiD estimators is queued); the reform-induced IV is falsified by an HFTD-proxy pre-trend test. The identified designs await PG&amp;E operational data. Full methodology + data sources below.</p>
+<p>Public-data benchmarks; none of approaches 0–8 is a clean causal estimate (see each “Where it breaks” box). The switching-DiD is a single underpowered PanelMatch run (a cross-check with two other switching-treatment DiD estimators is queued); the reform-induced IV is falsified by an HFTD-proxy pre-trend test. The identified designs await utility operational data. Full methodology + data sources below.</p>
 <hr>
 </section>
 <section id="methodology-data" class="level1">
@@ -792,7 +869,7 @@ Z_{it}=\mathbb{1}[\text{circuit } i \text{ is eligible under the rule in force a
 <summary>
 <span class="meth-num">1</span>Estimand and framework
 </summary>
-<p>Potential outcomes: for circuit-day <span class="math inline">i</span>, <span class="math inline">D_i\in\{0,1\}</span> and <span class="math inline">Y_i(1),Y_i(0)</span>; target <span class="math inline">\tau_{\text{ATT}}=\mathbb{E}[Y_i(1)-Y_i(0)\mid D_i=1]</span>, where a protective effect is negative and ignitions averted is <span class="math inline">-\tau_{\text{ATT}}</span>. Because <span class="math inline">Y_i(0)</span> is never observed for a shut-off circuit-day, each method is a stand-in for that counterfactual. In plain English: the target is how much a shutoff changed the ignition rate on the circuit-days that actually lost power. I report the risk difference as the headline; RRs appear as a descriptive hook, and for the rare-event matched benchmark the RR is read through its bootstrap median/percentile interval rather than its unstable mean.</p>
+<p>Potential outcomes: for circuit-day <span class="math inline">i</span>, <span class="math inline">D_i\in\{0,1\}</span> and <span class="math inline">Y_i(1),Y_i(0)</span>; target <span class="math inline">\tau_{\text{ATT}}=\mathbb{E}[Y_i(1)-Y_i(0)\mid D_i=1]</span>, where a protective effect is negative and ignitions averted is <span class="math inline">-\tau_{\text{ATT}}</span>. Because <span class="math inline">Y_i(0)</span> is never observed for a shut-off circuit-day, each method is a stand-in for that counterfactual. In plain English: the target is how much a shutoff changed the ignition rate on the circuit-days that actually lost power. The risk difference is the headline; RRs appear as a descriptive hook, and for the rare-event matched benchmark the RR is read through its bootstrap median/percentile interval rather than its unstable mean.</p>
 </details>
 <details class="meth">
 <summary>
@@ -803,6 +880,7 @@ Z_{it}=\mathbb{1}[\text{circuit } i \text{ is eligible under the rule in force a
 <li><strong>Sample</strong> — raw panel ≈ 12.2M circuit-days, thinned sharply by a high fire-threat (HFTD) overlap gate plus a same-event support filter to a 62,840-row high-risk analysis sample (78 event days; steps 1–2 and the DR/DML step all run on this slice). The canonical matched Stage-1 sample is a further-matched 15,423 rows (6,388 treated, 9,035 controls)—different samples, and they should not be conflated.</li>
 <li><strong>Treatment</strong> — <code>psps_treat</code> rebuilt from PSPS outage hours, not the source panel’s recoded <code>is_psps</code>.</li>
 <li><strong>Outcome</strong> — cause-coded utility ignition; base rate ≈ 0.2% in the high-risk analysis sample, ≈ 0.03% across the full panel (rare either way).</li>
+<li><strong>Companion SCE panel (replication check only)</strong> — <code>analysis/data/all_iou/sce_panel.csv.gz</code>: 16.6M circuit-days (4,261 DRPEP circuits × 2014-01-01–2024-08-31), treatment name-joined from the CPUC rollup, ignitions spatially joined from the CPUC workbooks, HFTD flag from the CPUC Fire-Threat Map. Build + validation gates: <code>analysis/output/all_iou/sce_panel_build_report.md</code>.</li>
 </ul>
 </details>
 <details class="meth">
@@ -942,6 +1020,50 @@ Z_{it}=\mathbb{1}[\text{circuit } i \text{ is eligible under the rule in force a
 </summary>
 <p><code>Role</code> key: <span class="role role-computed">computed</span> feeds a reported estimate (weather, fuel, and HFTD layers enter through the assembled WCF panel, not recomputed here); <span class="role role-proxy">proxy-reconstruction</span> approximates an unobserved quantity; <span class="role role-scoping">scoping/context</span> documents or scouts, but computes nothing reported; <span class="role role-would">would-compute</span> marks what the requested utility data would enable.</p>
 <p><strong>(A) Public-data analyses (steps 0–8).</strong></p>
+<p><strong>Cross-IOU coverage audit.</strong> The analysis code checks all three major California IOUs. The table below reports, per utility, what is staged and what binds; every numeric estimate in the body of this post is from the PG&amp;E panel.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Utility </th>
+   <th style="text-align:left;"> PSPS rows in CPUC rollup </th>
+   <th style="text-align:left;"> Public inputs acquired </th>
+   <th style="text-align:left;"> Parsed public rows </th>
+   <th style="text-align:left;"> Current ladder output </th>
+   <th style="text-align:left;"> Binding issue in this workspace </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;width: 7.5em; "> PG&amp;E </td>
+   <td style="text-align:left;width: 7.5em; "> 2,968 </td>
+   <td style="text-align:left;width: 7.5em; "> 0 files </td>
+   <td style="text-align:left;width: 7.5em; "> 0 </td>
+   <td style="text-align:left;width: 7.5em; "> estimated </td>
+   <td style="text-align:left;width: 26em; "> Runnable from WCF PG&amp;E panel; clean designs still need scoped controls and decision-time risk records. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 7.5em; "> SCE </td>
+   <td style="text-align:left;width: 7.5em; "> 1,947 </td>
+   <td style="text-align:left;width: 7.5em; "> 2 files </td>
+   <td style="text-align:left;width: 7.5em; "> 92 </td>
+   <td style="text-align:left;width: 7.5em; "> estimated </td>
+   <td style="text-align:left;width: 26em; "> Approximate public benchmark panel staged (DRPEP circuit universe + CPUC ignition workbooks + rollup treatment; see sce_panel_build_report.md). Clean designs still need scoped-but-not-cut controls and decision-time risk records. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 7.5em; "> SDG&amp;E </td>
+   <td style="text-align:left;width: 7.5em; "> 553 </td>
+   <td style="text-align:left;width: 7.5em; "> 3 files </td>
+   <td style="text-align:left;width: 7.5em; "> 175,205 </td>
+   <td style="text-align:left;width: 7.5em; "> not yet runnable </td>
+   <td style="text-align:left;width: 26em; "> no public full circuit-day denominator/crosswalk staged to the PG&amp;E schema (ignition rows carry lat/long + facility IDs, not circuit names, so the join needs circuit geometries; no public circuit GIS staged); public FPI is district/worst-weather-day level, not circuit-day decision input </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
@@ -1007,12 +1129,18 @@ Z_{it}=\mathbb{1}[\text{circuit } i \text{ is eligible under the rule in force a
 <td>Negative-control outcome (step 6)</td>
 </tr>
 <tr class="odd">
+<td>Cross-IOU acquisition + driver (<code>analysis/acquire_all_iou_public_inputs.py</code>, <code>analysis/all_iou_ladder.py</code>; <code>analysis/output/all_iou/*.csv</code>)</td>
+<td><span class="role role-computed">computed</span></td>
+<td>Public input manifest, utility-by-utility input coverage, and estimate/status rows</td>
+<td>Keeps the reporting explicitly broken out by PG&amp;E, SCE, and SDG&amp;E; prevents the PG&amp;E estimate from being presented as California-wide</td>
+</tr>
+<tr class="even">
 <td>PG&amp;E 2023 PSPS Decision-Making Guide</td>
 <td><span class="role role-scoping">scoping/context</span></td>
 <td>The rule + thresholds (per-cell FPI&gt;0.7, RH&lt;30%, wind&gt;19mph, dead-fuel&lt;9–11%; ≥25 of &gt;45k 4-km² cells); FPI inputs</td>
 <td>Documents the rule; basis for C2 eligibility framing + the data-ask context</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>PG&amp;E WMP base plans + updates (2019–2025); CPUC R.18-12-005 decisions</td>
 <td><span class="role role-proxy">proxy-reconstruction</span></td>
 <td>Inclusion-criteria revision dates (FPI 2019/2021; HFRA 2020–22)</td>
@@ -1044,26 +1172,50 @@ Z_{it}=\mathbb{1}[\text{circuit } i \text{ is eligible under the rule in force a
 <td>Established SCE’s treated-side richness but that controls aren’t published</td>
 </tr>
 <tr class="even">
-<td>CPUC Fire Incident Data Collection (SCE XLSX)</td>
+<td>SCE WMP discovery bundle (<code>MGRA-SCE-004.zip</code>)</td>
 <td><span class="role role-scoping">scoping/context</span></td>
-<td>Circuit-/lat-long-resolved cause-coded SCE ignitions 2014–2024</td>
-<td>Confirmed a public circuit-joinable SCE outcome series exists</td>
+<td>92 circuit/customer-count rows plus related risk-model context</td>
+<td>Downloaded and parsed as public covariate scaffolding; not a full circuit-day denominator</td>
 </tr>
 <tr class="odd">
-<td>SCE DRPEP / C-GIS circuit GIS</td>
+<td>SDG&amp;E WMP discovery workbooks (<code>OEIS-P-WMP_2025-SDGE-07/08</code>)</td>
 <td><span class="role role-scoping">scoping/context</span></td>
-<td>Circuit names + geometries</td>
-<td>The SCE spatial join key</td>
+<td>FPI/wind proxy rows and 5,219 circuit/segment/span risk rows</td>
+<td>Downloaded and parsed as public covariate/risk scaffolding; not a circuit-day outcome panel</td>
 </tr>
 <tr class="even">
-<td>SDG&amp;E FPI portal + post-event reports</td>
-<td><span class="role role-scoping">scoping/context</span></td>
-<td>District-level FPI; FPI ≥ 14 criterion</td>
-<td>Cross-IOU scoping (district-level only)</td>
+<td>CPUC Fire Incident Data Collection (all three IOUs, 2014–2025)</td>
+<td><span class="role role-computed">computed</span></td>
+<td>Reportable utility ignitions: lat/long, date, facility IDs (circuit-named only in SCE’s 2020 file)</td>
+<td>Staged by <code>acquire_all_iou_public_inputs.py</code> (verbatim per-year URL grid; magic-byte validated — the old landing pages are dead but the media files are live); outcome source for the SCE replication panel</td>
+</tr>
+<tr class="odd">
+<td>SCE DRPEP “Distribution Circuits” FeatureServer</td>
+<td><span class="role role-computed">computed</span></td>
+<td>Full SCE circuit universe (4,261 circuits) + line geometry</td>
+<td>The SCE panel denominator and the ignition spatial-join target (nearest circuit, 570 m discard; 81.6% exact-name accuracy on the 2020 circuit-named validation set)</td>
+</tr>
+<tr class="even">
+<td>CPUC Fire-Threat Map Tier 2/3 (geodatabase)</td>
+<td><span class="role role-computed">computed</span></td>
+<td>HFTD tier polygons</td>
+<td>SCE circuit high-risk flag (the rung-1 gate), by circuit-polyline intersection</td>
+</tr>
+<tr class="odd">
+<td>SCE panel builder (<code>analysis/build_sce_panel.py</code>)</td>
+<td><span class="role role-computed">computed</span></td>
+<td><code>sce_panel.csv.gz</code>: 16.6M circuit-days, treatment from the CPUC rollup (97.9% of rows name-matched), validation-gated</td>
+<td>The SCE replication estimates; gates + caveats in <code>sce_panel_build_report.md</code></td>
+</tr>
+<tr class="even">
+<td>SDG&amp;E circuit denominator and crosswalk</td>
+<td><span class="role role-would">would-compute</span></td>
+<td>Full service-territory circuit-day panel and ignition joins</td>
+<td>No public source located (the GIS portals are access-gated apps; no anonymous FeatureServer like SCE’s DRPEP) — SDG&amp;E stays blocked</td>
 </tr>
 </tbody>
 </table>
-<p><strong>(C) Methodological lineage and context (cited, not data).</strong> Warner, Callaway &amp; Fowlie (2025, Nature Climate Change)—lineage + panel source; their PSPS-“plausibly zero” assumption is the gap this fills. E3 (2021) WDRM review—the counterfactual problem. OEIS ACI PG&amp;E-23-02 (2023 WMP cycle; not tracked as an open item in Energy Safety’s Feb 2026 decision approving PG&amp;E’s 2026–2028 Base WMP)—the transparency lineage this argument builds on. Technosylva “may have avoided up to 76,314.4 acres burned” (2024) simulation, per PG&amp;E’s 2024 PSPS Post-Season Report, § IV.1 (p.&nbsp;32)—the accounting these estimates would benchmark: an ignition-level causal estimate tests its ignition-prevention step, while the simulated acreage additionally rests on fire-spread modeling conditional on ignition (the bridge is table D’s “ignitions-averted” row). Methods: Manski; Calonico–Cattaneo–Titiunik; Keele–Titiunik; Callaway–Sant’Anna, Sun–Abraham, de Chaisemartin–D’Haultfœuille; Imai et al.&nbsp;(PanelMatch); King–Zeng (rare-event logit).</p>
+<p><strong>(C) Methodological lineage and context (cited, not data).</strong> Warner, Callaway &amp; Fowlie (2025, Nature Climate Change)—lineage + panel source; their PSPS-“plausibly zero” assumption is the gap this fills. E3 (2021) WDRM review—the counterfactual problem. OEIS ACI PG&amp;E-23-02 (2023 WMP cycle; not tracked as an open item in Energy Safety’s Feb 2026 decision approving PG&amp;E’s 2026–2028 Base WMP)—the transparency lineage this argument builds on. Technosylva “may have avoided up to 76,314.4 acres burned” (2024) simulation, per PG&amp;E’s 2024 PSPS Post-Season Report, § IV.1 (p. 32)—the accounting these estimates would benchmark: an ignition-level causal estimate tests its ignition-prevention step, while the simulated acreage additionally rests on fire-spread modeling conditional on ignition (the bridge is table D’s “ignitions-averted” row). Methods: Manski; Calonico–Cattaneo–Titiunik; Keele–Titiunik; Callaway–Sant’Anna, Sun–Abraham, de Chaisemartin–D’Haultfœuille; Imai et al.&nbsp;(PanelMatch); King–Zeng (rare-event logit).</p>
 <p><strong>(D) Utility-held data required for the identified designs — not yet available.</strong></p>
 <table class="caption-top table">
 <colgroup>
@@ -1131,7 +1283,8 @@ Z_{it}=\mathbb{1}[\text{circuit } i \text{ is eligible under the rule in force a
 <li><strong>No public control pool, anywhere.</strong> All three IOUs publish the rule + treated circuits, never the scoped controls—so even design-based public shortcuts fail.</li>
 <li><strong>Reconstruction is approximate.</strong> Public eligibility can’t reproduce proprietary models (PG&amp;E IPW/Technosylva; SCE WRF) and can’t separate rule from risk (the reform-induced falsification).</li>
 <li><strong>RD locality.</strong> The identified designs recover local effects (boundary/threshold); generalization is an assumption.</li>
-<li><strong>Provenance.</strong> The panel is a third-party replication package; some upstream cleaning is inherited (I bypass the original <code>is_psps</code> recode by rebuilding treatment).</li>
+<li><strong>Provenance.</strong> The panel is a third-party replication package; some upstream cleaning is inherited (the original <code>is_psps</code> recode is bypassed by rebuilding treatment).</li>
+<li><strong>The SCE replication is approximate and underpowered.</strong> Its panel is assembled from name and spatial joins (validation gates documented in the build report), uses the current DRPEP circuit universe statically across the window, and rests on a handful of treated-day ignitions—so its intervals are wide. It shows the selection <em>pattern</em> replicates; it does not add a second deep ladder. SDG&amp;E has no public circuit universe, so it remains a coverage row, not an estimate.</li>
 </ol>
 </details>
 </section>
