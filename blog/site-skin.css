@@ -19,7 +19,11 @@
 }
 
 /* ---- base ------------------------------------------------------------- */
-:root { --bs-root-font-size: 16px; font-size: 16px; }   /* cosmo's root is 17px; the site's is 16px */
+/* match the site's root scale (styles.css): 18px desktop, 16px under 768px */
+:root { --bs-root-font-size: 18px; font-size: 18px; }
+@media (max-width: 768px) {
+  :root { --bs-root-font-size: 16px; font-size: 16px; }
+}
 body.quarto-light {
   background-color: var(--ig-paper);
   color: var(--ig-ink);
@@ -48,6 +52,10 @@ h1, h2, h3, h4, .quarto-title .title {
   margin-bottom: 2.5rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--ig-border);
+  /* old post headers inherit the site's body-level justify; bootstrap resets
+     text-align on body, so restore it here */
+  text-align: justify;
+  text-justify: inter-word;
 }
 #title-block-header .title {
   font-size: 2.25rem; font-weight: 400; letter-spacing: -0.02em;
