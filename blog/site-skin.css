@@ -1,0 +1,108 @@
+/* ============================================================================
+   site-skin.css — re-themes the Quarto (cosmo) render to match igorgeyn.com.
+   Design tokens mirror igorg-personal-website/styles.css (:root block).
+   Loaded last via the qmd YAML `css:` key, so it wins ties against cosmo.
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root {
+  --ig-ink: #1a1a1a;
+  --ig-ink-light: #4a4a4a;
+  --ig-ink-muted: #7a7a7a;
+  --ig-paper: #fafaf8;
+  --ig-paper-warm: #f5f4f0;
+  --ig-accent: #2c5282;
+  --ig-accent-hover: #1a365d;
+  --ig-border: #e2e1dc;
+  --ig-serif: 'IBM Plex Serif', Georgia, serif;
+  --ig-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ---- base ------------------------------------------------------------- */
+:root { --bs-root-font-size: 16px; font-size: 16px; }   /* cosmo's root is 17px; the site's is 16px */
+body.quarto-light {
+  background-color: var(--ig-paper);
+  color: var(--ig-ink);
+  font-family: var(--ig-sans);
+}
+#quarto-document-content p {
+  text-align: justify;          /* site convention: justified body text */
+  line-height: 1.55;
+}
+
+/* ---- headings: serif display, site sizes ------------------------------- */
+h1, h2, h3, h4, .quarto-title .title {
+  font-family: var(--ig-serif);
+  color: var(--ig-ink);
+}
+#quarto-document-content h1 { font-size: 1.6rem; font-weight: 500; }
+#quarto-document-content h2 {
+  font-size: 1.35rem; font-weight: 500;
+  border-bottom: 1px solid var(--ig-border);
+  padding-bottom: .35rem; margin-top: 2.5rem;
+}
+#quarto-document-content h3 { font-size: 1.15rem; font-weight: 600; }
+
+/* ---- title block: mirror .post-header on the site ----------------------- */
+#title-block-header.quarto-title-block {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--ig-border);
+}
+#title-block-header .title {
+  font-size: 2.25rem; font-weight: 400; letter-spacing: -0.02em;
+  border: none; margin-bottom: .5rem;
+}
+#title-block-header .subtitle {
+  font-family: var(--ig-sans);
+  font-size: 1.05rem; font-style: italic; color: var(--ig-ink-light);
+  margin: 4px 0 8px;
+}
+#title-block-header .quarto-title-meta,
+#title-block-header .date {
+  font-family: var(--ig-sans);
+  font-size: 0.9rem; color: var(--ig-ink-muted);
+}
+/* older posts show a bare date line (time.post-date), not Quarto's
+   "PUBLISHED" eyebrow---suppress the label and flatten the meta block */
+#title-block-header .quarto-title-meta-heading { display: none; }
+#title-block-header .quarto-title-meta { margin-top: .25rem; }
+#title-block-header .date { margin: 0; }
+
+/* ---- links: site accent, quiet underline on hover ------------------------ */
+#quarto-document-content a,
+#title-block-header a {
+  color: var(--ig-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+#quarto-document-content a:hover { color: var(--ig-accent-hover); border-bottom-color: currentColor; }
+
+/* ---- TOC: compact sans, accent for the active entry ---------------------- */
+#TOC, nav[role="doc-toc"] { font-family: var(--ig-sans); }
+#TOC a, nav[role="doc-toc"] a { color: var(--ig-ink-muted); border-bottom: none; }
+#TOC a.active, nav[role="doc-toc"] a.active { color: var(--ig-accent); }
+#toc-title { font-family: var(--ig-sans) !important; font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ig-ink-muted); }
+
+/* ---- blockquotes (premise + closer): warm panel, accent rule ------------- */
+#quarto-document-content blockquote {
+  border-left: 3px solid var(--ig-accent);
+  background: var(--ig-paper-warm);
+  padding: .9rem 1.1rem;
+  color: var(--ig-ink-light);
+}
+#quarto-document-content blockquote p { text-align: left; }
+
+/* ---- inline code: neutral, not bootstrap pink ---------------------------- */
+#quarto-document-content code:not(pre code) {
+  color: #374151; background: var(--ig-paper-warm);
+  border-radius: 4px; padding: .08em .35em;
+}
+
+/* ---- horizontal rules + misc borders to the warm palette ----------------- */
+#quarto-document-content hr { border-color: var(--ig-border); opacity: 1; }
+
+/* keep the methodology cards/tables (styled in the document) on white so they
+   read as panels against the paper background */
+details.meth { background: #fff; }
