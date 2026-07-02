@@ -1157,10 +1157,12 @@ span.pub-title {
 }
 
 .research-page .pub-header {
+    /* Single column: venue sits under the title, left-aligned, instead of
+       drifting to the far right edge (matches the mobile layout). */
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: baseline;
-    gap: 0.25rem 0.75rem;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 0.1rem;
 }
 
 .research-page .pub-title {
