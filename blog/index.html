@@ -8,29 +8,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
-    <style>
-    .blog-entry-cover {
-        display: block;
-        width: 100%;
-        max-width: 380px;
-        aspect-ratio: 3 / 2;
-        object-fit: cover;
-        border-radius: 6px;
-        margin: 0 0 1rem;
-        border: 1px solid var(--color-border);
-        background: #f5f5f5;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .blog-entry-link:hover .blog-entry-cover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-    }
-    </style>
+    <script>(function(){var t=localStorage.getItem('theme');if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script>
 </head>
 <body class="blog-index">
     <nav class="nav">
         <div class="nav-inner">
-            <a href="../index.html" class="nav-logo">Igor Geyn</a>
+            <a href="../index.html" class="nav-logo"><img src="../images/logo.svg" alt="Igor Geyn" height="28"></a>
             <button class="nav-toggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -43,6 +26,10 @@
                 <li><a href="../freelance.html">Freelance</a></li>
                 <li><a href="index.html" class="active">Blog</a></li>
             </ul>
+            <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="4.22" x2="19.78" y2="5.64"/></svg>
+            </button>
         </div>
     </nav>
 
@@ -54,90 +41,84 @@
 
         <section class="blog-list">
 
-            <article class="blog-entry">
-                <a href="california-psps-effectiveness.html" class="blog-entry-link">
-                    <img class="blog-entry-cover" src="images/california-psps-effectiveness-cover-v2.png" alt="" loading="lazy">
-                    <h2 class="blog-entry-title">How Effective Is PSPS at Preventing Wildfires?</h2>
-                    <time class="blog-entry-date" datetime="2026-06-11">June 11, 2026</time>
-                    <p class="blog-entry-description">Does shutting off the power actually prevent wildfires? A step-by-step causal analysis &mdash; why the headline numbers mislead, how far publicly available data can take us, and exactly what it would take to measure the real effect.</p>
+            <article class="blog-hero">
+                <a href="california-psps-effectiveness.html" class="blog-hero-link blog-entry-link">
+                    <div class="blog-hero-body">
+                        <span class="blog-kicker">Latest &middot; Grid &amp; Wildfire Risk</span>
+                        <h2 class="blog-entry-title">How Effective Is PSPS at Preventing Wildfires?</h2>
+                        <time class="blog-entry-date" datetime="2026-06-11">June 11, 2026</time>
+                        <p class="blog-entry-description">Does shutting off the power actually prevent wildfires? A step-by-step causal analysis &mdash; why the headline numbers mislead, how far publicly available data can take us, and exactly what it would take to measure the real effect.</p>
+                    </div>
+                    <img class="blog-hero-cover" src="images/california-psps-effectiveness-cover-v2.png" alt="" loading="lazy">
                 </a>
             </article>
-            <article class="blog-entry">
-                <a href="california-generation-fire-risk.html" class="blog-entry-link">
-                    <img class="blog-entry-cover" src="images/california-generation-fire-risk-cover.png" alt="" loading="lazy">
-                    <h2 class="blog-entry-title">Understanding the Fire Risk in California's Power Grid: Generation</h2>
-                    <time class="blog-entry-date" datetime="2026-04-06">April 06, 2026</time>
-                    <p class="blog-entry-description">Part 1 of a series on California's energy grid and wildfire risk. A data-driven analysis of how California's 3,018 generators overlap with fire threat zones, historical fire perimeters, and fire weather patterns.</p>
+
+            <article class="blog-row">
+                <a href="california-generation-fire-risk.html" class="blog-row-thumb" aria-hidden="true" tabindex="-1">
+                    <img class="blog-row-cover" src="images/california-generation-fire-risk-cover.png" alt="" loading="lazy">
                 </a>
-                <div class="blog-entry-previews">
-                    <a href="grid-fire-slides/index.html" class="preview-card" aria-label="Open interactive slides for Generation Fire Risk">
-                        <div class="preview-card-image">
-                            <img src="images/previews/grid-fire-interactive.jpg" alt="" loading="lazy">
-                        </div>
-                        <span class="preview-card-label"><span class="preview-card-icon">&#9654;</span> Interactive slides</span>
+                <div class="blog-row-body">
+                    <a href="california-generation-fire-risk.html" class="blog-entry-link">
+                        <span class="blog-kicker">Grid &amp; Wildfire Risk &middot; Series Part 1</span>
+                        <h2 class="blog-entry-title">Understanding the Fire Risk in California's Power Grid: Generation</h2>
+                        <time class="blog-entry-date" datetime="2026-04-06">April 06, 2026</time>
+                        <p class="blog-entry-description">Part 1 of a series on California's energy grid and wildfire risk. A data-driven analysis of how California's 3,018 generators overlap with fire threat zones, historical fire perimeters, and fire weather patterns.</p>
                     </a>
-                    <a href="grid-fire-slides/california-generation-fire-risk.pdf" class="preview-card" aria-label="Download PDF slides for Generation Fire Risk">
-                        <div class="preview-card-image">
-                            <img src="images/previews/grid-fire-pdf.jpg" alt="" loading="lazy">
-                        </div>
-                        <span class="preview-card-label"><span class="preview-card-icon">&#8681;</span> PDF slides</span>
-                    </a>
+                    <div class="blog-attachments">
+                        <a href="grid-fire-slides/index.html" class="blog-attachment" aria-label="Open interactive slides for Generation Fire Risk"><span class="preview-card-icon">&#9654;</span> Interactive slides</a>
+                        <a href="grid-fire-slides/california-generation-fire-risk.pdf" class="blog-attachment" aria-label="Download PDF slides for Generation Fire Risk"><span class="preview-card-icon">&#8681;</span> PDF slides</a>
+                    </div>
                 </div>
             </article>
 
-            <article class="blog-entry">
-                <a href="california-data-center-fire-risk.html" class="blog-entry-link">
-                    <img class="blog-entry-cover" src="images/california-data-center-fire-risk-cover.png" alt="" loading="lazy">
-                    <h2 class="blog-entry-title">How Much Fire Risk Is California Building? A Case Study of the Manning–Metcalf 500 kV Corridor</h2>
-                    <time class="blog-entry-date" datetime="2026-03-04">March 04, 2026</time>
-                    <p class="blog-entry-description">A case study of the Manning–Metcalf 500 kV corridor and the data center transmission buildout</p>
+            <article class="blog-row">
+                <a href="california-data-center-fire-risk.html" class="blog-row-thumb" aria-hidden="true" tabindex="-1">
+                    <img class="blog-row-cover" src="images/california-data-center-fire-risk-cover.png" alt="" loading="lazy">
                 </a>
-                <div class="blog-entry-previews">
-                    <a href="dc-fire-slides/index.html" class="preview-card" aria-label="Open interactive slides for Data Center Fire Risk">
-                        <div class="preview-card-image">
-                            <img src="images/previews/dc-fire-interactive.jpg" alt="" loading="lazy">
-                        </div>
-                        <span class="preview-card-label"><span class="preview-card-icon">&#9654;</span> Interactive slides</span>
+                <div class="blog-row-body">
+                    <a href="california-data-center-fire-risk.html" class="blog-entry-link">
+                        <span class="blog-kicker">Grid &amp; Wildfire Risk</span>
+                        <h2 class="blog-entry-title">How Much Fire Risk Is California Building? A Case Study of the Manning&ndash;Metcalf 500 kV Corridor</h2>
+                        <time class="blog-entry-date" datetime="2026-03-04">March 04, 2026</time>
+                        <p class="blog-entry-description">A case study of the Manning&ndash;Metcalf 500 kV corridor and the data center transmission buildout</p>
                     </a>
-                    <a href="dc-fire-slides/california-data-center-fire-risk.pdf" class="preview-card" aria-label="Download PDF slides for Data Center Fire Risk">
-                        <div class="preview-card-image">
-                            <img src="images/previews/dc-fire-pdf.jpg" alt="" loading="lazy">
-                        </div>
-                        <span class="preview-card-label"><span class="preview-card-icon">&#8681;</span> PDF slides</span>
-                    </a>
+                    <div class="blog-attachments">
+                        <a href="dc-fire-slides/index.html" class="blog-attachment" aria-label="Open interactive slides for Data Center Fire Risk"><span class="preview-card-icon">&#9654;</span> Interactive slides</a>
+                        <a href="dc-fire-slides/california-data-center-fire-risk.pdf" class="blog-attachment" aria-label="Download PDF slides for Data Center Fire Risk"><span class="preview-card-icon">&#8681;</span> PDF slides</a>
+                    </div>
                 </div>
             </article>
 
-            <article class="blog-entry">
-                <a href="california-psps-analysis.html" class="blog-entry-link">
-                    <img class="blog-entry-cover" src="images/california-psps-analysis-cover.png" alt="" loading="lazy">
-                    <h2 class="blog-entry-title">Understanding California's Power Shutoffs</h2>
-                    <time class="blog-entry-date" datetime="2026-02-09">February 09, 2026</time>
-                    <p class="blog-entry-description">A data-driven look at who bears the burden, how long outages last, and whether the fire prevention strategy is working</p>
+            <article class="blog-row">
+                <a href="california-psps-analysis.html" class="blog-row-thumb" aria-hidden="true" tabindex="-1">
+                    <img class="blog-row-cover" src="images/california-psps-analysis-cover.png" alt="" loading="lazy">
                 </a>
-                <div class="blog-entry-previews">
-                    <a href="psps-slides/index.html" class="preview-card" aria-label="Open interactive slides for PSPS Analysis">
-                        <div class="preview-card-image">
-                            <img src="images/previews/psps-interactive.jpg" alt="" loading="lazy">
-                        </div>
-                        <span class="preview-card-label"><span class="preview-card-icon">&#9654;</span> Interactive slides</span>
+                <div class="blog-row-body">
+                    <a href="california-psps-analysis.html" class="blog-entry-link">
+                        <span class="blog-kicker">Grid &amp; Wildfire Risk</span>
+                        <h2 class="blog-entry-title">Understanding California's Power Shutoffs</h2>
+                        <time class="blog-entry-date" datetime="2026-02-09">February 09, 2026</time>
+                        <p class="blog-entry-description">A data-driven look at who bears the burden, how long outages last, and whether the fire prevention strategy is working</p>
                     </a>
-                    <a href="psps-slides/california-psps-analysis.pdf" class="preview-card" aria-label="Download PDF slides for PSPS Analysis">
-                        <div class="preview-card-image">
-                            <img src="images/previews/psps-pdf.jpg" alt="" loading="lazy">
-                        </div>
-                        <span class="preview-card-label"><span class="preview-card-icon">&#8681;</span> PDF slides</span>
-                    </a>
+                    <div class="blog-attachments">
+                        <a href="psps-slides/index.html" class="blog-attachment" aria-label="Open interactive slides for PSPS Analysis"><span class="preview-card-icon">&#9654;</span> Interactive slides</a>
+                        <a href="psps-slides/california-psps-analysis.pdf" class="blog-attachment" aria-label="Download PDF slides for PSPS Analysis"><span class="preview-card-icon">&#8681;</span> PDF slides</a>
+                    </div>
                 </div>
             </article>
 
-            <article class="blog-entry blog-entry--text-only">
-                <a href="tuition-subsidies-voting.html" class="blog-entry-link">
-                    <img class="blog-entry-cover" src="images/tuition-subsidies-voting-cover.png" alt="" loading="lazy">
-                    <h2 class="blog-entry-title">Does Subsidized College Make People Vote? A Causal Analysis with 16 Million Records</h2>
-                    <time class="blog-entry-date" datetime="2026-01-19">January 19, 2026</time>
-                    <p class="blog-entry-description">How I linked 16.4 million financial aid applications to voter records to estimate the civic returns to tuition subsidies—and what the results mean for American democracy.</p>
+            <article class="blog-row">
+                <a href="tuition-subsidies-voting.html" class="blog-row-thumb" aria-hidden="true" tabindex="-1">
+                    <img class="blog-row-cover" src="images/tuition-subsidies-voting-cover.png" alt="" loading="lazy">
                 </a>
+                <div class="blog-row-body">
+                    <a href="tuition-subsidies-voting.html" class="blog-entry-link">
+                        <span class="blog-kicker">Elections &amp; Participation</span>
+                        <h2 class="blog-entry-title">Does Subsidized College Make People Vote? A Causal Analysis with 16 Million Records</h2>
+                        <time class="blog-entry-date" datetime="2026-01-19">January 19, 2026</time>
+                        <p class="blog-entry-description">How I linked 16.4 million financial aid applications to voter records to estimate the civic returns to tuition subsidies&mdash;and what the results mean for American democracy.</p>
+                    </a>
+                </div>
             </article>
 
         </section>
