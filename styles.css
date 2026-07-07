@@ -1806,6 +1806,11 @@ span.pub-title {
     font-size: 1.9rem;
 }
 
+.blog-hero-cover-link {
+    display: block;
+    border-bottom: none;
+}
+
 .blog-hero-cover {
     width: 100%;
     aspect-ratio: 3 / 2;
@@ -1884,7 +1889,7 @@ span.pub-title {
         grid-template-columns: 1fr;
         gap: 1.1rem;
     }
-    .blog-hero-link .blog-hero-cover {
+    .blog-hero-cover-link {
         order: -1;
     }
     .blog-hero .blog-entry-title {
