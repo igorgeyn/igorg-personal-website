@@ -70,7 +70,6 @@ POST_TEMPLATE = """<!DOCTYPE html>
             </button>
             <ul class="nav-links">
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="../resume.html">Resume/CV</a></li>
                 <li><a href="../research.html">Research</a></li>
                 <li><a href="../freelance.html">Freelance</a></li>
                 <li><a href="index.html" class="active">Blog</a></li>
@@ -128,7 +127,6 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
             </button>
             <ul class="nav-links">
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="../resume.html">Resume/CV</a></li>
                 <li><a href="../research.html">Research</a></li>
                 <li><a href="../freelance.html">Freelance</a></li>
                 <li><a href="index.html" class="active">Blog</a></li>
