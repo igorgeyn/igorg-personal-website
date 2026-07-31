@@ -241,7 +241,7 @@ The concentration pattern suggests that grid hardening investments—underground
 
 Medical baseline customers—those depending on electricity for life-sustaining equipment like oxygen concentrators, ventilators, and dialysis machines—face disproportionate risk during PSPS events. The duration problem becomes a life-safety problem for this population.
 
-California utilities track medical baseline customers separately in PSPS reporting. When we analyze the distribution of medical baseline customer-hours by event duration, a troubling pattern emerges: **91% of medical baseline exposure occurs during events exceeding 24 hours.**
+California utilities track medical baseline customers separately in PSPS reporting. When we analyze the distribution of medical baseline customer-hours by event duration, a clear pattern emerges: **91% of medical baseline exposure occurs during events exceeding 24 hours.**
 
 ![Medical baseline customer exposure](images/medical_baseline_exposure.png)
 *Figure 5: Share of medical baseline customer-hours beyond each duration threshold. 91% of exposure occurs in events exceeding 24 hours.*
