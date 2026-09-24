@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "iterations": 600000,
+  "salt": "YbeLi1AefU5nzlzqGY1YI75T1LFk/DTsNNV+2rcCS2w=",
+  "iv": "iGr5V4DWeeXT82Ot",
+  "proofIv": "eEriERNMQfvns0CT",
+  "proof": "G1QTkcNSWsJYHPZVREyzVJKgHkAsiVucqDik8pvapAtNcYHS7c2B80GDCXtNLjFfZA==",
+  "file": "album-e996a9b80768928d.bin",
+  "bytes": 31922140
+}

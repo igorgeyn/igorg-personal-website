@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, noimageindex">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#f7f4ec">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; connect-src 'self'; font-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+  <title>A day to remember · Family album</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%232d4857'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-size='45' font-family='Georgia' fill='%23f7f4ec'%3E%26%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="gate.css">
+  <script src="unlock.js" defer></script>
+</head>
+<body>
+  <header><span class="monogram">with love, always</span><span class="header-note">THE FAMILY ALBUM</span></header>
+  <main>
+    <div class="arch" aria-hidden="true"></div>
+    <section class="invitation" aria-labelledby="title">
+      <svg class="flower" viewBox="0 0 100 120" fill="none" aria-hidden="true"><path d="M48 108c9-24 8-45 1-65m4 37c19 1 27-8 30-21-20-1-29 9-30 21Zm1 17c-20 1-31-12-33-25 20 2 28 12 33 25Z"/><path d="M49 44C13 44 22 12 40 26c-9-28 25-28 20-3 22-17 35 12 10 19 26 9 10 35-7 15 2 29-30 19-22-2-22 12-35-13-13-20"/><circle cx="51" cy="41" r="8"/></svg>
+      <p class="eyebrow">A DAY TO REMEMBER</p>
+      <h1 id="title">A little something<br><em>just for family.</em></h1>
+      <p class="intro">The happiest moments are even better shared.<br> Enter the album password, and stay awhile.</p>
+      <form id="unlock-form">
+        <label for="password">ALBUM PASSWORD</label>
+        <div class="password-wrap"><input id="password" type="password" autocomplete="current-password" required aria-describedby="status" spellcheck="false" autocapitalize="none" autocorrect="off"><button id="reveal" type="button" aria-label="Show password" aria-pressed="false">Show</button></div>
+        <button id="unlock" type="submit"><span>Open the album</span><span aria-hidden="true">→</span></button>
+        <p id="status" role="status" aria-live="polite"></p>
+        <progress id="progress" max="100" value="0" aria-label="Album loading progress" hidden></progress>
+      </form>
+      <p class="signature">A few happy tears. A little magic.</p>
+    </section>
+  </main>
+  <footer>FOR OUR FAVORITE PEOPLE</footer>
+  <noscript><p class="no-script">Please enable JavaScript to unlock the album.</p></noscript>
+</body>
+</html>
